@@ -1,0 +1,22 @@
+--- bin/wiki.js.orig	2026-04-06
++++ bin/wiki.js
+@@ -219,6 +219,18 @@
+     });
+     return response.choices[0]?.message?.content || null;
+   }
++  async chatJSON(messages) {
++    // Like chat() but forces JSON response format via response_format: json_object.
++    // Useful for ingest/query where the LLM must output strict JSON.
++    const opts = {
++      model: this.config.llm.model,
++      messages,
++      temperature: this.config.llm.temperature,
++      thinking: this.config.llm.thinking,
++      response_format: { type: "json_object" }
++    };
++    const response = await this.client.chat.completions.create(opts);
++    return response.choices[0]?.message?.content || null;
++  }
+ };
+ 
+ // src/core/promptBuilder.ts

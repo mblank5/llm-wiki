@@ -1,0 +1,7 @@
+--- schemas/agent.md.orig	2026-04-06
++++ schemas/agent.md
+@@ -5,3 +5,4 @@
+ 4. **Obsidian Link Strictness**: When you add a link like `[[Title]]` to `wiki/index.md` or any other page, there MUST exist a file physically named `Title.md` EXACTLY matching the text inside the brackets. If the file is `ssml.md`, the link MUST be `[[ssml]]`. If you want a description, use the pipe syntax: `[[ssml |SSML (Speech Synthesis Markup Language)]]`.
+ 5. **Maintain the central Index**: The `wiki/index.md` file must serve as the absolute source-of-truth mapping everything in the wiki. **Any time you create, rename, or delete pages, you MUST also output update instructions for `wiki/index.md`**.
+ 6. **JSON Action Protocol**: Your final output MUST be a strict, valid JSON object detailing instructions on how to patch the file system (create, update, delete pages). Do NOT output conversational text before or after the JSON block.
++7. **No LaTeX in wiki content**: When writing page content in JSON, NEVER use LaTeX math notation (`$...$`, `$$...$$`, `\varphi`, `\psi`, etc.). Use plain text descriptions instead (e.g., write "z in Z" instead of "$z \in Z$"). This prevents JSON encoding errors with backslashes and dollar signs.

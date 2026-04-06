@@ -1,0 +1,11 @@
+--- bin/wiki.js.orig	2026-04-06
++++ bin/wiki.js
+@@ -527,7 +527,7 @@
+         console.log(chalk3.magenta("\n[DEBUG] Awaiting LLM response..."));
+       }
+       spinner = ora2("Generating wiki operations via LLM...").start();
+-      const response = await llm.chat([{ role: "user", content: promptText }]);
++      const response = await llm.chatJSON([{ role: "user", content: promptText }]);
+       spinner.stop();
+       if (!response) {
+         throw new Error("No response from LLM.");

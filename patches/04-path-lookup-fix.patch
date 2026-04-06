@@ -1,0 +1,25 @@
+--- bin/wiki.js.orig	2026-04-06
++++ bin/wiki.js
+@@ -308,6 +308,21 @@
+   }
+   getWikiRoot() {
+     return this.config.wikiRoot;
++  }
++  async _findFileRecursive(dir, targetBasename) {
++    // Recursively search for a file matching targetBasename under dir.
++    // Fixes: paper sources stored in raw/ingested/YYYY/MM/ are not found
++    // when agent requests them by basename only.
++    if (!await fs5.pathExists(dir)) return null;
++    const entries = await fs5.readdir(dir, { withFileTypes: true });
++    for (const entry of entries) {
++      const fullPath = path5.join(dir, entry.name);
++      if (entry.isDirectory()) {
++        const found = await this._findFileRecursive(fullPath, targetBasename);
++        if (found) return found;
++      } else if (entry.isFile() && entry.name === targetBasename) {
++        return fullPath;
++      }
++    }
++    return null;
+   }
+   async getIndexContent() {
