@@ -2,7 +2,7 @@
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-04-15 | Total pages: 91 | Raw papers: 55
+> Last updated: 2026-04-15 | Total pages: 107 | Raw papers: 71
 
 ## Entities
 
@@ -92,6 +92,15 @@
 - [[speech-llm]] — Speech LLM 概念：语音大语言模型架构与挑战
 - [[tvdf]] — TVDF (Temporal Video Distillation Framework)：视频时序蒸馏框架
 
+
+|### Agent 记忆与安全 (Agent Memory & Safety)
+|- [[hypermem]] — HyperMem：超图记忆架构，topic/episode/fact 三层 + hyperedge 高阶关联
+|- [[memreader]] — MemReader：从被动到主动的记忆提取，GRPO 训练 ReAct 式记忆管理决策
+|- [[lightmem-agent-memory]] — LightMem：SLM 驱动轻量记忆系统，STM/MTM/LTM 三层
+|- [[pask-proactive-agent]] — PASK：意图感知主动 Agent，DD-MM-PAS 流式框架
+|- [[saver-faithful-reasoning]] — SAVeR：Agent 自审计验证推理，行动前验证内部信念状态
+|- [[agent-supply-chain-attack]] — LLM Agent 供应链攻击：第三方 API router 的恶意注入与凭证窃取
+|
 ### Agentic Coding
 - [[agentic-coding]] — Agentic Coding：AI Agent 自主完成软件工程任务的模式与训练方法
 - [[cursorbench]] — CursorBench：从真实 Cursor 会话提取的 agentic SWE 评测套件
@@ -116,7 +125,7 @@
 - [[opd-tokenizer-requirement]] — OPD 是否要求 student/teacher 同一 tokenizer？X-OPD 是反例
 - [[opd-vs-sft]] — OPD vs SFT 指标差距：Qwen3 系列上 +5~7.6 Avg@12，训练效率提升 64x
 
-## Raw Sources (55 papers)
+## Raw Sources (71 papers)
 
 ### 蒸馏与后训练 (20)
 - `raw/papers/2015/11/1511.06295.md` — Policy Distillation (DeepMind 2015)

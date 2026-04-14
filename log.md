@@ -150,3 +150,46 @@
   - raw/papers/2026/03/2603.05433.md (80KB)
 - Updated index.md raw sources: 24 → 28 papers (蒸馏 16 → 20)
 - Total wiki pages: 47 → 51 | Raw papers: 24 → 28
+
+## [2026-04-15] ingest | 16 new papers: post-training, RL, agent memory, omni-modal, pretraining
+
+### Papers downloaded (16)
+- raw/papers/2026/04/2604.07941.md — LLM Post-Training Unified View (134KB)
+- raw/papers/2026/04/2604.08539.md — G²RPO / OpenVLThinkerV2 (71KB)
+- raw/papers/2026/04/2604.08476.md — Faithful GRPO (75KB)
+- raw/papers/2026/04/2604.08468.md — TTVS: Test-Time Variational Synthesis (58KB)
+- raw/papers/2026/04/2604.07506.md — ReflectRM (54KB)
+- raw/papers/2026/04/2604.07944.md — OPD for AV Motion Planning (40KB)
+- raw/papers/2026/04/2604.08256.md — HyperMem (61KB)
+- raw/papers/2026/04/2604.07877.md — MemReader (69KB)
+- raw/papers/2026/04/2604.07798.md — LightMem (58KB)
+- raw/papers/2026/04/2604.08000.md — PASK Proactive Agent (86KB)
+- raw/papers/2026/04/2604.06829.md — WRAP++ (58KB)
+- raw/papers/2026/04/2604.08348.md — Learning is Forgetting (64KB)
+- raw/papers/2026/04/2604.08209.md — OmniJigsaw (92KB)
+- raw/papers/2026/04/2604.06694.md — AudioKV (52KB)
+- raw/papers/2026/04/2604.08401.md — SAVeR (57KB)
+- raw/papers/2026/04/2604.08407.md — Agent Supply Chain Attack (97KB)
+
+### Wiki pages created (16 concepts)
+- concepts/llm-post-training-unified-view.md — Off-policy/on-policy 统一框架
+- concepts/g2rpo.md — Gaussian GRPO
+- concepts/faithful-grpo.md — 约束策略优化
+- concepts/ttvs.md — Test-time RL
+- concepts/reflectrm.md — 自反思 RM
+- concepts/opd-autonomous-driving.md — OPD 自动驾驶应用
+- concepts/hypermem.md — 超图记忆
+- concepts/memreader.md — 主动记忆提取
+- concepts/lightmem-agent-memory.md — 轻量记忆
+- concepts/pask-proactive-agent.md — 主动 Agent
+- concepts/saver-faithful-reasoning.md — 自审计推理
+- concepts/agent-supply-chain-attack.md — 供应链攻击
+- concepts/wrap-plus-plus.md — 跨文档预训练
+- concepts/llm-training-as-lossy-compression.md — 有损压缩视角
+- concepts/omnijigsaw.md — 全模态 RL 后训练
+- concepts/audiokv.md — KV Cache 驱逐
+
+### Index updated
+- Total wiki pages: 91 → 107 | Raw papers: 55 → 71
+- New section: Agent 记忆与安全 (6 pages)
+- New entries in 蒸馏与后训练 (6 pages), 强化学习基础 (0 new), 语音与多模态 (4 pages)
