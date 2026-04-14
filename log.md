@@ -1,0 +1,152 @@
+# Wiki Log
+
+> Chronological record of all wiki actions. Append-only.
+> Format: `## [YYYY-MM-DD] action | subject`
+
+## [2026-04-06] ingest | Seeduplex 论文 + 全双工语音模型专题
+- Sources: ByteDance Seeduplex (2026-04) + 相关语音模型论文
+- Created entities:
+  - entities/seeduplex.md
+  - entities/moshi.md
+  - entities/llama-omni.md
+  - entities/freeze-omni.md
+  - entities/minmo.md
+  - entities/seed-realtime-voice.md
+  - entities/byte-seed.md
+  - entities/seed-tts.md
+- Created concepts:
+  - concepts/full-duplex-speech-model.md（含 2024-2026 论文索引、架构方案、竞品格局）
+- Total pages created: 10
+
+## [2026-04-15] ingest | Qwen3 语音家族 + Omni-Modal LLM 深度调研 (13 篇论文)
+- Sources:
+  - Qwen3-Omni (2509.17765), Qwen3-ASR (2601.21337), Qwen3-TTS (2601.15621)
+  - Qwen3-VL-Embedding (2601.04720), Qwen-Audio (2311.07919)
+  - EMOVA (2409.18042), SALMONN-omni (2411.18138)
+  - Stream-Omni (2506.13642), MGM-Omni (2509.25131)
+  - ROMA (2601.10323), Speech-Omni-Lite (2603.09627)
+  - Omni-R1 (2601.09536), U-SAM (2505.13880)
+- Created entities:
+  - entities/qwen3-omni.md (Thinker-Talker MoE 架构详解)
+  - entities/qwen3-asr.md (52 语言 ASR，4 阶段训练含 RL)
+  - entities/qwen3-tts.md (双轨 TTS，97ms 首包延迟)
+  - entities/emova.md (CVPR 2025，语义-声学分离)
+  - entities/salmonn-omni.md (Codec-free 全双工)
+  - entities/stream-omni.md (CTC layer-dimension 对齐)
+  - entities/mgm-omni.md (Brain-Mouth 双轨)
+- Created concepts:
+  - concepts/omni-modal-llm.md (统一概念页：4 种架构方案对比、性能矩阵、6 大趋势)
+- Created queries:
+  - queries/qwen3-voice-family-deep-dive.md (家族技术传承链、竞品定位)
+- Updated:
+  - index.md (51 → 61 pages)
+- Total pages created: 8 new | 1 updated
+
+## [2026-04-06] ingest | OPD 专题 15 篇论文批量导入
+- Sources: Policy Distillation (2015) → OPD Survey (2026-04)
+- Created concepts:
+  - concepts/on-policy-distillation.md
+  - concepts/on-policy-prefix-distillation.md
+  - concepts/generalized-on-policy-distillation.md
+  - concepts/policy-distillation.md
+  - concepts/model-distillation.md
+  - concepts/dual-policy-distillation.md
+  - concepts/stop-gradient-distillation.md
+  - concepts/per-token-kl-clipping.md
+  - concepts/proximal-policy-distillation.md
+  - concepts/ppo.md
+  - concepts/cascade-rl.md
+  - concepts/entropy-aware-on-policy-distillation.md
+  - concepts/exposure_bias.md
+  - concepts/video-opd.md
+  - concepts/vold.md
+  - concepts/x-opd.md
+  - concepts/speech-llm.md
+
+## [2026-04-15] ingest | Cursor Composer 2 Technical Report
+- Source: Cursor Research Team, Composer 2 Technical Report (2026-03-24)
+- PDF: raw/papers/cursor-composer2-technical-report-2026.pdf
+- Text: raw/papers/cursor-composer2-technical-report-2026.txt
+- Created entities:
+  - entities/composer2.md
+- Created concepts:
+  - concepts/cursorbench.md
+  - concepts/agentic-coding.md
+- Updated: index.md (3 new pages, total 47)
+  - concepts/reopold.md
+  - concepts/stable-baselines3.md
+  - concepts/token-level-entropy-analysis.md
+  - concepts/on-policy-distillation-survey.md
+- Created entities:
+  - entities/qwen3.md
+- Total: 15 raw papers + 22 concept pages + 1 entity page
+
+## [2026-04-06] ingest | LLM Behavioral Self-Awareness 论文
+- Source: 2501.11120v1 (2025-01)
+- Created concepts:
+  - concepts/behavioral-self-awareness.md
+
+## [2026-04-10] merge | 三库合并
+- Merged ~/wiki (语音模型专题) + ~/wikis/opd (OPD 专题) + ~/arxiv-wiki (行为自意识) → ~/wiki
+- Raw papers: 16 篇 → raw/papers/ (按年份组织)
+- Concept pages: 23 个
+- Entity pages: 9 个
+- Updated SCHEMA.md: 扩展标签体系覆盖蒸馏、RL、安全、多模态
+- Rebuilt index.md: 完整内容目录
+- Backup: ~/wiki-backup-20260410.tar.gz
+
+## [2026-04-10] ingest | 补充 8 篇新论文（语音模型 × 5 + 行为自意识 × 3）
+- Sources:
+  - 2508.07375 — TurnGuide: Text-Guided Full-Duplex Spoken Interactions
+  - 2511.10262 — MTR-DuplexBench: Multi-Round Full-Duplex Evaluation
+  - 2603.17837 — Silent Thought / FLAIR: Latent Reasoning in Full-Duplex Dialogue
+  - 2603.09180 — DuplexCascade: VAD-Free Cascaded ASR-LLM-TTS
+  - 2603.08179 — Privacy-Preserving End-to-End Full-Duplex Speech Dialogue
+  - 2602.14777 — Emergently Misaligned LMs Show Behavioral Self-Awareness
+  - 2603.26089 — Selective Deficits in LLM Mental Self-Modeling
+  - 2511.00926 — AI Self-Awareness Measured Through Game Theory
+- New concept pages (8):
+  - concepts/turnguide.md
+  - concepts/silent-thought.md
+  - concepts/mtr-duplexbench.md
+  - concepts/duplex-cascade.md
+  - concepts/privacy-preserving-speech.md
+  - concepts/emergent-misalignment.md
+  - concepts/mental-self-modeling.md
+  - concepts/ai-self-awareness-game-theory.md
+- Updated pages:
+  - concepts/full-duplex-speech-model.md (新增 5 篇论文引用)
+  - concepts/behavioral-self-awareness.md (新增 Recent Developments 节)
+- Raw papers: 16 → 24 | Concept pages: 23 → 31 | Total wiki pages: 33 → 40
+
+## [2026-04-12] merge | 三 wiki 合并到 ~/wiki
+- 迁入 ~/wikis/opd/wiki/answers/ 的 4 个查询记录到 queries/
+  - queries/qwen3-opd-usage.md
+  - queries/qwen3-tech-overview.md
+  - queries/opd-tokenizer-requirement.md
+  - queries/opd-vs-sft.md
+- 修复 frontmatter、source 路径（raw/ingested/ → raw/papers/）
+- ~/arxiv-wiki 和 ~/wikis/opd 的其余内容（raw papers、concept pages）均为 ~/wiki 的子集，无需迁入
+- Total wiki pages: 40 → 44
+
+## [2026-04-15] ingest | SRPO + 3 篇 GRPO/OPD 论文批量导入
+- Sources:
+  - 2604.02288 — Sample-Routed Policy Optimization (SRPO)
+  - 2602.22495 — Reinforcement-Aware Knowledge Distillation (RLAD)
+  - 2603.23871 — Hybrid Distillation Policy Optimization (HDPO)
+  - 2603.05433 — On-Policy Self-Distillation for Reasoning Compression (OPSDC)
+- New concept pages (4):
+  - concepts/sample_routed_policy_optimization.md
+  - concepts/rl_aware_distillation.md
+  - concepts/hybrid_distillation_policy_optimization.md
+  - concepts/on_policy_self_distillation_reasoning_compression.md
+- Updated pages:
+  - concepts/on_policy_distillation.md (added SRPO, RLAD to Related Methods)
+  - index.md (4 new entries, total pages 47 → 51)
+- Downloaded raw papers (HTML extraction):
+  - raw/papers/2026/04/2604.02288.md (68KB)
+  - raw/papers/2026/02/2602.22495.md (65KB)
+  - raw/papers/2026/03/2603.23871.md (70KB)
+  - raw/papers/2026/03/2603.05433.md (80KB)
+- Updated index.md raw sources: 24 → 28 papers (蒸馏 16 → 20)
+- Total wiki pages: 47 → 51 | Raw papers: 24 → 28
