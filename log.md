@@ -239,3 +239,35 @@
 ### Index updated
 - Total wiki pages: 107 → 122 | Raw papers: 71 → 86
 - New sections: 数据工程 (4), expanded Agentic Coding (6), 预训练 (2), 多模态推理 (5)
+
+## [2026-04-15] ingest | 16 papers (latest Apr 12-15): SCOPE, Audio-Omni, Agent² RL-Bench, SWE-Shepherd
+
+### Papers downloaded (16/18, 3 not yet available on arxiv)
+- 2604.10688 — SCOPE: Signal-Calibrated OPD (54KB)
+- 2604.10674 — Skill-SD (85KB)
+- 2604.10547 — Agent² RL-Bench (108KB)
+- 2604.11510 — Policy Split (36KB)
+- 2604.11610 — Self-Evolving Memory (88KB)
+- 2604.10708 — Audio-Omni (69KB)
+- 2604.10438 — Whisper-AuT (13KB)
+- 2604.11716 — SWE-AGILE (54KB)
+- 2604.10493 — SWE-Shepherd (13KB)
+- 2604.10545 — Epistemological Self-Learning (132KB)
+- 2604.10500 — Visual Depth Scaling (58KB)
+- 2604.10949 — Pseudo-Unification Entropy (55KB)
+- 2604.11290 — Polyglot Teachers (124KB)
+- 2604.10390 — LLM-PRISM (60KB)
+- 2604.11790 — ClawGuard (70KB)
+
+### Wiki pages created (15 concepts)
+- OPD: scope-opd, skill-sd
+- RL: agent2-rl-bench, policy-split
+- Memory: self-evolving-memory
+- Omni: audio-omni, whisper-aut
+- Coding: swe-agile, swe-shepherd, epistemological-self-learning
+- MR: visual-depth-scaling, pseudo-unification-entropy
+- Data: polyglot-teachers, llm-prism
+- Safety: clawguard
+
+### Index updated
+- Total wiki pages: 122 → 137 | Raw papers: 86 → 102

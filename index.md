@@ -2,7 +2,7 @@
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-04-15 | Total pages: 122 | Raw papers: 86
+> Last updated: 2026-04-15 | Total pages: 137 | Raw papers: 102
 
 ## Entities
 
@@ -49,7 +49,9 @@
 - [[sample-routed-policy-optimization]] — SRPO：统一 GRPO 强化 + SDPO 蒸馏的样本路由框架，熵感知动态加权
 - [[rl-aware-distillation]] — RLAD：强化学习感知蒸馏，仅当有益时模仿 teacher（TRRD 目标）
 - [[hybrid-distillation-policy-optimization]] — HDPO：特权自蒸馏针对"悬崖 prompt"，共享权重 teacher/student
-- [[on-policy-self-distillation-reasoning-compression]] — OPSDC：推理压缩的自蒸馏，"be concise" 条件化 teacher
+- [[on-policy-self-distillation-reasoning-compression]]
+- [[scope-opd]] — SCOPE：Signal-Calibrated OPD，双路径自适应加权蒸馏，Avg@32 +11.42%
+- [[skill-sd]] — Skill-SD：Skill-Conditioned Self-Distillation for Multi-turn Agents — OPSDC：推理压缩的自蒸馏，"be concise" 条件化 teacher
 - [[chain-of-thought]] — Chain-of-Thought (CoT)：逐步推理 prompting 技术，现代推理模型基础
 - [[deepseek-r1-distillation]] — DeepSeek R1 蒸馏：将推理能力蒸馏到小模型的方法
 - [[ex-opd]] — Ex-OPD：带奖励外推的扩展 On-Policy Distillation 变体
@@ -77,7 +79,9 @@
 - [[llm-post-training-unified-view]] — LLM 后训练统一视角：off-policy/on-policy 双主线 + 三功能角色框架
 - [[g2rpo]] — G²RPO：Gaussian GRPO，1D Optimal Transport distributional matching
 - [[faithful-grpo]] — Faithful GRPO：约束策略优化，解决 RLVR accuracy-faithfulness 矛盾
-- [[ttvs]] — TTVS：Test-Time Variational Synthesis，无标注 test-time RL self-evolving
+- [[ttvs]]
+- [[agent2-rl-bench]] — Agent² RL-Bench：LLM Agent 自主设计 RL pipeline 的评测基准
+- [[policy-split]] — Policy Split：LLM RL 中的双模式探索策略 — TTVS：Test-Time Variational Synthesis，无标注 test-time RL self-evolving
 - [[reflectrm]] — ReflectRM：自反思增强生成式 Reward Model，response+analysis 双偏好
 - [[opd-autonomous-driving]] — On-Policy Distillation 自动驾驶运动规划（GPT-Driver + GKD）
 - [[interactive-imitation-learning]] — Interactive IL：通过交互式专家查询解决暴露偏差
@@ -104,26 +108,34 @@
 - [[llm-training-as-lossy-compression]] — LLM 训练即有损压缩，Information Bottleneck 两阶段
 - [[omnijigsaw]] — OmniJigsaw：Qwen3-Omni RL 后训练，时间重排自监督代理任务
 - [[audiokv]]
+- [[audio-omni]] — Audio-Omni：首个统一音频理解+生成+编辑框架，Frozen MLLM + DiT
+- [[whisper-aut]] — Whisper-AuT：基于 Whisper 的领域适配音频编码器
 - [[supernova]] — SUPERNOVA：自然指令 RL 激发 LLM 通用推理能力
 - [[perception-grounded-po]] — Perception-Grounded PO：token 级感知区分策略优化
 - [[visually-guided-po]] — Visually-Guided PO：视觉引导的多模态推理策略优化
 - [[svsr]] — SVSR：多模态推理的自验证自修正范式
-- [[multimodal-latent-reasoning]] — Latent Reasoning：连续 embedding 空间的潜在推理 — AudioKV：音频大模型 KV Cache 驱逐策略
+- [[multimodal-latent-reasoning]]
+- [[visual-depth-scaling]] — Visual Depth Scaling：多模态潜在推理的视觉增强深度缩放
+- [[pseudo-unification-entropy]] — Pseudo-Unification：熵探测揭示统一多模态模型的信息分歧 — Latent Reasoning：连续 embedding 空间的潜在推理 — AudioKV：音频大模型 KV Cache 驱逐策略
 
 ### Agent 记忆与安全 (Agent Memory & Safety)
 - [[hypermem]] — HyperMem：超图记忆架构，topic/episode/fact 三层 + hyperedge 高阶关联
 - [[memreader]] — MemReader：从被动到主动的记忆提取，GRPO 训练 ReAct 式记忆管理决策
-- [[lightmem-agent-memory]] — LightMem：SLM 驱动轻量记忆系统，STM/MTM/LTM 三层
+- [[lightmem-agent-memory]]
+- [[self-evolving-memory]] — Self-Evolving Memory：跨异构任务的 LLM 记忆自进化 — LightMem：SLM 驱动轻量记忆系统，STM/MTM/LTM 三层
 - [[pask-proactive-agent]] — PASK：意图感知主动 Agent，DD-MM-PAS 流式框架
 - [[saver-faithful-reasoning]] — SAVeR：Agent 自审计验证推理，行动前验证内部信念状态
-- [[agent-supply-chain-attack]] — LLM Agent 供应链攻击：第三方 API router 的恶意注入与凭证窃取
+- [[agent-supply-chain-attack]]
+- [[clawguard]] — ClawGuard：Tool-Augmented Agent 运行时安全框架 — LLM Agent 供应链攻击：第三方 API router 的恶意注入与凭证窃取
 |
 
 ### 数据工程 (Data Engineering)
 - [[blendfusion]] — BlendFusion：可扩展扩散模型合成数据生成
 - [[data-laundering-llm]] — Data Laundering：LLM 训练中的数据洗白攻击与防御
 - [[rl-guided-synthetic-data]] — RL 引导的合成数据生成（隐私保护 + 效用最大化）
-- [[optimsyn]] — Optimsyn：Influence-guided rubrics 优化合成数据质量
+- [[optimsyn]]
+- [[polyglot-teachers]] — Polyglot Teachers：多语言合成数据生成评估
+- [[llm-prism]] — LLM-PRISM：GPU 故障导致 LLM 训练中的静默数据损坏 — Optimsyn：Influence-guided rubrics 优化合成数据质量
 
 ### Agentic Coding
 - [[agentic-coding]] — Agentic Coding：AI Agent 自主完成软件工程任务的模式与训练方法
@@ -131,7 +143,10 @@
 - [[oracle-swe]] — ORACLE-SWE：量化 oracle 信息对 SWE Agent 解决率的贡献分解
 - [[swe-hero]] — SWE-ZERO→SWE-HERO：从 execution-free 到 execution-based SWE Agent 训练
 - [[less-is-more-agentic]] — Even Less Is Even Better：Agentic/Reasoning/Coding LLM 训练效率
-- [[rethinking-se-for-agentic-ai]] — Rethinking SE for Agentic AI：Agent 时代的软件工程范式 — CursorBench：从真实 Cursor 会话提取的 agentic SWE 评测套件
+- [[rethinking-se-for-agentic-ai]]
+- [[swe-agile]] — SWE-AGILE：SWE Agent 动态推理上下文管理
+- [[swe-shepherd]] — SWE-Shepherd：Process Reward Models for Code Agents
+- [[epistemological-self-learning]] — 认识论驱动的 LLM 自学习对话 — Rethinking SE for Agentic AI：Agent 时代的软件工程范式 — CursorBench：从真实 Cursor 会话提取的 agentic SWE 评测套件
 
 ### 模型行为与安全 (Behavior & Safety)
 - [[behavioral-self-awareness]] — 行为自意识：LLM 能描述自身隐式学习到的行为
@@ -255,3 +270,20 @@
 - `raw/papers/2026/04/2604.01904.md` — Combating Data Laundering
 - `raw/papers/2026/04/2604.07884.md` — RL-Guided Synthetic Data
 - `raw/papers/2026/04/2604.00536.md` — Optimsyn: Influence-Guided Synthetic Data
+
+### 最近新增 (16 papers, 2026-04-12~15)
+- `raw/papers/2026/04/2604.10688.md` — SCOPE: Signal-Calibrated OPD
+- `raw/papers/2026/04/2604.10674.md` — Skill-SD: Skill-Conditioned Self-Distillation
+- `raw/papers/2026/04/2604.10547.md` — Agent² RL-Bench
+- `raw/papers/2026/04/2604.11510.md` — Policy Split: Dual-Mode Exploration
+- `raw/papers/2026/04/2604.11610.md` — Self-Evolving LLM Memory
+- `raw/papers/2026/04/2604.10708.md` — Audio-Omni: Unified Audio Understanding+Generation+Editing
+- `raw/papers/2026/04/2604.10438.md` — Whisper-AuT: Domain-Adapted Audio Encoder
+- `raw/papers/2026/04/2604.11716.md` — SWE-AGILE: Dynamic Reasoning Context
+- `raw/papers/2026/04/2604.10493.md` — SWE-Shepherd: PRMs for Code Agents
+- `raw/papers/2026/04/2604.10545.md` — Epistemologically-Informed Self-Learning
+- `raw/papers/2026/04/2604.10500.md` — Visual Enhanced Depth Scaling
+- `raw/papers/2026/04/2604.10949.md` — Pseudo-Unification: Entropy Probing
+- `raw/papers/2026/04/2604.11290.md` — Polyglot Teachers: Multilingual Synthetic Data
+- `raw/papers/2026/04/2604.10390.md` — LLM-PRISM: Silent Data Corruption
+- `raw/papers/2026/04/2604.11790.md` — ClawGuard: Runtime Agent Security
