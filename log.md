@@ -193,3 +193,49 @@
 - Total wiki pages: 91 → 107 | Raw papers: 55 → 71
 - New section: Agent 记忆与安全 (6 pages)
 - New entries in 蒸馏与后训练 (6 pages), 强化学习基础 (0 new), 语音与多模态 (4 pages)
+
+## [2026-04-15] ingest | 15 papers: pretraining, agentic coding, multimodal reasoning, data engineering
+
+### Gap areas filled (4 new topics)
+1. **LLM 预训练/底座** (2 papers, 2 concepts)
+2. **Agentic Coding** (4 papers, 4 concepts)
+3. **多模态推理** (5 papers, 5 concepts)
+4. **数据工程** (4 papers, 4 concepts)
+
+### Papers downloaded (15)
+- 2604.00715 — RAG-Considerate Pretraining (70KB)
+- 2604.00785 — Scalable MoE Pretraining (39KB)
+- 2604.07789 — ORACLE-SWE (96KB)
+- 2604.10599 — Rethinking SE for Agentic AI (57KB)
+- 2604.01496 — SWE-ZERO to SWE-HERO (75KB)
+- 2604.00824 — Even Less Is Even Better (63KB)
+- 2604.08477 — SUPERNOVA (74KB)
+- 2604.01840 — Perception-Grounded PO (93KB)
+- 2604.09349 — Visually-Guided PO (85KB)
+- 2604.10228 — SVSR (62KB)
+- 2604.08065 — Multimodal Latent Reasoning (68KB)
+- 2604.09022 — BlendFusion (47KB)
+- 2604.01904 — Data Laundering (91KB)
+- 2604.07884 — RL-Guided Synthetic Data (57KB)
+- 2604.00536 — Optimsyn (92KB)
+
+### Wiki pages created (15 concepts)
+- concepts/rag-considerate-pretraining.md
+- concepts/scalable-moe-pretraining.md
+- concepts/oracle-swe.md
+- concepts/swe-hero.md
+- concepts/less-is-more-agentic.md
+- concepts/rethinking-se-for-agentic-ai.md
+- concepts/supernova.md
+- concepts/perception-grounded-po.md
+- concepts/visually-guided-po.md
+- concepts/svsr.md
+- concepts/multimodal-latent-reasoning.md
+- concepts/blendfusion.md
+- concepts/data-laundering-llm.md
+- concepts/rl-guided-synthetic-data.md
+- concepts/optimsyn.md
+
+### Index updated
+- Total wiki pages: 107 → 122 | Raw papers: 71 → 86
+- New sections: 数据工程 (4), expanded Agentic Coding (6), 预训练 (2), 多模态推理 (5)
