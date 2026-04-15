@@ -2,7 +2,7 @@
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-04-15 | Total pages: 137 | Raw papers: 102
+> Last updated: 2026-04-16 | Total pages: 138 | Raw papers: 102
 
 ## Entities
 
@@ -106,7 +106,8 @@
 - [[rag-considerate-pretraining]] — RAG-aware 预训练 scaling laws，memorization vs retrieval 平衡
 - [[scalable-moe-pretraining]] — Aurora 超算 MoE LLM 大规模预训练工程 — WRAP++：跨文档发现增强预训练，8.4B→80B tokens QA
 - [[llm-training-as-lossy-compression]] — LLM 训练即有损压缩，Information Bottleneck 两阶段
-- [[omnijigsaw]] — OmniJigsaw：Qwen3-Omni RL 后训练，时间重排自监督代理任务
+- [[omnijigsaw]] — OmniJigsaw：Qwen3-Omni RL 后训练，时间重排自监督
+- [[omni-r1]] — Omni-R1：统一生成式多模态推理（推理中生成中间图像） — OmniJigsaw：Qwen3-Omni RL 后训练，时间重排自监督代理任务
 - [[audiokv]]
 - [[audio-omni]] — Audio-Omni：首个统一音频理解+生成+编辑框架，Frozen MLLM + DiT
 - [[whisper-aut]] — Whisper-AuT：基于 Whisper 的领域适配音频编码器

@@ -271,3 +271,25 @@
 
 ### Index updated
 - Total wiki pages: 122 → 137 | Raw papers: 86 → 102
+
+## [2026-04-16] deep-read | 3 Omni papers: Audio-Omni, Pseudo-Unification, Omni-R1
+
+### Papers deep-read
+- 2604.10708 — Audio-Omni: Frozen Qwen2.5-Omni-3B + DiT Rectified Flow, 7.9B, AudioEdit 1M+ pairs
+- 2604.10949 — Pseudo-Unification: Matrix-based Rényi entropy probing reveals dual divergence in UMMs
+- 2601.09536 — Omni-R1: Generative multimodal reasoning with intermediate image generation
+
+### Wiki pages updated/created (4)
+- concepts/audio-omni.md — FULL REWRITE: architecture diagram, dual-stream conditioning, Rectified Flow, experiments table
+- concepts/pseudo-unification-entropy.md — FULL REWRITE: entropy probing method, dual divergence findings, impact on Qwen3-Omni
+- concepts/omni-r1.md — NEW: PeSFT+PeRPO training, Uni-Skills, Omni-R1-Zero bootstrap
+- concepts/omni-modal-llm.md — MAJOR UPDATE: added Route B (Frozen MLLM+DiT), Pseudo-Unification section, RL post-training table, generative reasoning section
+
+### Key insights integrated
+- Two audio synthesis routes now clearly differentiated (AR+ConvNet vs DiT+RF)
+- Pseudo-unification challenges "no degradation" claims across all UMMs
+- Omni-R1's PeRPO introduces perception-calibrated reward for multimodal RL
+- omni-modal-llm.md updated from 128 lines to ~200 lines
+
+### Index updated
+- Total wiki pages: 137 → 138 | Raw papers: 102
