@@ -2,7 +2,7 @@
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-04-16 | Total pages: 138 | Raw papers: 102
+> Last updated: 2026-04-17 | Total pages: 153 | Raw papers: 167
 
 ## Entities
 
@@ -24,6 +24,7 @@
 - [[seeduplex]] — Seeduplex：字节 Seed 原生全双工语音大模型（2026-04）
 - [[stream-omni]] — Stream-Omni：CTC layer-dimension 语音-文本对齐，数据高效
 - [[doubao-app]] — 豆包 App：字节跳动 AI 助手应用，Seeduplex 全双工语音部署平台
+- [[mem0]] — Mem0：AI Agent 可扩展长期记忆层，YC S24，53K stars，图记忆+自然语言双模式
 - [[kimi-k2]] — Kimi K2：Moonshot AI 大语言模型，Composer 2 基座模型
 - [[speech-omni-lite]] — Speech-Omni-Lite：轻量级 VLM 语音交互接口
 
@@ -120,9 +121,22 @@
 - [[pseudo-unification-entropy]] — Pseudo-Unification：熵探测揭示统一多模态模型的信息分歧 — Latent Reasoning：连续 embedding 空间的潜在推理 — AudioKV：音频大模型 KV Cache 驱逐策略
 
 ### Agent 记忆与安全 (Agent Memory & Safety)
+- [[agent-memory-system]] — Agent Memory System 总览：LLM Agent 长期记忆方案分类与对比
 - [[hypermem]] — HyperMem：超图记忆架构，topic/episode/fact 三层 + hyperedge 高阶关联
 - [[memreader]] — MemReader：从被动到主动的记忆提取，GRPO 训练 ReAct 式记忆管理决策
 - [[lightmem-agent-memory]]
+- [[memgpt]] — MemGPT：LLM-as-OS 层级记忆架构（main/external context 自主管理）
+- [[locomo-benchmark]] — LoCoMo：长期对话记忆评测基准，多会话 7,512 QA 对
+- [[longmemeval-benchmark]] — LongMemEval：Chat Assistant 长期交互记忆评测，5 核心能力维度
+- [[a-mem]] — A-MEM：Zettelkasten 启发的 Agentic Memory，LLM 属性标注+自主链接
+- [[simplemem]] — SimpleMem：语义压缩三阶段记忆管线，LoCoMo 43.24 F1 仅 531 token
+- [[d-mem]] — D-Mem：双过程记忆系统（System 1 快速 + System 2 深度），53.5 F1
+- [[memoryllm]] — MEMORYLLM：Transformer 内部潜在记忆池（1B 参数），20K token 保留
+- [[m-plus-memoryllm]] — M+：扩展 MemoryLLM 的 CPU 常驻长期记忆 + 共训练检索器
+- [[nemori]] — Nemori：认知科学启发的预测误差驱动记忆蒸馏，45-64% 存储压缩
+- [[text2mem]] — Text2Mem：统一记忆操作语言（12 动词），JSON schema + 验证管线
+- [[ariadne-mem]] — AriadneMem：进化图 + 冲突感知粗化 + Steiner Tree 桥发现
+- [[memori-layer]] — Memori：LLM-agnostic API 层持久记忆，语义三元组 + 对话摘要
 - [[self-evolving-memory]] — Self-Evolving Memory：跨异构任务的 LLM 记忆自进化 — LightMem：SLM 驱动轻量记忆系统，STM/MTM/LTM 三层
 - [[pask-proactive-agent]] — PASK：意图感知主动 Agent，DD-MM-PAS 流式框架
 - [[saver-faithful-reasoning]] — SAVeR：Agent 自审计验证推理，行动前验证内部信念状态
@@ -158,6 +172,11 @@
 - [[introspection]] — Introspection：LLM 审视和报告自身内部决策过程的能力
 - [[out-of-context-reasoning]] — Out-of-Context Reasoning (OOCR)：基于训练时习得知识进行推理，无需上下文示例
 - [[situational-awareness]] — Situational Awareness：AI 系统理解自身上下文、状态和部署环境的能力
+
+### 自动驾驶与 RL (Autonomous Driving & RL)
+- [[perlad]] — PerlAD：伪仿真 RL 闭环端到端自动驾驶，Bench2Drive SoTA (DS=78.70)
+- [[opd-autonomous-driving]] — On-Policy Distillation 自动驾驶运动规划（GPT-Driver + GKD）
+- [[interactive-imitation-learning]] — Interactive IL：通过交互式专家查询解决暴露偏差
 
 ## Comparisons
 
@@ -274,6 +293,38 @@
 
 ### 最近新增 (16 papers, 2026-04-12~15)
 - `raw/papers/2026/04/2604.10688.md` — SCOPE: Signal-Calibrated OPD
+
+### Agent Memory (1 paper, 2025-04)
+- `raw/papers/2025/04/2504.19413.md` — Mem0: Scalable Long-Term Memory for AI Agents
+
+### Agent Memory 深度调研 (25 papers, 2023-2026)
+- `raw/papers/2023/04/2304.03442.md` — Generative Agents: Interactive Simulacra
+- `raw/papers/2023/05/2305.10250.md` — MemoryBank: Long-Term Memory for LLMs
+- `raw/papers/2023/08/2308.01542.md` — Memory Sandbox: Interactive Memory Management
+- `raw/papers/2023/10/2310.08560.md` — MemGPT: LLMs as Operating Systems
+- `raw/papers/2023/11/2311.08719.md` — Think-in-Memory: Long-Term Memory with Recalling
+- `raw/papers/2024/02/2402.04624.md` — MEMORYLLM: Self-Updatable LLMs
+- `raw/papers/2024/03/2403.01977.md` — LoCoMo: Evaluating Long-Term Conversational Memory
+- `raw/papers/2024/03/2404.00558.md` — ReadAgent: LLMs as Reading Agents
+- `raw/papers/2024/10/2410.10813.md` — LongMemEval: Long-Term Interactive Memory
+- `raw/papers/2025/02/2502.00592.md` — M+: Extending MemoryLLM with Scalable Memory
+- `raw/papers/2025/02/2502.12110.md` — A-MEM: Agentic Memory for LLM Agents
+- `raw/papers/2025/08/2508.03341.md` — Nemori: Self-Organizing Agent Memory
+- `raw/papers/2025/09/2509.11145.md` — Text2Mem: Unified Memory Operation Language
+- `raw/papers/2025/11/2511.01448.md` — LiCoMemory: Lightweight Cognitive Agentic Memory
+- `raw/papers/2026/01/2601.02553.md` — SimpleMem: Efficient Lifelong Memory
+- `raw/papers/2026/01/2602.00398.md` — MemoryLLM v2: Plug-n-Play Feed-Forward Memory
+- `raw/papers/2026/02/2602.07624.md` — M2A: Multimodal Memory Agent
+- `raw/papers/2026/02/2602.10715.md` — Locomo-Plus: Beyond-Factual Cognitive Memory
+- `raw/papers/2026/02/2603.03290.md` — AriadneMem: Lifelong Memory with Evolutionary Graph
+- `raw/papers/2026/03/2603.09023.md` — Missing Memory Hierarchy: Demand Paging
+- `raw/papers/2026/03/2603.18631.md` — D-Mem: Dual-Process Memory System
+- `raw/papers/2026/03/2603.19935.md` — Memori: Persistent Memory Layer
+- `raw/papers/2026/04/2604.01670.md` — Hierarchical Memory Orchestration
+- `raw/papers/2026/04/2604.14004.md` — Memory Transfer Learning in Coding Agents
+
+### 最近新增
+- `raw/papers/2026/03/2603.14908.md` — PerlAD: Pseudo-simulation-based RL for E2E Autonomous Driving
 - `raw/papers/2026/04/2604.10674.md` — Skill-SD: Skill-Conditioned Self-Distillation
 - `raw/papers/2026/04/2604.10547.md` — Agent² RL-Bench
 - `raw/papers/2026/04/2604.11510.md` — Policy Split: Dual-Mode Exploration

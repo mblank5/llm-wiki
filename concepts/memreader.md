@@ -47,4 +47,6 @@ SFT → DPO → GRPO 多阶段训练：
 
 - [[hypermem]]
 - [[lightmem-agent-memory]]
+- [[mem0]]
+- [[agent-memory-system]]
 - [[grpo-rl-training]]

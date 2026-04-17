@@ -3,6 +3,49 @@
 > Chronological record of all wiki actions. Append-only.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-04-17] ingest | PerlAD: Pseudo-simulation RL for E2E Autonomous Driving
+- Source: arxiv 2603.14908 (IEEE RA-L, accepted Mar 2026)
+- Authors: Yinfeng Gao et al. (UST Beijing, Xiaomi EV, CASIA)
+- Raw paper saved: raw/papers/2026/03/2603.14908.md
+- Created concepts:
+  - perlad.md — PerlAD 深度解析（伪仿真环境、PWM、解耦规划器、REINFORCE+GRPO 训练）
+- Updated index.md: 152→153 pages, 166→167 raw papers
+- Key findings: 向量空间伪仿真消除渲染域鸿沟；PWM 提供闭环一致 reward；横向IL+纵向RL解耦规划；Bench2Drive DS=78.70 (SoTA, +10.29% vs Raw2Drive)
+
+## [2026-04-17] ingest | Agent Memory 深度调研（第二轮）
+- Source: arxiv 标题搜索 + 已知论文引用链，覆盖 2023-2026 全部核心论文
+- Raw papers: 新增 25 篇到 raw/papers（2023-04 ~ 2026-04）
+- Created concepts (12 new pages):
+  - memgpt.md — MemGPT: LLM-as-OS 层级记忆
+  - locomo-benchmark.md — LoCoMo 评测基准
+  - longmemeval-benchmark.md — LongMemEval 评测基准
+  - a-mem.md — A-MEM: Zettelkasten 启发 Agentic Memory
+  - simplemem.md — SimpleMem: 语义压缩三阶段管线
+  - d-mem.md — D-Mem: 双过程记忆 (System 1/2)
+  - memoryllm.md — MEMORYLLM: Transformer 内部记忆池
+  - m-plus-memoryllm.md — M+: 扩展 MemoryLLM 的可扩展长期记忆
+  - nemori.md — Nemori: 认知科学启发预测误差驱动蒸馏
+  - text2mem.md — Text2Mem: 统一记忆操作语言 (12 动词)
+  - ariadne-mem.md — AriadneMem: 进化图 + Steiner Tree 桥发现
+  - memori-layer.md — Memori: LLM-agnostic API 层持久记忆
+- Updated: agent-memory-system.md 总览页（对比矩阵扩充至 16 个方案）
+- Updated: index.md: 140→152 pages, 103→166 raw papers
+- 论文全景: 共发现 48 篇 Agent Memory 相关论文 (2023-2026)，覆盖 6 大主题方向
+
+## [2026-04-17] ingest | Mem0 Agent Memory 深度调研
+- Source: mem0ai/mem0 GitHub repo + arXiv 2504.19413 (Mem0 paper, 178 citations)
+- Raw paper saved: raw/papers/2025/04/2504.19413.md
+- Created entities:
+  - entities/mem0.md — Mem0 entity 页面（架构、算法、benchmark、竞品对比）
+- Created concepts:
+  - concepts/agent-memory-system.md — Agent Memory System 总览页（方案分类矩阵）
+- Updated cross-references:
+  - concepts/hypermem.md — 添加 [[mem0]], [[agent-memory-system]] 链接
+  - concepts/memreader.md — 添加 [[mem0]], [[agent-memory-system]] 链接
+  - concepts/lightmem-agent-memory.md — 添加 [[mem0]], [[agent-memory-system]] 链接
+- Updated index.md: 138→140 pages, 102→103 raw papers
+- Key findings: Mem0 是工程化产品方案（SDK+CLI+托管），v3 算法 ADD-only 策略在 benchmark 上有显著提升；HyperMem 超图在学术指标上仍领先
+
 ## [2026-04-06] ingest | Seeduplex 论文 + 全双工语音模型专题
 - Sources: ByteDance Seeduplex (2026-04) + 相关语音模型论文
 - Created entities:

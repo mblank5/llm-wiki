@@ -37,3 +37,5 @@ sources: [raw/papers/2026/04/2604.07798.md]
 
 - [[hypermem]]
 - [[memreader]]
+- [[mem0]]
+- [[agent-memory-system]]
