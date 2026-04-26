@@ -2,11 +2,13 @@
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-04-17 | Total pages: 153 | Raw papers: 167
+> Last updated: 2026-04-26 | Total pages: 166 | Raw papers: 170
 
 ## Entities
 
 - [[byte-seed]] — 字节跳动 Seed AI 研究团队，Seeduplex/Seed-TTS 所属团队
+- [[dflash]] — DFlash：Block Diffusion Speculative Decoding，6x+ 无损加速，2.5x faster than EAGLE-3
+- [[ddtree]] — DDTree：DFlash 的 Draft Tree 扩展，acceptance length 从 ~3.1 提升到 ~10.7 tokens
 - [[composer2]] — Cursor Composer 2：基于 Kimi K2.5 的 1.04T/32B MoE agentic coding 模型（2026-03）
 - [[emova]] — EMOVA：CVPR 2025，语义-声学分离 tokenizer，首个 VLM+Speech 双 SOTA
 - [[freeze-omni]] — 腾讯 Freeze-Omni：冻结 LLM 参数实现 speech-to-speech 对话和 duplex
@@ -17,6 +19,7 @@
 - [[qwen3]] — Qwen3 开源 LLM 系列，支持 Thinking/Non-Thinking 切换，含 MoE 架构
 - [[qwen3-asr]] — Qwen3-ASR：52 语言 ASR 家族（1.7B/0.6B + ForcedAligner），基于 Qwen3-Omni
 - [[qwen3-omni]] — Qwen3-Omni：Thinker-Talker MoE 统一多模态模型，234ms 流式延迟
+- [[qwen3-5-omni]] — Qwen3.5-Omni：Hybrid MoE Thinker-Talker，256k 上下文，ARIA 动态对齐，74 种语言
 - [[qwen3-tts]] — Qwen3-TTS：双轨 TTS（25Hz/12Hz），97ms 首包，3秒语音克隆
 - [[salmonn-omni]] — SALMONN-omni：Codec-free 全双工语音模型，embedding-based
 - [[seed-realtime-voice]] — Seed Realtime Voice：豆包前代半双工端到端语音模型
@@ -32,6 +35,7 @@
 
 ### 蒸馏与后训练 (Distillation & Post-Training)
 - [[on-policy-distillation]] — On-Policy Distillation 核心概念：student rollout + teacher feedback，bias-variance tradeoff
+- [[speculative-decoding]] — Speculative Decoding：draft-verify 加速推理，DFlash/DDTree 新范式
 - [[on-policy-distillation-survey]] — OPD 综述：f-divergence 统一框架、白盒/黑盒方法分类
 - [[on-policy-prefix-distillation]] — OPPD：计算高效的 on-policy 前缀蒸馏变体
 - [[on-policy-self-distillation]] — 自蒸馏推理：无需外部 teacher 的 on-policy 方法
@@ -68,6 +72,17 @@
 - [[strong-to-weak-distillation]] — Strong-to-weak 蒸馏：大模型向小模型的能力迁移范式
 - [[teacher-top-k-local-support-matching]] — Teacher top-k 局部支持匹配：聚焦 top-k token 的蒸馏技术
 - [[thinking-budget]] — Thinking Budget：推理模型的计算分配/思考深度控制
+
+### 蒸馏与后训练 — OPD 新进展 (2026-04)
+- [[rethinking-opd]] — OPD 动力学系统研究：成功条件、token 级机制、失败恢复策略
+- [[lightning-opd]] — Lightning OPD：离线预计算 teacher log-probs，4x speedup，Teacher Consistency 理论
+- [[opd-calibration]] — CaOPD：OPD 中的校准退化问题，信息不对称根因，Pareto-optimal 校准
+- [[tip-opd]] — TIP：Token 级别重要性分析，非均匀 token 蒸馏
+- [[opsdl]] — OPSDL：On-Policy Self-Distillation 扩展到 long-context 场景
+- [[dp-opd]] — DP-OPD：差分隐私 + OPD，正式隐私保证 + 高效模型适配
+- [[self-distilled-rlvr]] — Self-Distilled RLVR：OPD + RLVR 融合，dense fine-grained signals
+- [[self-distillation-zero]] — Self-Distillation Zero：自修订将 binary rewards 转化为 dense supervision
+- [[hybrid-policy-distillation]] — Hybrid Policy Distillation：混合策略蒸馏框架（仅 abstract）
 
 ### 强化学习基础 (RL Foundations)
 - [[ppo]] — PPO：Proximal Policy Optimization，策略梯度核心算法
@@ -238,6 +253,7 @@
 - `raw/papers/2025/06/2506.13642.md` — Stream-Omni: Simultaneous Multimodal Interactions
 - `raw/papers/2025/08/2508.07375.md` — TurnGuide: Text-Guided Full-Duplex Interaction
 - `raw/papers/2025/09/2509.17765.md` — Qwen3-Omni Technical Report
+- `raw/papers/2026/04/2604.15804.md` — Qwen3.5-Omni Technical Report
 - `raw/papers/2025/09/2509.25131.md` — MGM-Omni: Scaling Omni LLMs
 - `raw/papers/2025/11/2511.10262.md` — MTR-DuplexBench: Multi-Round Full-Duplex Eval
 - `raw/papers/2026/01/2601.04720.md` — Qwen3-VL-Embedding and Qwen3-VL-Reranker
@@ -291,7 +307,9 @@
 - `raw/papers/2026/04/2604.07884.md` — RL-Guided Synthetic Data
 - `raw/papers/2026/04/2604.00536.md` — Optimsyn: Influence-Guided Synthetic Data
 
-### 最近新增 (16 papers, 2026-04-12~15)
+### 最近新增 (18 papers, 2026-04-12~21)
+- `raw/papers/2026/04/2604.12989.md` — DDTree: Block Diffusion Draft Trees
+- `raw/papers/2026/02/2602.06036.md` — DFlash: Block Diffusion Speculative Decoding
 - `raw/papers/2026/04/2604.10688.md` — SCOPE: Signal-Calibrated OPD
 
 ### Agent Memory (1 paper, 2025-04)

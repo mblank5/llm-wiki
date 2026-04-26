@@ -3,6 +3,24 @@
 > Chronological record of all wiki actions. Append-only.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-04-21] ingest | DFlash: Block Diffusion Speculative Decoding + DDTree 扩展
+- Source: arxiv 2602.06036 (DFlash, 2026-02-05) + arxiv 2604.12989 (DDTree, 2026-04-14)
+- Authors: Jian Chen, Yesheng Liang, Zhijian Liu (DFlash); Liran Ringel, Yaniv Romano (DDTree)
+- Raw papers saved:
+  - raw/papers/2026/02/2602.06036.md — DFlash
+  - raw/papers/2026/04/2604.12989.md — DDTree
+- Created entities:
+  - dflash.md — DFlash: Block Diffusion Speculative Decoding，6x+ 无损加速，2.5x faster than EAGLE-3
+  - ddtree.md — DDTree: Draft Tree 扩展，acceptance length 从 ~3.1 提升到 ~10.7 tokens
+- Created concepts:
+  - speculative-decoding.md — Speculative Decoding 基础概念与演进
+- Updated index.md: 153→156 pages, 167→169 raw papers
+- Key findings: 
+  - DFlash 用轻量级 block diffusion model 替代 AR drafting，单次 forward 生成整个 draft block
+  - "The target knows best" — condition on target hidden states (KV injection)
+  - GitHub: z-lab/dflash (1953 stars), liranringel/ddtree (246 stars)
+  - 支持 vLLM、SGLang、MLX (Apple Silicon) 部署
+|
 ## [2026-04-17] ingest | PerlAD: Pseudo-simulation RL for E2E Autonomous Driving
 - Source: arxiv 2603.14908 (IEEE RA-L, accepted Mar 2026)
 - Authors: Yinfeng Gao et al. (UST Beijing, Xiaomi EV, CASIA)
@@ -336,3 +354,51 @@
 
 ### Index updated
 - Total wiki pages: 137 → 138 | Raw papers: 102
+
+## [2026-04-26] ingest | 9 OPD 论文概念页面创建
+
+### Papers processed (9)
+- 2604.13016 — Rethinking OPD: Phenomenology, Mechanism, and Recipe (清华/上海交大)
+- 2604.13010 — Lightning OPD: Offline On-Policy Distillation (NVIDIA, Song Han/Han Cai)
+- 2604.16830 — The Illusion of Certainty: Decoupling Capability and Calibration in OPD (Salesforce AI)
+- 2604.14084 — TIP: Token Importance in On-Policy Distillation
+- 2604.17535 — OPSDL: On-Policy Self-Distillation for Long-Context Language Models
+- 2604.04461 — DP-OPD: Differentially Private On-Policy Distillation
+- 2604.03128 — Self-Distilled RLVR
+- 2604.12002 — Self-Distillation Zero: Self-Revision Turns Binary Rewards into Dense Supervision
+- 2604.20244 — Hybrid Policy Distillation for LLMs (仅 abstract)
+
+### Wiki pages created (9 new concept pages)
+- concepts/rethinking-opd.md — OPD 动力学：成功条件（模式兼容 + 新能力）、token 级渐进对齐、恢复失败策略
+- concepts/lightning-opd.md — 离线 OPD：Teacher Consistency 理论、预计算 log-probs、Qwen3-8B AIME 69.9% (30 GPU hrs, 4x speedup)
+- concepts/opd-calibration.md — CaOPD：Scaling Law of Miscalibration、信息不对称根因、student-grounded calibration
+- concepts/tip-opd.md — Token 重要性：非均匀 token 贡献、长尾分布
+- concepts/opsdl.md — Long-context OPD 扩展：自蒸馏用于上下文长度扩展
+- concepts/dp-opd.md — 差分隐私 OPD：(ε,δ)-DP 保证 + 密集信号缓解隐私噪声
+- concepts/self-distilled-rlvr.md — OPD+RLVR 融合：teacher 提供 dense fine-grained signals
+- concepts/self-distillation-zero.md — 自修订：binary→dense，无需外部 teacher
+- concepts/hybrid-policy-distillation.md — 混合策略蒸馏（仅 abstract，待全文）
+
+### Cross-linking
+- 每个页面包含 ≥2 个 [[wikilinks]] 指向现有 OPD 页面
+- 链接目标：on-policy-distillation, on-policy-distillation-survey, on-policy-self-distillation, per-token-kl-clipping, entropy-aware-on-policy-distillation, kl-divergence-in-distillation, reasoning-distillation, hybrid-distillation-policy-optimization, self-distilled-rlvr, self-distillation-zero
+
+### Index updated
+- Total wiki pages: 156 → 165 | Raw papers: 169
+- New section: 蒸馏与后训练 — OPD 新进展 (2026-04)
+
+## [2026-04-26] ingest | Qwen3.5-Omni Technical Report
+- Source: arxiv 2604.15804 (Qwen Team, 2026-04-17/21)
+- Raw paper saved: raw/papers/2026/04/2604.15804.md
+- Created entities:
+  - qwen3-5-omni.md — Qwen3.5-Omni: Hybrid MoE Thinker-Talker，256k 上下文，ARIA，74 种语言
+- Key findings:
+  - Hybrid MoE backbone for both Thinker and Talker (vs dense in Qwen3-Omni)
+  - ARIA (Adaptive Rate Interleave Alignment) 替代 dual-track，解决 tokenizer 速率不匹配
+  - 显式 timestamp 替代 TMRoPE 做时间感知
+  - 后训练三阶段：Specialist Distillation → OPD → Interaction-Aligned RL
+  - OPD 用于 cross-modal 蒸馏：text-conditioned response → audio-conditioned query
+  - Plus WER 6.6% (FLEURS)，超越 Gemini-3.1 Pro (7.3%)
+  - 10+ 小时音频理解，400 秒 720P 视频
+  - Flash 变体：235ms audio first-packet latency
+- Updated index.md: 165→166 pages, 169→170 raw papers
