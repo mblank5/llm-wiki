@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-05-01 | Total pages: 225 | Raw papers: 203
+> Last updated: 2026-05-01 | Total pages: 228 | Raw papers: 203
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -35,6 +35,7 @@
 - [[seeduplex]] — 字节跳动 Seed 团队于 2026 年 4 月 9 日发布的**原生全双工端到端语音大模型**，已在中国大陆豆包 App 全量上线，服务上亿用户。
 - [[speech-omni-lite]] — Speech-Omni-Lite is a portable speech interface designed for vision-language ...
 - [[stream-omni]] — ICT/CAS 发布的 text-centric 多模态对齐框架，支持同时视觉理解和语音交互。
+- [[fun-audio-llm]] — 阿里通义语音团队发布的语音交互基础模型家族，集成 SenseVoice（多语言 ASR/SER/AED）和 CosyVoice（5 语言语音生成、零样本克隆、指令控制）。
 - [[funasr]] — 阿里达摩院开源端到端语音识别工具包，旗舰 Paraformer 在 60k 小时工业数据上训练，10x+ 推理加速。
 
 ## Concepts
@@ -62,6 +63,7 @@
 - [[ppo]] — 1|# Proximal Policy Optimization (PPO)
 
 ### 'speech-model'
+- [[cosyvoice-2]] — CosyVoice 2 流式零样本 TTS，FSQ 量化、预训练 LLM、统一流式/非流式 CFM，人类级质量
 - [[speech-llm]] — 1|# Speech LLM
 
 ### 'training'
@@ -194,9 +196,13 @@
 - [[u-mind-multimodal]] — Building an intelligent, fully interactive agent requires generating coherent...
 
 ### speech-model
+- [[cosyvoice]] — 阿里 FunAudioLLM 团队的多语言零样本 TTS 系统，首创有监督语义 token（S³）+ LLM + OT-CFM 架构，5 种语言，人类水平生成质量。
+- [[cosyvoice-3]] — CosyVoice 第三代：in-the-wild 语音生成，数据 10k→1M hrs（9 语言+18 方言），模型 0.5B→1.5B，多任务监督 tokenizer，DiffRO 后训练，CV3-Eval benchmark。
+- [[diffro]] — 可微分奖励优化：直接在 codec token 上计算奖励 + Gumbel-Softmax 使奖励可微，无需 vocoder/REINFORCE/PPO，直接反向传播优化 LLM，多维度 MTR 反馈。
 - [[fun-codec]] — FunCodec 神经语音编解码工具包，提出 FreqCodec 频域 codec，7 个预训练模型，ASR/TTS 下游集成
 - [[paraformer]] — Paraformer 非自回归并行 Transformer，CIF 预测器 + GLM 采样器，10x+ 推理加速，匹配 AR 精度
 - [[paraformer-v2]] — Paraformer-v2 用 CTC 替换 CIF 预测器，解决 BPE 分词和噪声敏感问题，英文 WER 降低 14%
+- [[sensevoice]] — SenseVoice 多任务语音理解基础模型，ASR+SER+LID+AED 四合一，NAR 架构 <80ms 延迟，>5x 快于 Whisper
 - [[sa-paraformer]] — SA-Paraformer 说话人归属 NAR ASR，speaker-filling + inter-CTC，AliMeeting SD-CER 34.8%，1/10 RTF
 - [[seaco-paraformer]] — SeACo-Paraformer 热词定制 NAR ASR，CIF 上下文模块 + ASF 过滤，AISHELL 热词 F1 +58%
 
