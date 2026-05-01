@@ -60,3 +60,52 @@
   - CIF→CTC 替换（v2）解决了 BPE 分词和噪声敏感两大瓶颈
   - FunASR 生态覆盖 ASR、VAD、标点、编解码、热词、说话人归属全链路
   - 60k 小时工业 Mandarin 训练数据远超学术 benchmark 规模
+
+## [2026-05-01] ingest | DeepXiv 2026-03/04 论文批量补充（第二轮）
+
+### 搜索
+- 8 组 deepxiv search + date-from 2026-03-01 筛选
+- 下载 19/20 篇 HTML（2604.11753 返回 404）
+- deepxiv --brief + --head 筛选内容
+
+### 新建 19 个 concept 页面
+
+**RL 推理与奖励 (7)**
+- outcome-rewards-no-guarantee.md — RLVR 推理链质量质疑（CIR/SR 指标）
+- simple-loss-reasoning.md — RGRA 简化 GRPO（27 任务中 17 项更优）
+- imperfect-verifier-rl.md — 不完美验证器：≤15% 噪声无退化
+- process-reward-agentic.md — Agentic 数据分析 Process Reward
+- confidence-margin-process-supervision.md — 置信度边际过程监督
+- parm-pipeline-reward.md — Pipeline 自适应奖励模型
+- piecehint-question-augmentation.md — RL 问题增强框架
+
+**蒸馏新方法 (1)**
+- mixture-of-layers-distillation.md — MoLSAKI 逐步注意力 + 混合层
+
+**Self-Play & 代码 RL (2)**
+- gasp-self-play-coding.md — GASP 非对称自博弈编程
+- code-a1-adversarial.md — Code-A1 对抗进化
+
+**Agent 训练 (1)**
+- coevolve-agent-training.md — CoEvolve Agent-数据共同进化
+
+**推理数据与长上下文 (3)**
+- pi-squared-reasoning-data.md — π² 结构化推理数据
+- decomposition-long-context.md — 长上下文推理分解
+- reason-xl-language-shift.md — ReasonXL 推理语言迁移
+
+**Agentic Coding (2)**
+- agentic-code-reasoning.md — 半形式化推理模板
+- se-conventions-agents.md — Agent 时代 SE 规范
+
+**Agent 安全 (1)**
+- openclaw-safety-analysis.md — OpenClaw CIK 攻击
+
+**多模态 (2)**
+- trustworthy-multimodal-reasoning.md — 可信多模态推理
+- vlm-vision-reasoning-gap.md — VLM 视觉推理差距
+
+### Wiki 状态
+- Total pages: 225 (+31 from first round 194)
+- Raw papers: 203
+- 新增子分类：蒸馏新方法、RL推理与奖励、Self-Play与代码RL、推理数据与长上下文、多模态推理
