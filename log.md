@@ -513,3 +513,39 @@
   - concepts/shortcut-connected-moe.md
 - 更新 index.md：添加 LongCat Core Techniques 分类
 - 统计：184→186 pages（+2 concepts），raw papers 不变（已入库）
+
+## [2026-05-01] ingest | DeepXiv 调研 + 11 个新 concept 页面
+
+### 背景
+用户要求用 DeepXiv 搜索最新论文（OPD/LLM底座/后训练/RL/Agent 方向），结合 wiki 库中已有内容，对缺失部分做深度调研和补充。
+
+### DeepXiv 搜索
+- `deepxiv search "On-Policy Distillation OPD LLM"` → 17 results
+- `deepxiv search "RL reinforcement learning LLM agent post-training"` → 27 results  
+- `deepxiv search "LLM agent memory safety alignment"` → 28 results
+
+### 已覆盖的 OPD 论文（7 篇，已在 wiki 中）
+- 2602.15260 (OPPD), 2604.13016 (Rethinking OPD), 2306.13649 (GKD 基础)
+- 2602.12125 (G-OPD), 2603.25562 (OPD failure modes), 2604.00626 (OPD Survey)
+- 2604.20244 (Hybrid PD), 2604.04461 (DP-OPD)
+
+### 新建 concept 页面（11 个）
+1. **generalized-knowledge-distillation.md** (192行) — GKD 奠基工作，DeepMind 2023，数学公式+实验对比
+2. **rl-post-training-scaling-laws.md** (228行) — Qwen2.5 RL scaling，log-linear 趋势，饱和效应
+3. **ml-agent-autonomous-ml.md** (211行) — ML-Agent，7B 胜 671B，三阶段训练
+4. **ragegen-multi-turn-rl-agents.md** (290行) — RAGEN/StarPO，Echo Trap，轨迹级优化
+5. **agent-r1-end-to-end-rl.md** (310行) — Agent-R1，MDP 扩展，3-phase 训练
+6. **memeovobench-memory-safety.md** (315行) — MemEvoBench，36 风险类型，记忆安全评估
+7. **agent-align.md** (123行) — AgentAlign，抽象行为链，安全性 +43.7%
+8. **agent-safety-via-rl.md** (153行) — Agent Safety via RL，三模态分类，蚂蚁集团
+9. **thought-aligner.md** (150行) — Thought-Aligner，思维纠正，~50%→90%，复旦
+10. **alignment-waltz.md** (147行) — WaltzRL，多 Agent 协作，Meta
+11. **verificagent.md** (221行) — VerificAgent，记忆验证，Microsoft
+
+### index.md 更新
+- 新增 "RL 后训练缩放定律" 和 "Agent 训练与多轮 RL" 子分类
+- 补充 Agent 安全条目
+- Total pages: 197 | Raw papers: 197
+
+### 交叉引用
+所有新页面包含 ≥3 个 [[wikilinks]]，与已有 OPD/RL/Agent 体系互联互通。

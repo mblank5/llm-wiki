@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-05-01 | Total pages: 193 | Raw papers: 197
+> Last updated: 2026-05-01 | Total pages: 197 | Raw papers: 197
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -69,6 +69,11 @@
 ### agent
 - [[agent-supply-chain-attack]] — 第三方 API router 作为应用层代理，对每个 JSON payload 有完全明文访问权限。
 - [[clawguard]] — 针对 tool-augmented LLM agent 的间接 prompt 注入攻击，提供运行时安全框架。
+- [[agent-align]] — AgentAlign：Agentic LLM 安全对齐，抽象行为链合成数据，安全性 +43.7%
+- [[agent-safety-via-rl]] — Agent Safety via RL：统一安全对齐框架，三模态分类，沙箱 RL 环境，蚂蚁集团
+- [[thought-aligner]] — Thought-Aligner：轻量级插件式思维纠正模块，实时纠正高风险思维，安全性 ~50%→90%，延迟<100ms
+- [[alignment-waltz]] — WaltzRL：多 Agent 安全协作框架，conversation+feedback agent 联合训练，unsafe 39.0%→4.6%，Meta
+- [[verificagent]] — VerificAgent：计算机使用 Agent 记忆验证框架，专家种子+迭代增长+人工核查，OSWorld 25%→~50%，Microsoft
 - [[pask-proactive-agent]] — 从被动响应 (reactive) → 主动介入 (proactive)：从用户行为推断潜在需求，在实时约束下主动行动。
 - [[saver-faithful-reasoning]] — LLM Agent 的推理轨迹被当作可靠内部信念，但连贯推理仍可能违反逻辑/证据约束，
 
