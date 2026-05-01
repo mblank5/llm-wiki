@@ -402,3 +402,114 @@
   - 10+ 小时音频理解，400 秒 720P 视频
   - Flash 变体：235ms audio first-packet latency
 - Updated index.md: 165→166 pages, 169→170 raw papers
+
+## [2026-04-27] ingest | Omni 模型深度调研（10 篇论文）
+
+### Papers processed (10)
+- 2604.11554 — Relax: Async RL Engine for Omni-Modal Post-Training at Scale
+- 2604.14520 — Chain of Modality: Dynamic Orchestration in Omni-MLLMs
+- 2604.16902 — Beyond Text-Dominance: Modality Preference of Omni-modal LLMs
+- 2604.13073 — OmniTrace: Generation-Time Attribution in Omni-Modal LLMs
+- 2604.00007 — Dynin-Omni: Omnimodal Unified Large Diffusion Language Model
+- 2602.21900 — EmoOmni: Bridging Emotional Understanding and Expression in Omni-LLMs
+- 2602.23739 — U-Mind: Real-Time Multimodal Interaction with Audiovisual Generation
+- 2604.06694 — AudioKV: KV Cache Eviction in Efficient Large Audio Language Models
+- 2603.11089 — V2A-DPO: Omni-Preference Optimization for Video-to-Audio Generation
+- 2604.13593 — AVID: Benchmark for Omni-Modal Audio-Visual Inconsistency Understanding
+
+### Wiki pages created (10 new concept pages)
+- concepts/relax-async-rl-omni.md — 异步 RL 三平面架构，TransferQueue 去中心化权重同步
+- concepts/chain-of-modality.md — 动态模态编排，Planner 控制 Parallel/Sequential/Interleaved 块
+- concepts/omni-modality-preference.md — MSR 量化模态偏好，视觉主导，94% AUROC 幻觉检测
+- concepts/omnitrace-attribution.md — 生成时归因，信号无关 span-level 因果追踪
+- concepts/dynin-omni-diffusion.md — Masked Diffusion 全模态，8B 开源，多阶段训练+模态解耦合并
+- concepts/emo-omni.md — E-CoT 四阶段情感推理，EmoOmniPipe 数据管线
+- concepts/u-mind-multimodal.md — RVQ-VAE 多模态 token，排练驱动预训练
+- concepts/audio-kv-cache.md — WhisperX 对齐识别关键头，SSS 频谱平滑驱逐
+- concepts/v2a-dpo.md — AudioScore 5 维评分，48K 偏好对，课程学习 DPO
+- concepts/avid-benchmark.md — 11.2K 长视频，39.4K 标注事件，8 类不一致性
+
+### Cross-linking
+- 每个页面包含 ≥2 个 [[wikilinks]] 指向现有 Omni/语音/多模态页面
+- 链接目标：omni-modal-llm, full-duplex-speech-model, speech-llm, on-policy-distillation, rl
+
+### Index updated
+- Total wiki pages: 166→176 | Raw papers: 170→180
+- New section: Omni 模型新进展 (2026-04)
+
+## [2026-04-27] ingest | LongCat-Flash-Omni Technical Report
+- Source: arxiv 2511.00279 (Meituan LongCat Team, 2025-11)
+- Raw paper saved: raw/papers/2025/11/2511.00279.md
+- Created entities:
+  - longcat-flash-omni.md — 560B 开源全模态 MoE，ScMoE+zero-computation experts，27B 激活
+- Key findings:
+  - 单 Backbone 直接生成 speech tokens（vs Qwen3-Omni 的 Thinker-Talker 双轨）
+  - ScMoE (Shortcut-connected MoE) + zero-computation experts，560B 总参数仅激活 27B
+  - Early fusion：Vision/Audio features chunk-wise interleaved 输入 LLM
+  - 多阶段渐进预训练：Text → Audio → Visual → 多模态联合
+  - 2.5T+ tokens 训练数据，Speech-Text Interleaved 数据管线
+  - Modality-decoupled parallelism，90%+ 文本训练吞吐量保持率
+  - 图像理解：BLINK 多图 63.1（优于 Gemini-2.5-Flash 56.1），RefCOCO 93.9
+  - 视频理解：MVBench/VideoMME 开源 SOTA
+  - 全模态：Omni-Bench/WorldSense 开源 SOTA
+  - 完全开源：HuggingFace + GitHub
+- Updated index.md: 176→177 pages, 180→181 raw papers
+
+## [2026-04-27] ingest | NIM4-ASR: Efficient, Robust, Customizable Real-Time LLM-Based ASR
+- Source: arxiv 2604.18105 (2026-04-20)
+- Raw paper saved: raw/papers/2026/04/2604.18105.md
+- Created concepts:
+  - nim4-asr.md — 2.3B 生产级 LLM-ASR，CR-CTC+IA-SFT+RL，百万级 RAG 热词
+- Key findings:
+  - 模块化 Encoder-Adaptor-LLM 架构，仅 2.3B 参数（Encoder 600M + LLM 1.7B）
+  - Stage 1: CR-CTC + 音素级标签预训练（替代 AED，减少模态税）
+  - Stage 2: Alignment（缩小 Encoder 表示与 LLM embedding 空间差距）
+  - Stage 3: IA-SFT（迭代异步 SFT，保持声学保真度，约束表示漂移）
+  - Stage 4: Late Joint SFT（全模型联合微调）
+  - Stage 5: Context SFT + Stage 6: RL（ASR 专用强化学习）
+  - 音素级 RAG 热词定制：百万级热词，<1ms 检索延迟
+  - Streaming Encoder：Dynamic-chunk 机制，适应不同延迟预算
+  - 公开 Benchmark SOTA（LibriSpeech/AISHELL/多方言/码切换/歌词）
+  - 内部 Benchmark（车载场景）：实体密集型场景大幅优于更大模型
+- Updated index.md: 177→178 pages, 181→182 raw papers
+
+## [2026-05-01] batch-ingest | LongCat 系列模型（6篇技术报告）
+- Sources:
+  - arxiv 2509.01322 — LongCat-Flash Technical Report（560B MoE 基础模型）
+  - arxiv 2509.18883 — LongCat-Flash-Thinking Technical Report（推理模型）
+  - arxiv 2601.16725 — LongCat-Flash-Thinking-2601 Technical Report（升级版推理模型）
+  - arxiv 2510.22200 — LongCat-Video Technical Report（13.6B 视频生成）
+  - arxiv 2512.07584 — LongCat-Image Technical Report（6B 图像生成）
+  - arxiv 2603.27538 — LongCat-Next: Lexicalizing Modalities as Discrete Tokens（原生多模态）
+- Authors: Meituan LongCat Team
+- Raw papers saved:
+  - raw/papers/2025/09/2509.01322.md — LongCat-Flash
+  - raw/papers/2025/09/2509.18883.md — LongCat-Flash-Thinking
+  - raw/papers/2026/01/2601.16725.md — LongCat-Flash-Thinking-2601
+  - raw/papers/2025/10/2510.22200.md — LongCat-Video
+  - raw/papers/2025/12/2512.07584.md — LongCat-Image
+  - raw/papers/2026/03/2603.27538.md — LongCat-Next
+- Entity pages created:
+  - entities/longcat-flash.md — 560B MoE，zero-computation experts，20T+ tokens
+  - entities/longcat-flash-thinking.md — 推理模型，三阶段推理培养
+  - entities/longcat-flash-thinking-2601.md — 环境扩展+噪声感知+Heavy Thinking
+  - entities/longcat-video.md — 13.6B 视频生成，多奖励 RLHF
+  - entities/longcat-image.md — 6B 图像生成，SOTA 中文渲染
+  - entities/longcat-next.md — 原生多模态自回归，统一 token 化
+- Note: longcat-flash-omni 已存在（之前录入）
+- Updated index.md: 178→184 pages, 182→188 raw papers
+
+## [2026-05-01] ingest | Added 6 new concept pages (GKD, RL scaling, ML-Agent, RAGEN, Agent-R1, MemEvoBench) | Updated index.md | Total pages: 190 | Raw papers: 197
+## [2026-05-01] deep-supplement | LongCat 系列深度补充
+- 全面重写 6 个 LongCat entity 页面，基于原始论文深度阅读补充：
+  - entities/longcat-flash.md：架构（ScMoE+零计算专家+方差对齐）、训练（超参数迁移+模型增长+稳定性套件）、推理（>100 TPS）、评测全覆盖
+  - entities/longcat-flash-thinking.md：长 CoT 冷启动 + DORA 异步 RL + 领域并行训练
+  - entities/longcat-flash-thinking-2601.md：10,000+ 环境扩展 + 噪声感知训练 + Heavy Thinking 模式
+  - entities/longcat-video.md：DiT + Block Sparse Attention + 多奖励 RLHF
+  - entities/longcat-image.md：6B 紧凑架构 + AIGC 检测奖励模型 + SOTA 中文渲染
+  - entities/longcat-next.md：DiNA 框架 + dNaViT + 统一离散 token 空间
+- 新增 2 个 concept 页面：
+  - concepts/zero-computation-experts.md
+  - concepts/shortcut-connected-moe.md
+- 更新 index.md：添加 LongCat Core Techniques 分类
+- 统计：184→186 pages（+2 concepts），raw papers 不变（已入库）
