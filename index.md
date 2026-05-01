@@ -1,215 +1,275 @@
 # Wiki Index
-
-> Content catalog. Every wiki page listed under its type with one-line summary.
+> Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-05-01 | Total pages: 186 | Raw papers: 188
+> Last updated: 2026-05-01 | Total pages: 193 | Raw papers: 197
 
 ## Entities
-
-- [[byte-seed]] — 字节跳动 Seed AI 研究团队，Seeduplex/Seed-TTS 所属团队
-- [[dflash]] — DFlash：Block Diffusion Speculative Decoding，6x+ 无损加速，2.5x faster than EAGLE-3
-- [[ddtree]] — DDTree：DFlash 的 Draft Tree 扩展，acceptance length 从 ~3.1 提升到 ~10.7 tokens
-- [[composer2]] — Cursor Composer 2：基于 Kimi K2.5 的 1.04T/32B MoE agentic coding 模型（2026-03）
-- [[emova]] — EMOVA：CVPR 2025，语义-声学分离 tokenizer，首个 VLM+Speech 双 SOTA
-- [[freeze-omni]] — 腾讯 Freeze-Omni：冻结 LLM 参数实现 speech-to-speech 对话和 duplex
-- [[llama-omni]] — 中科院 LLaMA-Omni：基于 LLaMA-3.1 的语音交互，ICLR 2025
-- [[mgm-omni]] — MGM-Omni：Brain-Mouth 双轨 Omni LLM，长音频理解 + 个性化语音生成
-- [[minmo]] — 阿里 MinMo：无缝语音交互多模态 LLM
-- [[moshi]] — Kyutai Moshi：首个实时全双工语音 LLM，多流架构，200ms 延迟
-- [[qwen3]] — Qwen3 开源 LLM 系列，支持 Thinking/Non-Thinking 切换，含 MoE 架构
-- [[qwen3-asr]] — Qwen3-ASR：52 语言 ASR 家族（1.7B/0.6B + ForcedAligner），基于 Qwen3-Omni
-- [[qwen3-omni]] — Qwen3-Omni：Thinker-Talker MoE 统一多模态模型，234ms 流式延迟
-- [[qwen3-5-omni]] — Qwen3.5-Omni：Hybrid MoE Thinker-Talker，256k 上下文，ARIA 动态对齐，74 种语言
-- [[qwen3-tts]] — Qwen3-TTS：双轨 TTS（25Hz/12Hz），97ms 首包，3秒语音克隆
-- [[salmonn-omni]] — SALMONN-omni：Codec-free 全双工语音模型，embedding-based
-- [[seed-realtime-voice]] — Seed Realtime Voice：豆包前代半双工端到端语音模型
-- [[seed-tts]] — Seed-TTS：字节 Seed 大规模自回归 TTS 模型家族（2024-06）
-- [[seeduplex]] — Seeduplex：字节 Seed 原生全双工语音大模型（2026-04）
-- [[stream-omni]] — Stream-Omni：CTC layer-dimension 语音-文本对齐，数据高效
-- [[doubao-app]] — 豆包 App：字节跳动 AI 助手应用，Seeduplex 全双工语音部署平台
-- [[mem0]] — Mem0：AI Agent 可扩展长期记忆层，YC S24，53K stars，图记忆+自然语言双模式
-- [[kimi-k2]] — Kimi K2：Moonshot AI 大语言模型，Composer 2 基座模型
-- [[speech-omni-lite]] — Speech-Omni-Lite：轻量级 VLM 语音交互接口
-- [[longcat-flash]] — LongCat-Flash：560B 开源 MoE 基础模型，zero-computation experts+shortcut-connected MoE，20T+ tokens 训练
-- [[longcat-flash-thinking]] — LongCat-Flash-Thinking：560B 开源 MoE 推理模型，三阶段推理能力培养
-- [[longcat-flash-thinking-2601]] — LongCat-Flash-Thinking-2601：升级版推理模型，环境扩展+噪声感知训练+Heavy Thinking 模式
-- [[longcat-flash-omni]] — LongCat-Flash-Omni：560B 开源全模态 MoE，ScMoE+zero-computation experts
-- [[longcat-video]] — LongCat-Video：13.6B 开源视频生成基础模型，多奖励 RLHF 训练
-- [[longcat-image]] — LongCat-Image：6B 开源双语图像生成模型，SOTA 中文文字渲染
-- [[longcat-next]] — LongCat-Next：原生多模态自回归模型，统一离散化所有模态为 tokens
+- [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
+- [[composer2]] — Cursor Research Team 发布的专用 agentic software engineering 模型（2026-03-24）。
+- [[ddtree]] — DDTree 是 DFlash 的扩展方法，通过构建 **Draft Tree** 从 block diffusion 的 per-position di...
+- [[dflash]] — DFlash 是一种基于 **Block Diffusion** 的 Speculative Decoding 框架，用轻量级 diffusion mod...
+- [[doubao-app]] — 豆包 (Doubao) is ByteDance's AI assistant app, serving hundreds of millions of ...
+- [[emova]] — CVPR 2025，HKUST/SenseTime 联合发布的端到端 Omni-modal LLM，首个同时在视觉-语言和语音基准上达到 SOTA 的模型。
+- [[freeze-omni]] — 腾讯团队于 2024 年 11 月发布的语音对话模型，核心创新是**保持 LLM 参数冻结**的同时实现 speech-to-speech 对话和 dup...
+- [[kimi-k2]] — Kimi K2 is a large language model developed by Moonshot AI (月之暗面). It serves ...
+- [[llama-omni]] — 中科院团队基于 LLaMA-3.1-8B 构建的语音交互模型，发表于 ICLR 2025。
+- [[longcat-flash-omni]] — 美团 LongCat 团队发布的全模态开源模型（arXiv 2511.00279，2025-11）。**560B 总参数，27B 激活参数**，在开源模型...
+- [[longcat-flash-thinking-2601]] — 美团 LongCat 团队发布的升级版开源 MoE 推理模型（arXiv 2601.16725，2026-01）。在 [[longcat-flash-th...
+- [[longcat-flash-thinking]] — 美团 LongCat 团队发布的开源 MoE 推理模型（arXiv 2509.18883，2025-09）。基于 [[longcat-flash]] 56...
+- [[longcat-flash]] — 美团 LongCat 团队发布的旗舰级开源 MoE 大语言模型（arXiv 2509.01322，2025-09）。**560B 总参数，18.6B~31...
+- [[longcat-image]] — 美团 LongCat 团队发布的开源双语图像生成基础模型（arXiv 2512.07584，2025-12）。**6B 参数**，专攻中英双语文字渲染、照...
+- [[longcat-next]] — 美团 LongCat 团队发布的原生多模态自回归模型（arXiv 2603.27538，2026-03）。核心创新是 **DiNA（Discrete Na...
+- [[longcat-video]] — 美团 LongCat 团队发布的开源视频生成基础模型（arXiv 2510.22200，2025-10）。**13.6B 参数**，基于 DiT 框架，支...
+- [[mem0]] — YC S24 批次公司。它动态地从对话中提取、整合、检索关键信息，使 Agent 能在多会话中保持个性化和上下文一致性。
+- [[mgm-omni]] — CUHK/JiaLiab 发布的 "Brain-Mouth" 双轨 Omni LLM，专注长音频理解和个性化语音生成。
+- [[minmo]] — 阿里团队于 2025 年 1 月发布的无缝语音交互多模态大模型。
+- [[moshi]] — Kyutai 实验室于 2024 年 9 月发布的**首个实时全双工语音对话模型**。开创了多流自回归架构范式。
+- [[qwen3-5-omni]] — Qwen Team 发布的最新 Omni 模型（arxiv 2604.15804，2026-04-17/21），Qwen-Omni 家族的重大演进。相比 ...
+- [[qwen3-asr]] — 阿里 Qwen 团队 2026-01 发布的多语言 ASR 模型家族，基于 [[qwen3-omni]] 的音频理解能力构建。
+- [[qwen3-omni]] — 阿里 Qwen 团队 2025-09 发布的统一多模态模型，首次实现 text/image/audio/video 全模态 SOTA 且无单模态退化。
+- [[qwen3-tts]] — 阿里 Qwen 团队 2026-01 发布的多语言、可控、流式 TTS 模型家族。基于 Qwen3 LLM 系列。
+- [[qwen3]] — Qwen3 is the latest series of open-weight large language models (LLMs) from t...
+- [[salmonn-omni]] — Tsinghua 提出的 **Codec-free** 全双工语音理解与生成模型。
+- [[seed-realtime-voice]] — Seeduplex 的前代模型，即豆包 App 此前使用的端到端语音模型。采用半双工（half-duplex）范式。
+- [[seed-tts]] — 字节跳动 Seed 团队于 2024 年 6 月发布的大规模自回归 TTS 模型家族。
+- [[seeduplex]] — 字节跳动 Seed 团队于 2026 年 4 月 9 日发布的**原生全双工端到端语音大模型**，已在中国大陆豆包 App 全量上线，服务上亿用户。
+- [[speech-omni-lite]] — Speech-Omni-Lite is a portable speech interface designed for vision-language ...
+- [[stream-omni]] — ICT/CAS 发布的 text-centric 多模态对齐框架，支持同时视觉理解和语音交互。
 
 ## Concepts
 
-### 蒸馏与后训练 (Distillation & Post-Training)
+### 'distillation'
+- [[dual-policy-distillation]] — 1|# Dual Policy Distillation (DPD)
+- [[entropy-aware-on-policy-distillation]] — 1|# Entropy-Aware On-Policy Distillation (EOPD)
+- [[generalized-on-policy-distillation]] — 1|# Generalized On-Policy Distillation (G-OPD)
+- [[hybrid-distillation-policy-optimization]] — Hybrid Distillation Policy Optimization via Privileged Self-Distillation (HDP...
+- [[model-distillation]] — 1|# Model Distillation
+- [[on-policy-distillation]] — 1|# On-Policy Distillation (OPD)
+- [[on-policy-distillation-survey]] — 1|# On-Policy Distillation (OPD) - Survey
+- [[on-policy-prefix-distillation]] — 1|# On-Policy Prefix Distillation (OPPD)
+- [[on-policy-self-distillation]] — 1|# On-Policy Self-Distillation (OPSD)
+- [[on-policy-self-distillation-reasoning-compression]] — On-Policy Self-Distillation for Reasoning Compression (OPSDC) is a training m...
+- [[per-token-kl-clipping]] — 1|# Per-Token Pointwise KL Clipping
+- [[policy-distillation]] — 1|# Policy Distillation
+- [[proximal-policy-distillation]] — 1|# Proximal Policy Distillation (PPD)
+- [[reopold]] — 1|# Reopold (Relaxed On-Policy Distillation)
+- [[rl-aware-distillation]] — Reinforcement-Aware Knowledge Distillation (RLAD) is an on-policy distillatio...
+- [[sample-routed-policy-optimization]] — Sample-Routed Policy Optimization (SRPO) is a unified on-policy post-training...
 
-- [[on-policy-distillation]] — On-Policy Distillation 核心概念：student rollout + teacher feedback，bias-variance tradeoff
-- [[generalized-knowledge-distillation]] — Generalized Knowledge Distillation (GKD)：DeepMind 奠基工作，on-policy 蒸馏理论基础，处理分布不匹配
-- [[generalized-on-policy-distillation]] — G-OPD：带奖励外推的泛化 on-policy 蒸馏，lambda 控制 reward vs KL，超教师性能
-- [[on-policy-prefix-distillation]] — OPPD：on-policy 前缀蒸馏，计算高效，2-47x 加速，性能接近完整 OPD
-- [[speculative-decoding]] — Speculative Decoding：draft-verify 推理加速，DFlash/DDTree 新范式
-- [[on-policy-distillation-survey]] — OPD 综述：f-divergence 统一框架、白盒/黑盒/无教师方法分类
-- [[ex-opd]] — Ex-OPD：扩展 OPD 变体，奖励外推机制
-- [[on-policy-self-distillation]] — 自蒸馏推理：无需外部 teacher 的 on-policy 方法
-- [[dual-policy-distillation]] — DPD：Student-Student 对偶策略蒸馏框架
-- [[proximal-policy-distillation]] — PPO 风格 per-token KL 裁剪蒸馏
-- [[per-token-kl-clipping]] — Per-token KL 裁剪技术详解
-- [[policy-distillation]] — Policy Distillation 基础概念（DeepMind 2015 开山作）
-- [[model-distillation]] — 模型蒸馏通用概念与分类
-- [[exposure-bias]] — 暴露偏差：训练-推理分布不一致问题
-- [[entropy-aware-on-policy-distillation]] — 熵感知 OPD：动态 divergence 自适应
-- [[reopold]] — ReOPOLD：高效推理扩展的 relaxed on-policy 蒸馏
-- [[cascade-rl]] — Cascade RL：级联强化学习用于多域 post-training
-- [[token-level-entropy-analysis]] — Token 级别熵分析：理解蒸馏中的信息流动
-- [[sample-routed-policy-optimization]] — SRPO：统一 GRPO 强化 + SDPO 蒸馏的样本路由框架，熵感知动态加权
-- [[rl-aware-distillation]] — RLAD：强化学习感知蒸馏，仅当 RL 有益时模仿 teacher（TRRD 目标）
-- [[hybrid-distillation-policy-optimization]] — HDPO：特权自蒸馏针对"悬崖 prompt"，共享权重 teacher/student
-- [[on-policy-self-distillation-reasoning-compression]] — OPSDC：推理压缩的自蒸馏，"be concise" 条件化 teacher
-- [[chain-of-thought]] — Chain-of-Thought (CoT)：逐步推理 prompting 技术，现代推理模型基础
-- [[deepseek-r1-distillation]] — DeepSeek R1 蒸馏：将推理能力蒸馏到小模型的方法
-- [[kl-divergence-in-distillation]] — KL 散度在蒸馏中的角色：f-divergence 统一框架下的核心度量
-- [[knowledge-distillation]] — 知识蒸馏 (Knowledge Distillation)：Hinton 2015 奠基性概念
-- [[mixture-of-experts]] — Mixture of Experts (MoE)：路由 token 到不同专家子网络的高效架构
-- [[multi-domain-on-policy-distillation]] — 多域 On-Policy Distillation：跨任务域的同时蒸馏
-- [[reasoning-distillation]] — 推理蒸馏：将推理能力（尤其 CoT）从 teacher 迁移到 student
-- [[reverse-kl-distillation]] — Reverse KL 蒸馏：mode-seeking 方向的 KL 散度蒸馏
-- [[self-play-limitations]] — Self-play 局限性：RL/蒸馏中自博弈方法的约束与失败模式
-- [[star]] — STaR (Self-Taught Reasoner)：自生成推理 trace 的自改进方法
-- [[strong-to-weak-distillation]] — Strong-to-weak 蒸馏：大模型向小模型的能力迁移范式
-- [[teacher-top-k-local-support-matching]] — Teacher top-k 局部支持匹配：聚焦 top-k token 的蒸馏技术
-- [[thinking-budget]] — Thinking Budget：推理模型的计算分配/思考深度控制
-- [[dp-opd]] — DP-OPD：差分隐私 + OPD，正式隐私保证 + 高效模型适配
-- [[rethinking-opd]] — "Rethinking OPD"：OPD 动力学系统研究，成功条件、token 级机制、失败恢复策略
-- [[lightning-opd]] — Lightning OPD：离线预计算 teacher log-probs，4x speedup，Teacher Consistency 理论
-- [[opd-calibration]] — CaOPD：OPD 中的校准退化问题，信息不对称根因，Pareto-optimal 校准
-- [[tip-opd]] — TIP：Token 级别重要性分析，非均匀 token 蒸馏
-- [[opsdl]] — OPSDL：On-Policy Self-Distillation 扩展到 long-context 场景
-- [[self-distilled-rlvr]] — Self-Distilled RLVR：OPD + RLVR 融合，dense fine-grained signals
-- [[self-distillation-zero]] — Self-Distillation Zero：自修订将 binary rewards 转化为 dense supervision
-- [[hybrid-policy-distillation]] — Hybrid Policy Distillation：混合策略蒸馏框架（融合前/反向 KL，on/off-policy）
+### 'rl'
+- [[cascade-rl]] — 1|# Cascade RL
+- [[ppo]] — 1|# Proximal Policy Optimization (PPO)
 
-### LongCat 核心技术 (LongCat Core Techniques)
+### 'speech-model'
+- [[speech-llm]] — 1|# Speech LLM
 
-- [[zero-computation-experts]] — Zero-Computation Experts：MoE 动态计算预算分配，PID 控制器调节
-- [[shortcut-connected-moe]] — Shortcut-Connected MoE (ScMoE)：跨层 shortcut 扩大计算-通信重叠窗口
+### 'training'
+- [[exposure-bias]] — 1|# Exposure Bias in LLMs
 
-### RL 后训练缩放定律 (RL Scaling Laws)
+### agent
+- [[agent-supply-chain-attack]] — 第三方 API router 作为应用层代理，对每个 JSON payload 有完全明文访问权限。
+- [[clawguard]] — 针对 tool-augmented LLM agent 的间接 prompt 注入攻击，提供运行时安全框架。
+- [[pask-proactive-agent]] — 从被动响应 (reactive) → 主动介入 (proactive)：从用户行为推断潜在需求，在实时约束下主动行动。
+- [[saver-faithful-reasoning]] — LLM Agent 的推理轨迹被当作可靠内部信念，但连贯推理仍可能违反逻辑/证据约束，
 
-- [[rl-post-training-scaling-laws]] — RL Post-Training Scaling Laws for LLMs：Qwen2.5 数学推理研究，log-linear 趋势，饱和效应
+### agentic-coding
+- [[less-is-more-agentic]] — 对于 Agentic/Reasoning/Coding LLM，更少的数据/参数/训练步骤可能更好——关键在于数据质量和训练策略。
+- [[oracle-swe]] — SWE Agent 能达到多高分辨率取决于信息获取。现有评测无法区分是能力不足还是信息不足。
+- [[rethinking-se-for-agentic-ai]] — 传统软件工程范式如何适应 AI Agent 时代？Agent 系统的开发/测试/部署流程与传统软件有何根本不同？
+- [[swe-agile]] — SWE Agent 在长上下文中进行复杂推理时，如何动态管理推理上下文？
+- [[swe-hero]] — SWE Agent 训练从 **execution-free**（纯 SFT）走向 **execution-based**（带环境反馈的 RL）。
+- [[swe-shepherd]] — 将 Process Reward Model (PRM) 应用于代码 Agent：不仅评估最终结果，还评估每一步代码生成的质量。
 
-### 强化学习基础 (RL Foundations)
+### alignment
+- [[behavioral-self-awareness]] — Behavioral self-awareness is the ability of a large language model (LLM) to e...
+- [[emergent-misalignment]] — Emergent misalignment is a phenomenon in which fine-tuning a large language m...
 
-- [[ppo]] — PPO：Proximal Policy Optimization，策略梯度核心算法
-- [[stable-baselines3]] — Stable Baselines3：RL 算法开源工具库
-- [[atari-2600]] — Atari 2600：经典 RL 基准环境（ALE），DQN/Policy Distillation 标准测试
-- [[deep-q-network]] — DQN (Deep Q-Network)：深度 RL 值方法，DeepMind 2015
-- [[grpo]] — GRPO (Group Relative Policy Optimization)：组内相对奖励策略优化，现代 LLM 后训练核心
-- [[grpo-rl-training]] — GRPO RL Training：基于 GRPO 的强化学习训练方法论
-- [[imitation-learning]] — Imitation Learning：从专家示范中学习，SFT 的 RL 视角
-- [[faithful-grpo]] — Faithful GRPO：约束策略优化，解决 RLVR accuracy-faithfulness 矛盾
+### architecture
+- [[chain-of-modality]] — Omni-modal Large Language Models (Omni-MLLMs) promise unified integration of ...
+- [[mixture-of-experts]] — Mixture of Experts (MoE) is a neural network architecture that routes tokens ...
+- [[shortcut-connected-moe]] — **Shortcut-connected MoE** 是 [[longcat-flash]] 的另一核心架构创新，通过重排执行流水线来**扩大计算-通信重...
+- [[zero-computation-experts]] — **零计算专家**是 [[longcat-flash]] 架构的核心创新之一，一种在 Mixture-of-Experts (MoE) 模型中实现**动态...
 
-### Agent 训练与多轮 RL (Agent Training & Multi-Turn RL)
+### audio
+- [[whisper-aut]] — 基于 Whisper 的领域适配音频编码器，用于高效 Audio-LLM 训练。
 
-- [[ml-agent-autonomous-ml]] — ML-Agent：自主机器学习的 RL 框架，7B 胜过 671B，三阶段训练（探索 SFT + 步骤级 RL + 统一奖励）
-- [[ragegen-multi-turn-rl-agents]] — RAGEN：多轮 RL for LLM Agents，StarPO 框架，Echo Trap 现象，轨迹级优化
-- [[agent-r1-end-to-end-rl]] — Agent-R1：端到端 RL for LLM Agents，MDP 扩展，3-phase 训练（PT→Offline RL→Online RL）
-- [[agent2-rl-bench]] — Agent² RL-Bench：LLM Agent 自主设计 RL pipeline 的评测基准
-- [[policy-split]] — Policy Split：LLM RL 中的双模式探索策略 — TTVS
-- [[supernova]] — SUPERNOVA：自然指令 RL 激发 LLM 通用推理能力
-- [[omnijigsaw]] — OmniJigsaw：Qwen3-Omni RL 后训练，时间重排自监督
-- [[omni-r1]] — Omni-R1：统一生成式多模态推理（推理中生成中间图像）
-- [[relax-async-rl-omni]] — Relax：异步 RL 引擎，三平面架构，Omni 后训练 1.76-2x 加速
-- [[visual-depth-scaling]] — Visual Depth Scaling：多模态潜在推理的视觉增强深度缩放
+### behavioral-awareness
+- [[ai-self-awareness-game-theory]] — Game-theoretic measurement of AI self-awareness uses strategic games to test ...
+- [[introspection]] — Introspection in the context of large language models refers to the capabilit...
+- [[mental-self-modeling]] — Mental self-modeling refers to the capacity of large language models (LLMs) t...
+- [[situational-awareness]] — Situational awareness in AI systems refers to a model's ability to understand...
 
-### Agent 记忆与安全 (Agent Memory & Safety)
+### benchmark
+- [[atari-2600]] — The Atari 2600 game console serves as a foundational benchmark environment in...
+- [[avid-benchmark]] — Omni-modal LLMs excel at temporally aligned tasks (captioning, QA) but strugg...
+- [[cursorbench]] — Cursor 内部 agentic software engineering 评测套件，从真实 Cursor 编码会话中提取任务。
+- [[locomo-benchmark]] — 缺乏系统性评估 LLM 在长期多会话对话中记忆能力的 benchmark。
+- [[longmemeval-benchmark]] — 现有长期记忆 benchmark 两大不足：
 
-- [[agent-memory-system]] — Agent Memory System 总览：LLM Agent 长期记忆方案分类与对比
-- [[lightmem-agent-memory]] — LightMem：轻量级 Agent 记忆高效存储
-- [[a-mem]] — A-MEM：Zettelkasten 启发的 Agentic Memory，LLM 属性标注+自主链接
-- [[memeovobench-memory-safety]] — MemEvoBench：记忆误演化基准，36 风险类型，长期记忆安全评估
-- [[pask-proactive-agent]] — PASK：意图感知主动 Agent，DD-MM-PAS 流式框架
-- [[saver-faithful-reasoning]] — SAVeR：Agent 自审计验证推理，行动前验证内部信念状态
-- [[agent-poison]] — AgentPoison：通过记忆或知识库投毒的后门攻击，82% 攻击成功率
-- [[agent-supply-chain-attack]] — LLM Agent 供应链攻击：第三方 Agent 依赖的风险
-- [[clawguard]] — ClawGuard：Tool-Augmented Agent 运行时安全框架
-- [[agent-align]] — AgentAlign：Agentic LLM 安全对齐，抽象行为链合成数据，安全性 +43.7%
-- [[agent-safety-via-rl]] — Agent Safety via RL：统一安全对齐框架，三模态分类，沙箱环境
-- [[safe-belal]] — Safe-BeAl：具身 Agent 安全规划与对齐框架，8.55-15.22% 安全提升
-- [[thought-aligner]] — Thought-Aligner：实时思维纠正模块，安全性从 ~50% → 90%
-- [[alignment-waltz]] — WaltzRL：多 Agent 安全协作框架，Unsafe 从 39.0% → 4.6%
-- [[verificagent]] — VerificAgent：专家种子记忆 + 迭代增长 + 人工验证的监督框架
+### concept
+- [[duplex-cascade]] — DuplexCascade 是一种**无需 VAD 的级联流式流水线**，用于全双工语音到语音对话。其核心创新是将传统的整句轮次（utterance-wi...
+- [[full-duplex-speech-model]] — 全双工语音模型是指能够在同一时刻同时"听"和"说"的语音交互系统。区别于传统的半双工（half-duplex）"你讲我听、我讲你听"轮流机制，全双工模型实...
+- [[mtr-duplexbench]] — MTR-DuplexBench 是首个面向全双工语音语言模型（FD-SLM）的**多轮综合评测基准**。它不仅将连续全双工对话分割为离散轮次进行逐轮评估，...
+- [[privacy-preserving-speech]] — 本文首次系统研究了端到端全双工语音对话模型中 LLM 隐藏状态的**说话人身份泄露**问题，并提出了两种基于 Stream-Voice-Anon 的流式匿...
+- [[silent-thought]] — FLAIR（Full-duplex LAtent and Internal Reasoning）是一种面向全双工口语对话语言模型（SDLM）的**潜在推理...
+- [[turnguide]] — TurnGuide 是一种面向端到端（e2e）全双工语音语言模型（FD-SLM）的**文本-语音交织生成方法**。其核心思想是动态地将助手语音分割为对话轮...
 
-### Agentic Coding (Agent 编程)
+### data-quality
+- [[data-laundering-llm]] — Data Laundering: 通过合成/改写掩盖原始数据来源，将有问题的数据"洗白"后混入训练集。
+- [[llm-prism]] — GPU 永久性故障会导致 LLM 训练中的**静默数据损坏** (Silent Data Corruption, SDC)——数据损坏但训练不报错。
 
-- [[agentic-coding]] — Agentic Coding：AI Agent 自主完成软件工程任务的模式与训练方法
-- [[oracle-swe]] — ORACLE-SWE：量化 oracle 信息对 SWE Agent 解决率的贡献分解
-- [[swe-hero]] — SWE-ZERO→SWE-HERO：从 execution-free 到 execution-based SWE Agent
-- [[less-is-more-agentic]] — Even Less Is Even Better：Agentic/Reasoning/Coding L
-- [[rethinking-se-for-agentic-ai]] — Rethinking SE for Agentic AI
-- [[swe-agile]] — SWE-AGILE：SWE Agent 动态推理上下文管理
-- [[swe-shepherd]] — SWE-Shepherd：Code Agents 的 Process Reward Models
-- [[epistemological-self-learning]] — 认识论驱动的 LLM 自学习对话
+### distillation
+- [[deepseek-r1-distillation]] — DeepSeek R1 Distillation refers to the distillation approach used in the Deep...
+- [[dp-opd]] — 将差分隐私（Differential Privacy）与 OPD 结合，在保持蒸馏效果的同时提供正式的隐私保证。
+- [[ex-opd]] — Ex-OPD (Extended/Extrapolated On-Policy Distillation) is a variant of on-poli...
+- [[generalized-knowledge-distillation]] — *DeepMind's foundational work on on-policy distillation (2023)*
+- [[hybrid-policy-distillation]] — 混合策略蒸馏方法，结合多种蒸馏策略以平衡不同训练目标。仅有 abstract 可用，全文尚未公开。
+- [[kl-divergence-in-distillation]] — KL (Kullback-Leibler) divergence plays a central role in knowledge distillati...
+- [[knowledge-distillation]] — Knowledge Distillation (KD), introduced by Hinton et al. in 2015, is the foun...
+- [[lightning-opd]] — NVIDIA 团队（Song Han, Han Cai）提出的离线 OPD 变体，通过预计算 teacher log-probabilities 消除实时...
+- [[multi-domain-on-policy-distillation]] — Multi-domain on-policy distillation extends the OPD framework to handle multi...
+- [[opd-calibration]] — Salesforce AI Research 发现 OPD 会导致严重过置信（overconfidence），提出 CaOPD 解耦能力与校准。
+- [[opsdl]] — 将 OPD 扩展到 long-context 场景，通过自蒸馏扩展 LLM 有效上下文长度。
+- [[reasoning-distillation]] — Reasoning distillation is the process of transferring reasoning abilities — p...
+- [[rethinking-opd]] — 清华/上海交大等机构对 OPD 动力学的系统性研究，揭示成功 OPD 的必要条件、token 级别机制，以及恢复失败 OPD 的策略。
+- [[reverse-kl-distillation]] — Reverse KL distillation uses the reverse Kullback-Leibler divergence (KL(stud...
+- [[self-distillation-zero]] — 通过自修订（self-revision）机制将 binary rewards 转化为 dense supervision，提供对比 RLVR 与 self...
+- [[self-distilled-rlvr]] — 将 OPD 与 RLVR（Reinforcement Learning with Verifiable Rewards）结合，用大模型 teacher 为...
+- [[strong-to-weak-distillation]] — Strong-to-weak distillation is a paradigm where a larger, more capable "stron...
+- [[teacher-top-k-local-support-matching]] — Teacher top-k local support matching is a technique used in knowledge distill...
+- [[tip-opd]] — 研究 token 级别重要性在 OPD 中的作用，发现并非所有 token 位置对蒸馏效果贡献相同。
+- [[token-level-entropy-analysis]] — Token-level entropy analysis is a diagnostic technique for evaluating how wel...
+- [[tvdf]] — TVDF (Temporal Video Distillation Framework) is a distillation framework focu...
+- [[video-opd]] — Video-OPD (Video On-Policy Distillation) is an efficient post-training framew...
+- [[vold]] — VOLD is a two-stage framework for transferring reasoning capabilities from te...
+- [[x-opd]] — X-OPD is a novel Cross-Modal On-Policy Distillation framework designed to sys...
 
-### 模型行为与安全 (Behavior & Safety)
+### grpo
+- [[grp-o]] — GRPO (Group Relative Policy Optimization) is a reinforcement learning trainin...
+- [[grpo-rl-training]] — GRPO-based RL training methodology refers to the application of [[grp-o|Group...
 
-- [[safe-world]] — SafeWorld：地理多样性安全对齐，50 国 493 地区多维度评估
-- [[think-twice-before-act]] — Think Twice Before You Act：思维纠正提升行为安全
-- [[alignment-waltz]] — WaltzRL：多 Agent 安全协作（也列在记忆与安全）
+### inference
+- [[audio-kv-cache]] — Large Audio-Language Models (LALMs) have set new benchmarks in speech process...
+- [[audiokv]] — Large Audio-Language Models 在长音频推理时 KV cache 占用巨大。
+- [[thinking-budget]] — Thinking budget refers to the computational allocation for reasoning steps in...
 
-### 自动驾驶与 RL (Autonomous Driving & RL)
+### inference-optimization
+- [[speculative-decoding]] — Speculative Decoding 是一种 LLM 推理加速技术，通过轻量级 **draft model** 提前生成候选 token，由 **ta...
 
-- [[perlad]] — PerlAD：伪仿真 RL 闭环端到端自动驾驶，Bench2Drive SoTA
-- [[opd-autonomous-driving]] — On-Policy Distillation 自动驾驶运动规划（GPT-Driver + GKD）
+### memory
+- [[a-mem]] — 现有 agent 记忆系统（[[mem0]], MemoryBank）依赖**预定义的存储结构和固定工作流**，
+- [[agent-memory-system]] — LLM 固定上下文窗口无法支持长期多会话的上下文一致性。Agent Memory System 通过
+- [[ariadne-mem]] — 长期对话中 agent 记忆面临两大失败模式：
+- [[d-mem]] — 增量记忆处理（如 [[mem0]]）存在 **有损抽象 (lossy abstraction)** 问题：
+- [[hypermem]] — RAG 和图记忆系统基于 **成对关系**，无法捕捉高阶关联（多元素间的联合依赖），
+- [[lightmem-agent-memory]] — 用 Small Language Models (SLMs) 替代大模型做记忆操作，分离在线/离线处理。
+- [[memgpt]] — LLM 受限于固定上下文窗口，无法在多轮交互中管理超出上下文容量的信息。
+- [[memori-layer]] — LLM Agent 的持久记忆面临两大生产挑战：
+- [[memreader]] — 记忆提取从 **被动转录** (one-shot transcription) 转向 **主动决策** (reasoning-driven selecti...
+- [[nemori]] — 现有 agent 记忆系统依赖**预定义启发式**（重要性评分、情感标签、事实模板）决定"什么值得记住"，
+- [[self-evolving-memory]] — 跨异构任务的 LLM 记忆自进化：记忆系统在不同任务间迁移和进化，而非每个任务从零开始。
+- [[simplemem]] — 现有 agent 记忆方案的两难困境：
+- [[text2mem]] — 现有 agent 记忆框架暴露的操作原语不完整且不一致：
 
-## 近期原始资料 (Recent Raw Papers)
+### model
+- [[dynin-omni-diffusion]] — Most unified understanding-generation models are built on **autoregressive (A...
+- [[emo-omni]] — Existing Omni-LLMs struggle with complex real-world emotional scenarios:
+- [[m-plus-memoryllm]] — 超过此范围，被丢弃的 memory token 永久丢失，无法回溯。
+- [[memoryllm]] — 部署后的 LLM 参数静态不变，无法高效注入新知识。现有方案（RAG、model editing、长上下文）各有局限：
+- [[nim4-asr]] — > arXiv 2604.18105 | 2026-04-20 | 2.3B 参数 | 生产级 LLM-ASR 框架
+- [[omni-modal-llm]] — 统一处理 text + vision + audio + speech 输入/输出的大语言模型范式。代表模型: GPT-4o, [[qwen3-omni]...
+- [[u-mind-multimodal]] — Building an intelligent, fully interactive agent requires generating coherent...
 
-### OPD 与蒸馏 (2026-04)
-- `raw/papers/2026/04/2604.13016.md` — Rethinking OPD：现象学、机制与配方
-- `raw/papers/2026/04/2604.00626.md` — OPD 综述：统一 f-divergence 框架
-- `raw/papers/2026/04/2604.20244.md` — Hybrid Policy Distillation：混合策略蒸馏
-- `raw/papers/2026/04/2604.15774.md` — MemEvoBench：记忆误演化基准
-- `raw/papers/2026/04/2604.04461.md` — DP-OPD：差分隐私 OPD
-- `raw/papers/2026/04/2604.02288.md` — Fast Prefix Distillation (OPPD)：前缀蒸馏 2-47x 加速
-- `raw/papers/2026/04/2604.08000.md` — PASK Proactive Agent
-- `raw/papers/2026/04/2604.08407.md` — Agent Supply Chain Attack
-- `raw/papers/2026/04/2604.00715.md` — RAG-Considerate Pretraining Scaling Laws
-- `raw/papers/2026/04/2604.07789.md` — ORACLE-SWE：SWE Agent 的 oracle 信息贡献
-- `raw/papers/2026/04/2604.10599.md` — Rethinking SE for Agentic AI
-- `raw/papers/2026/04/2604.08477.md` — SUPERNOVA：自然指令 RL
-- `raw/papers/2026/04/2604.07884.md` — RL-Guided Synthetic Data
-- `raw/papers/2026/04/2604.11790.md` — ClawGuard：Agent 运行时安全
-- `raw/papers/2026/04/2604.10547.md` — Agent² RL-Bench
-- `raw/papers/2026/04/2604.10493.md` — SWE-Shepherd：Code Agent PRMs
-- `raw/papers/2026/04/2604.11790.md` — Visual Enhanced Depth Scaling
-- `raw/papers/2026/04/2604.14004.md` — Memory Transfer Learning in Coding Agents
+### multimodal
+- [[multimodal-latent-reasoning]] — 推理不一定要在 token 空间进行——可以在连续 embedding 空间做"潜在推理"。
+- [[omni-modality-preference]] — When processing multimodal inputs, models often implicitly assign unequal wei...
+- [[omni-r1]] — 传统多模态推理是纯文本的（看图→想→输出文字）。Omni-R1 提出了 **生成式多模态推理**：在推理过程中生成中间图像（放大区域、标注框、辅助线、视觉...
+- [[omnitrace-attribution]] — Modern MLLMs generate fluent responses from interleaved text, image, audio, a...
+- [[pseudo-unification-entropy]] — 表面上"统一"的多模态模型（UMMs），在信息论视角下存在 **双重分歧 (dual divergence)**：
+- [[svsr]] — 多模态推理的两阶段自我改进：
+- [[visual-depth-scaling]] — - 增加视觉条件的推理深度
 
-### RL Agent 与安全 (2025-05 ~ 2025-11)
-- `raw/papers/2025/05/23723.md` — ML-Agent：自主 ML 的 RL 框架
-- `raw/papers/2025/04/20073.md` — RAGEN：多轮 RL Agent，StarPO 框架
-- `raw/papers/2025/11/14460.md` — Agent-R1：端到端 RL for LLM Agents
-- `raw/papers/2025/05/23020.md` — AgentAlign：Agentic LLM 安全对齐
-- `raw/papers/2025/07/08270.md` — Agent Safety via RL：统一安全框架
-- `raw/papers/2025/04/14650.md` — Safe-BeAl：具身 Agent 安全
-- `raw/papers/2025/05/11063.md` — Thought-Aligner：思维纠正安全
-- `raw/papers/2025/09/25300.md` — RL Scaling Laws：Qwen2.5 数学推理缩放
-- `raw/papers/2025/03/09516.md` — Search-R1：搜索增强 RL 推理
+### omni
+- [[audio-omni]] — 首个端到端统一 **音频理解 + 生成 + 编辑** 的框架，覆盖通用声音、音乐、语音三大领域。
 
-### 基础与早期 (2023-2024)
-- `raw/papers/2023/06/13649.md` — Generalized Knowledge Distillation (GKD)
-- `raw/papers/2024/12/20367.md` — SWE-RL：软件演化 RL
-- `raw/papers/2024/07/12784.md` — AgentPoison：记忆/知识库投毒
-- `raw/papers/2024/12/06483.md` — SafeWorld：地理多样性安全
-- `raw/papers/2021/03/14659.md` — Alignment of Language Agents
+### omni-modal
+- [[omnijigsaw]] — 将 RL 后训练范式扩展到全模态模型，用 **时间重排** (temporal reordering) 作为自监督代理任务。
+
+### on-policy-distillation
+- [[opd-autonomous-driving]] — GPT-Driver 框架将驾驶场景表示为语言 prompt，用 CoT 生成 waypoint 轨迹。
+- [[scope-opd]] — 标准 OPD 对所有 rollout 统一应用 KL 监督，忽略了轨迹间信号质量的根本差异。SCOPE 按 **轨迹正确性** 路由到两条互补监督路径。
+
+### post-training
+- [[llm-post-training-unified-view]] — LLM 后训练的本质是 **结构化的行为干预** (structured intervention on model behavior)，而非孤立的方法选...
+
+### pretraining
+- [[llm-training-as-lossy-compression]] — LLM 预训练本质是 **有损压缩** (lossy compression)，训练数据的相关信息被保留，无关信息被丢弃。
+- [[rag-considerate-pretraining]] — 预训练 LLM 时，是否应该考虑下游 RAG 使用场景？传统预训练将 memorization 和 retrieval 视为独立问题。
+- [[scalable-moe-pretraining]] — 在 Aurora 超级计算机上大规模 MoE LLM 预训练的工程实践和 scaling 经验。
+- [[wrap-plus-plus]] — 现有 synthetic data 重写只操作单文档，无法建立跨文档关联。
+
+### reasoning
+- [[chain-of-thought]] — Chain-of-Thought (CoT) reasoning is a prompting technique where language mode...
+- [[out-of-context-reasoning]] — Out-of-context reasoning (OOCR) refers to the ability of large language model...
+- [[star]] — STaR (Self-Taught Reasoner) is a method where language models generate their ...
+
+### reward-model
+- [[reflectrm]] — 现有 Generative Reward Models (GRMs) 只关注 outcome-level supervision，忽略了分析过程质量。
+
+### rl
+- [[agent-r1-end-to-end-rl]] — *Framework for training powerful LLM agents with reinforcement learning (2025)*
+- [[agent2-rl-bench]] — LLM Agent 能否自主设计、实现、运行完整的 RL pipeline 来改进 foundation model？
+- [[deep-q-network]] — Deep Q-Network (DQN) is a deep reinforcement learning value-based method that...
+- [[faithful-grpo]] — RLVR 训练的 VLM 在视觉空间推理上存在 **accuracy-faithfulness 矛盾**：
+- [[g2rpo]] — GRPO 在多模态多任务 RL 中存在 **reward topology 方差极大** 的问题：
+- [[imitation-learning]] — Imitation Learning (IL) is a paradigm where an agent learns to perform tasks ...
+- [[interactive-imitation-learning]] — Interactive Imitation Learning extends standard [[imitation-learning]] by all...
+- [[ml-agent-autonomous-ml]] — *Learning-based agentic ML (2025)*
+- [[perception-grounded-po]] — VLM 的 RL 训练中，不是所有 token 都平等——视觉感知相关的 token 应该获得不同的优化策略。
+- [[perlad]] — PerlAD 提出了一种基于离线数据集的 **伪仿真 (Pseudo-simulation)** 环境，在向量空间中实现高效、无需渲染的 RL 训练，用于...
+- [[policy-split]] — LLM RL 训练中引入双模式探索策略，分离 exploit 和 explore 的优化路径。
+- [[ragegen-multi-turn-rl-agents]] — *StarPO framework for trajectory-level agent learning (2025)*
+- [[relax-async-rl-omni]] — Reinforcement learning (RL) post-training has become essential for unlocking ...
+- [[rl-post-training-scaling-laws]] — *Qwen2.5 mathematical reasoning study (2025)*
+- [[self-play-limitations]] — Self-play limitations refer to the constraints and failure modes of self-play...
+- [[stable-baselines3]] — Stable Baselines3 is a set of reliable implementations of reinforcement learn...
+- [[supernova]] — 在自然语言指令上用 RL 训练，激发 LLM 的通用推理能力——不需要专门的数学/代码推理数据。
+- [[ttvs]] — RLVR 依赖可验证的 reward signal，在专业/新领域不可用。
+- [[visually-guided-po]] — 视觉引导的策略优化：让 RL 训练的信号同时考虑视觉证据和语言推理。
+
+### rlhf
+- [[free-process-rewards]] — Free Process Rewards refers to the idea of obtaining process-level reinforcem...
+- [[reinforcement-learning-from-human-feedback]] — Reinforcement Learning from Human Feedback (RLHF) is a post-training techniqu...
+
+### safety
+- [[backdoor-awareness]] — Backdoor awareness refers to the ability of large language models to detect o...
+- [[memeovobench-memory-safety]] — *Benchmark for long-horizon memory safety (2026)*
+
+### self-distillation
+- [[skill-sd]] — 多轮 Agent 场景下的 self-distillation：按 skill 类型条件化蒸馏，让 agent 在不同能力维度上独立学习。
+
+### self-learning
+- [[epistemological-self-learning]] — 基于认识论 (epistemology) 原则增强 LLM 的自学习对话：让模型区分"知道"、"不知道"、"不确定"三种状态。
+
+### synthetic-data
+- [[blendfusion]] — 可扩展的合成数据生成方法，用于扩散模型训练。通过混合多种数据源和技术生成高质量训练数据。
+- [[optimsyn]] — 用 influence function 引导合成数据的 rubrics（规则/模板）优化：
+- [[polyglot-teachers]] — 评估 LLM 作为多语言合成数据生成器的能力：哪些语言、哪些模型最适合做"多语言教师"。
+- [[rl-guided-synthetic-data]] — 用强化学习引导合成数据生成过程，在保护隐私的同时最大化下游任务效用。
+
+### tool-use
+- [[agentic-coding]] — AI Agent 自主完成软件工程任务的模式。区别于传统的 code completion 或 chat 式编码助手，agentic coding 要求模...
+
+### training
+- [[multi-task-learning]] — Multi-Task Learning (MTL) is a learning paradigm where a single model is trai...
+- [[v2a-dpo]] — Video-to-Audio generation (V2A) aims to synthesize semantically consistent, t...
 
 ## Queries
+- [[opd-tokenizer-requirement]] — **Question:** 所有的on policy distillation技术里面student和teacher都需要是一套tokenizer吗
+- [[opd-vs-sft]] — **Question:** on policy distillation相比sft的话有什么优势啊？指标差距多大
+- [[qwen3-opd-usage]] — **Question:** qwen3里面的on policy distillation有用到吗？用到的话具体是什么做法
+- [[qwen3-tech-overview]] — **Question:** 关于qwen3的技术提到过吗
+- [[qwen3-voice-family-deep-dive]] — ```
 
-- [[qwen3-tech-overview]] — Qwen3 技术全景：思考/非思考模式、MoE、缩放、语音家族
-- [[qwen3-opd-usage]] — Qwen3 如何应用 OPD：后训练管线与思考预算
-- [[opd-tokenizer-requirement]] — OPD 的 tokenizer 要求与不匹配问题
-- [[opd-vs-sft]] — OPD vs SFT：分布匹配与长期推理收益
-
-## Comparisons
-
-- [[distillation-methods-comparison]] — 蒸馏方法对比：SFT / DPO / PPO / OPD / GKD
-- [[agent-frameworks-comparison]] — Agent 框架对比：RAGEN / Agent-R1 / ML-Agent / ReAct
-
----
+## References
+- [[llm-wiki-patches]] — This document describes the 4 patches applied to the upstream `llm-wiki` npm ...
