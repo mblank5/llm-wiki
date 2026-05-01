@@ -152,3 +152,6 @@ sources: [raw/articles/bytedance-seeduplex-2026-04-09.md]
 - [[duplex-cascade]] - DuplexCascade VAD-free 级联全双工方案
 - [[privacy-preserving-speech]] - 全双工语音模型隐私保护
 - [[stream-omni]] - 流式全双工语音交互模型
+- [[audio-agent]] — Audio-Agent 训练管线设计
+- [[duplex-agent-integration]] — 全双工 + Agent 融合架构
+- [[audio-frontend-backend-balance]] — 声学前端与后端 ASR 的平衡

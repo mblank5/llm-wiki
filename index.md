@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-05-01 | Total pages: 197 | Raw papers: 197
+> Last updated: 2026-05-01 | Total pages: 200 | Raw papers: 197
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -97,6 +97,8 @@
 
 ### audio
 - [[whisper-aut]] — 基于 Whisper 的领域适配音频编码器，用于高效 Audio-LLM 训练。
+- [[audio-agent]] — 以音频为输入、通过 ReAct 循环执行 Function Call 的智能体系统训练管线。
+- [[audio-frontend-backend-balance]] — 声学前端（降噪/AEC/波束成形）与后端 ASR 的分工平衡原则。
 
 ### behavioral-awareness
 - [[ai-self-awareness-game-theory]] — Game-theoretic measurement of AI self-awareness uses strategic games to test ...
@@ -113,6 +115,7 @@
 
 ### concept
 - [[duplex-cascade]] — DuplexCascade 是一种**无需 VAD 的级联流式流水线**，用于全双工语音到语音对话。其核心创新是将传统的整句轮次（utterance-wi...
+- [[duplex-agent-integration]] — 将全双工对话能力（打断、判停）与 Agent 能力（Function Call、Tool 使用）融合的系统架构。
 - [[full-duplex-speech-model]] — 全双工语音模型是指能够在同一时刻同时"听"和"说"的语音交互系统。区别于传统的半双工（half-duplex）"你讲我听、我讲你听"轮流机制，全双工模型实...
 - [[mtr-duplexbench]] — MTR-DuplexBench 是首个面向全双工语音语言模型（FD-SLM）的**多轮综合评测基准**。它不仅将连续全双工对话分割为离散轮次进行逐轮评估，...
 - [[privacy-preserving-speech]] — 本文首次系统研究了端到端全双工语音对话模型中 LLM 隐藏状态的**说话人身份泄露**问题，并提出了两种基于 Stream-Voice-Anon 的流式匿...
