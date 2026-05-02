@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-05-02 | Total pages: 228 | Raw papers: 203
+> Last updated: 2026-05-02 | Total pages: 236 | Raw papers: 214
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -70,6 +70,7 @@
 - [[exposure-bias]] — 1|# Exposure Bias in LLMs
 
 ### agent
+- [[agentic-world-modeling]] — Agentic World Modeling: three-level hierarchy (L1 Predictor → L2 Simulator → L3 Evolver) for agent environment dynamics modeling across physical/digital/social/scientific domains.
 - [[agent-supply-chain-attack]] — 第三方 API router 作为应用层代理，对每个 JSON payload 有完全明文访问权限。
 - [[clawguard]] — 针对 tool-augmented LLM agent 的间接 prompt 注入攻击，提供运行时安全框架。
 - [[agent-align]] — AgentAlign：Agentic LLM 安全对齐，抽象行为链合成数据，安全性 +43.7%
@@ -222,6 +223,7 @@
 - [[omnijigsaw]] — 将 RL 后训练范式扩展到全模态模型，用 **时间重排** (temporal reordering) 作为自监督代理任务。
 
 ### on-policy-distillation
+- [[co-evolving-policy-distillation]] — CoPD: parallel RLVR with bidirectional OPD interleaved during training, experts serve as mutual teachers, outperforms mixed RLVR and static OPD on multi-modal reasoning.
 - [[opd-autonomous-driving]] — GPT-Driver 框架将驾驶场景表示为语言 prompt，用 CoT 生成 waypoint 轨迹。
 - [[scope-opd]] — 标准 OPD 对所有 rollout 统一应用 KL 监督，忽略了轨迹间信号质量的根本差异。SCOPE 按 **轨迹正确性** 路由到两条互补监督路径。
 
@@ -243,6 +245,7 @@
 - [[reflectrm]] — 现有 Generative Reward Models (GRMs) 只关注 outcome-level supervision，忽略了分析过程质量。
 
 ### rl
+- [[cos-play-co-evolving-agents]] — COS-PLAY: co-evolving LLM decision agent + skill bank agent for long-horizon tasks, multi-LoRA GRPO training, 25.1% reward improvement with 8B model.
 - [[agent-r1-end-to-end-rl]] — *Framework for training powerful LLM agents with reinforcement learning (2025)*
 - [[agent2-rl-bench]] — LLM Agent 能否自主设计、实现、运行完整的 RL pipeline 来改进 foundation model？
 - [[deep-q-network]] — Deep Q-Network (DQN) is a deep reinforcement learning value-based method that...
@@ -272,6 +275,7 @@
 - [[memeovobench-memory-safety]] — *Benchmark for long-horizon memory safety (2026)*
 
 ### self-distillation
+- [[latent-agents-imad]] — IMAD: two-stage post-training distilling multi-agent debate into single LLM, 93% token reduction, creates agent-specific subspaces via activation steering.
 - [[skill-sd]] — 多轮 Agent 场景下的 self-distillation：按 skill 类型条件化蒸馏，让 agent 在不同能力维度上独立学习。
 
 ### self-learning
@@ -284,6 +288,7 @@
 - [[rl-guided-synthetic-data]] — 用强化学习引导合成数据生成过程，在保护隐私的同时最大化下游任务效用。
 
 ### tool-use
+- [[agenticqwen-dual-flywheel]] — AgenticQwen: dual data flywheels (reasoning + agentic) for training small agentic models, behavior tree expansion, closes gap with larger models on search/analysis.
 - [[agentic-coding]] — AI Agent 自主完成软件工程任务的模式。区别于传统的 code completion 或 chat 式编码助手，agentic coding 要求模...
 
 ### training

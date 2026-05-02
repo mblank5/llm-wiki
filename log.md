@@ -162,3 +162,12 @@
 - 训练数据：~172k 小时（4 语言），tokenizer 200k 小时
 - 添加到 index.md speech-model 部分
 - 包含 wikilinks: [[cosyvoice]], [[cosyvoice-3]], [[fun-codec]], [[fun-audio-llm]], [[seeduplex]]
+
+## [2026-05-02] ingest | Trending papers 深度调研入库 (5篇)
+- 创建 concepts/co-evolving-policy-distillation.md — CoPD: 并行 RLVR + 双向 OPD 交错训练，专家互为师生
+- 创建 concepts/latent-agents-imad.md — IMAD: 两阶段后训练将多 agent 辩论蒸馏到单模型，93% token 节省
+- 创建 concepts/agentic-world-modeling.md — 三层次世界模型框架 (L1→L2→L3)，跨物理/数字/社会/科学领域
+- 创建 concepts/agenticqwen-dual-flywheel.md — 双数据飞轮训练小型 agentic 模型，行为树扩展
+- 创建 concepts/cos-play-co-evolving-agents.md — COS-PLAY: LLM 决策 agent + skill bank 协同演化，多 LoRA GRPO
+- 保存 raw papers: 2604.27083 (pdf), 2604.24881 (md), 2604.22748 (md), 2604.21590 (md), 2604.20987 (pdf)
+- 更新 index.md: +5 条目，更新页数和 raw paper 计数
