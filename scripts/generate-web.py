@@ -2131,6 +2131,178 @@ def generate_all():
     print(f"\nDone! Generated {total} HTML pages in {OUTPUT_DIR}")
 
 
+def detect_changes():
+    """Detect what changed between source MD files and existing HTML output."""
+    new_pages = []
+    modified_pages = []
+    deleted_html = []
+
+    for page_type in ['entities', 'concepts', 'queries']:
+        type_dir = WIKI_ROOT / page_type
+        html_dir = OUTPUT_DIR / page_type
+        if not type_dir.exists():
+            continue
+
+        for md_file in type_dir.glob('*.md'):
+            html_file = html_dir / f'{md_file.stem}.html'
+            if not html_file.exists():
+                new_pages.append((page_type, md_file.stem, md_file))
+            elif md_file.stat().st_mtime > html_file.stat().st_mtime:
+                modified_pages.append((page_type, md_file.stem, md_file))
+
+        if html_dir.exists():
+            for html_file in html_dir.glob('*.html'):
+                if html_file.name == 'index.html':
+                    continue
+                name = html_file.stem
+                md_file = type_dir / f'{name}.md'
+                if not md_file.exists():
+                    deleted_html.append((page_type, name, html_file))
+
+    # Check structural changes
+    structural = []
+    for f in [WIKI_ROOT / 'index.md', WIKI_ROOT / 'SCHEMA.md']:
+        if f.exists():
+            html_dir = OUTPUT_DIR / 'static'
+            css_file = html_dir / 'wiki.css'
+            if css_file.exists() and f.stat().st_mtime > css_file.stat().st_mtime:
+                structural.append(f.name)
+
+    return new_pages, modified_pages, deleted_html, structural
+
+
+def show_status():
+    """Print change detection status."""
+    if not OUTPUT_DIR.exists():
+        print("No output directory found. Run full generation first.")
+        return False
+
+    new_pages, modified_pages, deleted_html, structural = detect_changes()
+
+    print(f"Wiki HTML sync status for {OUTPUT_DIR}")
+    print(f"{'=' * 50}")
+
+    if new_pages:
+        print(f"\n  NEW ({len(new_pages)}):")
+        for pt, name, _ in new_pages:
+            print(f"    + {pt}/{name}")
+    if modified_pages:
+        print(f"\n  MODIFIED ({len(modified_pages)}):")
+        for pt, name, _ in modified_pages:
+            print(f"    ~ {pt}/{name}")
+    if deleted_html:
+        print(f"\n  DELETED ({len(deleted_html)}):")
+        for pt, name, _ in deleted_html:
+            print(f"    - {pt}/{name}")
+    if structural:
+        print(f"\n  STRUCTURAL CHANGES: {', '.join(structural)}")
+        print("  → Full rebuild recommended")
+
+    total = len(new_pages) + len(modified_pages) + len(deleted_html)
+    if total == 0 and not structural:
+        print("\n  Everything is up to date.")
+
+    return total > 0 or len(structural) > 0
+
+
+def generate_incremental():
+    """Regenerate only changed pages."""
+    new_pages, modified_pages, deleted_html, structural = detect_changes()
+
+    needs_full = len(structural) > 0
+    if needs_full:
+        print("Structural changes detected, running full rebuild...")
+        generate_all()
+        return
+
+    all_changed = new_pages + modified_pages
+    if not all_changed and not deleted_html:
+        print("Everything is up to date. No changes needed.")
+        return
+
+    # Ensure output directories and symlinks exist
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    source_dir = OUTPUT_DIR / 'source'
+    source_dir.mkdir(exist_ok=True)
+    for target in ['entities', 'concepts', 'queries', 'raw', 'references']:
+        link = source_dir / target
+        if not link.exists():
+            link.symlink_to(WIKI_ROOT / target)
+
+    static_dir = OUTPUT_DIR / 'static'
+    if not static_dir.exists():
+        static_dir.mkdir(exist_ok=True)
+        (static_dir / 'wiki.css').write_text(CSS, encoding='utf-8')
+        (static_dir / 'wiki.js').write_text(JS, encoding='utf-8')
+
+    # Load all pages (needed for wikilink resolution and backlinks)
+    pages = load_all_pages()
+    backlinks = build_backlinks(pages)
+    categories = build_concept_categories(pages)
+
+    # Delete removed pages
+    for pt, name, html_file in deleted_html:
+        html_file.unlink(missing_ok=True)
+        print(f"  - Deleted {pt}/{name}.html")
+
+    # Regenerate changed/new pages
+    changed_types = set()
+    for pt, name, md_file in all_changed:
+        page = load_page(md_file, pt)
+        if page:
+            pages[name] = page
+            changed_types.add(pt)
+
+    # Rebuild backlinks for all pages (cheap, done in memory)
+    backlinks = build_backlinks(pages)
+
+    # Regenerate affected detail pages
+    for pt, name, md_file in all_changed:
+        page = pages.get(name)
+        if not page:
+            continue
+        html_dir = OUTPUT_DIR / pt
+        html_dir.mkdir(exist_ok=True)
+        (html_dir / f'{name}.html').write_text(
+            generate_detail(page, pages, backlinks), encoding='utf-8')
+        print(f"  {'+' if (pt, name, md_file) in new_pages else '~'} {pt}/{name}.html")
+
+    # Regenerate affected listing pages
+    if changed_types:
+        categories = build_concept_categories(pages)
+        if 'entities' in changed_types:
+            ent_dir = OUTPUT_DIR / 'entities'
+            ent_dir.mkdir(exist_ok=True)
+            (ent_dir / 'index.html').write_text(
+                generate_listing(pages, 'entities', 'Entities', 'Models, teams, and products', 'entities'),
+                encoding='utf-8')
+            print("  ~ entities/index.html")
+        if 'concepts' in changed_types:
+            con_dir = OUTPUT_DIR / 'concepts'
+            con_dir.mkdir(exist_ok=True)
+            (con_dir / 'index.html').write_text(
+                generate_concept_listing(pages, categories), encoding='utf-8')
+            print("  ~ concepts/index.html")
+        if 'queries' in changed_types:
+            q_dir = OUTPUT_DIR / 'queries'
+            q_dir.mkdir(exist_ok=True)
+            (q_dir / 'index.html').write_text(
+                generate_listing(pages, 'queries', 'Queries', 'Research questions and answers', 'queries'),
+                encoding='utf-8')
+            print("  ~ queries/index.html")
+
+    # Always update search index and home (they aggregate everything)
+    (OUTPUT_DIR / 'search-index.json').write_text(
+        generate_search_index(pages), encoding='utf-8')
+    (OUTPUT_DIR / 'index.html').write_text(
+        generate_home(pages, backlinks, categories), encoding='utf-8')
+    (OUTPUT_DIR / 'tags.html').write_text(
+        generate_tags_page(pages), encoding='utf-8')
+
+    total = len(new_pages) + len(modified_pages)
+    print(f"\nDone! Updated {total} pages ({len(new_pages)} new, {len(modified_pages)} modified, {len(deleted_html)} deleted)")
+
+
 def serve():
     import http.server
     import socketserver
@@ -2151,9 +2323,16 @@ def serve():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate LLM Wiki static site')
     parser.add_argument('--serve', action='store_true', help='Serve the site after generating')
+    parser.add_argument('--status', action='store_true', help='Show what changed since last generation')
+    parser.add_argument('--incremental', action='store_true', help='Only regenerate changed pages')
     args = parser.parse_args()
 
-    generate_all()
+    if args.status:
+        show_status()
+    elif args.incremental:
+        generate_incremental()
+    else:
+        generate_all()
 
     if args.serve:
         serve()
