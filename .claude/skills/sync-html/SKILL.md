@@ -1,5 +1,5 @@
 ---
-name: wiki-sync
+name: sync-html
 description: Incrementally sync the llm-wiki static HTML site when markdown source files change. Detects new, modified, and deleted pages, then regenerates only the affected HTML files (detail pages, listings, search index). Also supports full rebuild. Use this skill whenever the user mentions updating the wiki site, regenerating HTML, syncing the web output, or says something like "update the site", "rebuild wiki HTML", "sync pages", "the site is out of date". Also trigger when the user runs wiki ingest commands or mentions that new papers were ingested.
 ---
 
