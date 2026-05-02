@@ -533,7 +533,7 @@ def generate_detail(page, pages, backlinks):
     if page['sources']:
         src_items = []
         for s in page['sources']:
-            src_items.append(f'<a href="../source/{s}" class="source-link" title="{s}">{Path(s).stem}</a>')
+            src_items.append(f'<a href="../source/{s}" class="source-link" title="{s}">{Path(str(s)).stem}</a>')
         sources_html = f'<div class="meta-row"><span class="meta-label">Sources</span><span class="meta-value sources-list">{", ".join(src_items)}</span></div>'
 
     body = f'''
