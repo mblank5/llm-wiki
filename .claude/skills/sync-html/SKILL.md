@@ -59,6 +59,16 @@ Start preview server if needed:
 cd web/output && python3 -m http.server 8080
 ```
 
+### Step 4: Push to trigger live deployment
+
+The site auto-deploys to GitHub Pages via Actions. After generating HTML:
+
+1. Commit and push any source changes (new/modified MD files, index.md, etc.)
+2. GitHub Actions automatically rebuilds and deploys to: **https://mblank5.github.io/llm-wiki/**
+3. Deployment takes ~30 seconds
+
+You do NOT need to commit `web/output/` — the CI workflow runs the generator fresh.
+
 ## When to use each mode
 
 | Situation | Mode |
