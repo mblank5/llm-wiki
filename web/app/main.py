@@ -33,7 +33,7 @@ app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 # ── LLM Config ──────────────────────────────────────────────
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.longcat.chat/openai/v1")
 LLM_MODEL = os.getenv("LLM_MODEL", "LongCat-Flash-Chat-2602-Exp")
-LLM_API_KEY = os.getenv("LLM_API_KEY", "ak_2CL8y69Cu9An2GM6j34s49aF5Nc2T")
+LLM_API_KEY = os.getenv("LLM_API_KEY", "")
 LLM_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.3"))
 
 WIKIS_ROOT = DATA_DIR / "wikis"
