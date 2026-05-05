@@ -188,3 +188,9 @@
 - 创建 concepts/cos-play-co-evolving-agents.md — COS-PLAY: LLM 决策 agent + skill bank 协同演化，多 LoRA GRPO
 - 保存 raw papers: 2604.27083 (pdf), 2604.24881 (md), 2604.22748 (md), 2604.21590 (md), 2604.20987 (pdf)
 - 更新 index.md: +5 条目，更新页数和 raw paper 计数
+
+## [2026-05-05] create | MiniCPM-o 4.5 全双工 Omni-Modal 模型页面
+- 创建 concepts/minicpm-o-4-5.md — 深度分析论文 arXiv:2604.27393
+- 内容覆盖：Omni-Flow 时间对齐流式框架、TAIL 语音交错策略、四阶段训练流程、完整 benchmark 结果（视觉-语言/语音/全双工/文本）、边缘部署效率（llama.cpp-omni）、批判性分析
+- 更新 index.md: +2 条目（entities + concepts/audio 各一个）
+- 来源: /tmp/papers/2604.27393.html（论文 HTML 提取）

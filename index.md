@@ -22,6 +22,7 @@
 - [[longcat-video]] — 美团 LongCat 团队发布的开源视频生成基础模型（arXiv 2510.22200，2025-10）。**13.6B 参数**，基于 DiT 框架，支...
 - [[mem0]] — YC S24 批次公司。它动态地从对话中提取、整合、检索关键信息，使 Agent 能在多会话中保持个性化和上下文一致性。
 - [[mgm-omni]] — CUHK/JiaLiab 发布的 "Brain-Mouth" 双轨 Omni LLM，专注长音频理解和个性化语音生成。
+- [[minicpm-o-4-5]] — OpenBMB 9B 全双工 omni-modal LLM，Omni-Flow 时间对齐流式框架，可同时看、听、说并表现主动行为，<12GB RAM 边缘部署。
 - [[minmo]] — 阿里团队于 2025 年 1 月发布的无缝语音交互多模态大模型。
 - [[moshi]] — Kyutai 实验室于 2024 年 9 月发布的**首个实时全双工语音对话模型**。开创了多流自回归架构范式。
 - [[qwen3-5-omni]] — Qwen Team 发布的最新 Omni 模型（arxiv 2604.15804，2026-04-17/21），Qwen-Omni 家族的重大演进。相比 ...
@@ -116,6 +117,7 @@
 - [[second-order-collapse]] — Second-Order Collapse：量化文本 embedding 中的二阶坍塌，证明 mean pooling 有效源于 Transformer dynamics
 
 ### audio
+- [[minicpm-o-4-5]] — OpenBMB 发布的 9B 全双工 omni-modal LLM，核心创新是 Omni-Flow 时间对齐流式框架，可同时看、听、说并表现主动行为，可在 <12GB RAM 边缘设备运行。
 - [[whisper-aut]] — 基于 Whisper 的领域适配音频编码器，用于高效 Audio-LLM 训练。
 - [[audio-agent]] — 以音频为输入、通过 ReAct 循环执行 Function Call 的智能体系统训练管线。
 - [[audio-frontend-backend-balance]] — 声学前端（降噪/AEC/波束成形）与后端 ASR 的分工平衡原则。
