@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-05-02 | Total pages: 236 | Raw papers: 214
+> Last updated: 2026-05-05 | Total pages: 252 | Raw papers: 214
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -61,6 +61,7 @@
 ### 'rl'
 - [[cascade-rl]] — 1|# Cascade RL
 - [[ppo]] — 1|# Proximal Policy Optimization (PPO)
+- [[self-improving-pretraining]] — Self-Improving Pretraining：用 post-trained 模型做 suffix rewriting 的 RL 预训练框架，事实性 +36.2%
 
 ### 'speech-model'
 - [[cosyvoice-2]] — CosyVoice 2 流式零样本 TTS，FSQ 量化、预训练 LLM、统一流式/非流式 CFM，人类级质量
@@ -77,6 +78,14 @@
 - [[agent-safety-via-rl]] — Agent Safety via RL：统一安全对齐框架，三模态分类，沙箱 RL 环境，蚂蚁集团
 - [[thought-aligner]] — Thought-Aligner：轻量级插件式思维纠正模块，实时纠正高风险思维，安全性 ~50%→90%，延迟<100ms
 - [[alignment-waltz]] — WaltzRL：多 Agent 安全协作框架，conversation+feedback agent 联合训练，unsafe 39.0%→4.6%，Meta
+- [[agentic-harness-engineering]] — Agentic Harness Engineering (AHE)：可观测性驱动的 coding-agent harness 自动演化框架，解耦 7 个组件，+7.3pp pass@1
+- [[contextual-agentic-memory]] — Contextual Agentic Memory is a Memo：理论批判 agentic memory 本质是备忘录非真记忆，提出泛化差距定理
+- [[recursive-multi-agent-systems]] — RecursiveMAS：潜空间递归多智能体框架，RecursiveLink 模块迭代精化 latent state，+8.3% 准确率，节省 34-75% token
+- [[ssl-skill-representation]] — SSL (Scheduling-Structural-Logical)：三层结构化 Agent 技能表示，Skill Discovery MRR 0.573→0.707
+- [[rl-conductor]] — RL Conductor：用 RL 训练 LM 动态编排 worker LLM，GPQA 和 LiveCodeBench SOTA
+- [[agent-native-research-artifacts]] — Agent-Native Research Artifacts (Ara)：为 AI agent 设计的可执行研究产物格式，保留失败轨迹和工程细节
+- [[agentic-rec-tune]] — AgenticRecTune：多 Agent + 自进化 Skillhub 自动优化推荐系统配置
+- [[realm-retrieve]] — ReaLM-Retrieve：推理步级别的按需检索，RSUS 不确定性检测，F1 +10.1%，检索调用减少 47%
 
 ### Agent 安全新进展 (Agent Safety, 2026-03/04)
 - [[openclaw-safety-analysis]] — OpenClaw 真实安全分析：CIK 攻击模型，毒化 Agent 持久状态
@@ -102,6 +111,9 @@
 - [[mixture-of-experts]] — Mixture of Experts (MoE) is a neural network architecture that routes tokens ...
 - [[shortcut-connected-moe]] — **Shortcut-connected MoE** 是 [[longcat-flash]] 的另一核心架构创新，通过重排执行流水线来**扩大计算-通信重...
 - [[zero-computation-experts]] — **零计算专家**是 [[longcat-flash]] 架构的核心创新之一，一种在 Mixture-of-Experts (MoE) 模型中实现**动态...
+
+### embedding
+- [[second-order-collapse]] — Second-Order Collapse：量化文本 embedding 中的二阶坍塌，证明 mean pooling 有效源于 Transformer dynamics
 
 ### audio
 - [[whisper-aut]] — 基于 Whisper 的领域适配音频编码器，用于高效 Audio-LLM 训练。
@@ -168,9 +180,14 @@
 - [[audio-kv-cache]] — Large Audio-Language Models (LALMs) have set new benchmarks in speech process...
 - [[audiokv]] — Large Audio-Language Models 在长音频推理时 KV cache 占用巨大。
 - [[thinking-budget]] — Thinking budget refers to the computational allocation for reasoning steps in...
+- [[stochastic-kv-routing]] — Stochastic KV Routing (R-CLA)：随机跨层注意力路由实现 depth-wise KV cache 共享，显存减少 50-75%
 
 ### inference-optimization
 - [[speculative-decoding]] — Speculative Decoding 是一种 LLM 推理加速技术，通过轻量级 **draft model** 提前生成候选 token，由 **ta...
+
+### retrieval
+- [[tachiom]] — Tachiom：Token-Aware Clustering 替代 κ-means，百万级 centroid 聚类加速 247×，检索提速 9.8×
+- [[negative-data-mining-ikea]] — IKEA 负采样实验：结构化负采样 + LLM 相关性评分，揭示 offline-online 性能差距
 
 ### memory
 - [[a-mem]] — 现有 agent 记忆系统（[[mem0]], MemoryBank）依赖**预定义的存储结构和固定工作流**，
@@ -235,6 +252,7 @@
 - [[rag-considerate-pretraining]] — 预训练 LLM 时，是否应该考虑下游 RAG 使用场景？传统预训练将 memorization 和 retrieval 视为独立问题。
 - [[scalable-moe-pretraining]] — 在 Aurora 超级计算机上大规模 MoE LLM 预训练的工程实践和 scaling 经验。
 - [[wrap-plus-plus]] — 现有 synthetic data 重写只操作单文档，无法建立跨文档关联。
+- [[self-improving-pretraining]] — Self-Improving Pretraining：RL 预训练框架，用 post-trained 模型做 suffix rewriting，事实性 +36.2%，安全性 +18.5%
 
 ### reasoning
 - [[chain-of-thought]] — Chain-of-Thought (CoT) reasoning is a prompting technique where language mode...

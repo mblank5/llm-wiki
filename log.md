@@ -163,6 +163,23 @@
 - 添加到 index.md speech-model 部分
 - 包含 wikilinks: [[cosyvoice]], [[cosyvoice-3]], [[fun-codec]], [[fun-audio-llm]], [[seeduplex]]
 
+## [2026-05-05] ingest | Weekly trending papers 深度调研入库 (13篇)
+- 创建 concepts/agentic-harness-engineering.md — AHE: 可观测性驱动的 coding-agent harness 自动演化
+- 创建 concepts/contextual-agentic-memory.md — 理论批判 agentic memory 本质是备忘录非真记忆
+- 创建 concepts/recursive-multi-agent-systems.md — RecursiveMAS: 潜空间递归多智能体框架
+- 创建 concepts/ssl-skill-representation.md — SSL: 三层结构化 Agent 技能表示
+- 创建 concepts/rl-conductor.md — RL Conductor: RL 训练 LM 动态编排 worker LLM
+- 创建 concepts/self-improving-pretraining.md — RL 预训练: suffix rewriting 提升事实性和安全性
+- 创建 concepts/tachiom.md — Token-Aware Clustering 替代 κ-means，检索提速 9.8×
+- 创建 concepts/stochastic-kv-routing.md — R-CLA: KV cache 共享，显存减少 50-75%
+- 创建 concepts/second-order-collapse.md — 二阶坍塌量化，解释 mean pooling 有效性
+- 创建 concepts/agent-native-research-artifacts.md — Ara: agent-native 可执行研究产物格式
+- 创建 concepts/agentic-rec-tune.md — 多 Agent + 自进化 Skillhub 优化推荐系统
+- 创建 concepts/negative-data-mining-ikea.md — IKEA 负采样实验，揭示 offline-online 差距
+- 创建 concepts/realm-retrieve.md — ReaLM-Retrieve: 推理步级别按需检索
+- 来源: deepxiv trending --days 7 (2026-04-28 ~ 2026-05-05)
+- 更新 index.md: +13 条目，更新总页数
+
 ## [2026-05-02] ingest | Trending papers 深度调研入库 (5篇)
 - 创建 concepts/co-evolving-policy-distillation.md — CoPD: 并行 RLVR + 双向 OPD 交错训练，专家互为师生
 - 创建 concepts/latent-agents-imad.md — IMAD: 两阶段后训练将多 agent 辩论蒸馏到单模型，93% token 节省
