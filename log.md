@@ -6,6 +6,12 @@
 > When this file exceeds 500 entries, rotate: rename to log-YYYY.md, start fresh.
 > Previous log: log-2026.md (551 entries, rotated 2026-05-01)
 
+## [2026-06-07] ingest | MoshiRAG: Asynchronous Knowledge Retrieval for Full-Duplex Speech Language Models
+- arXiv: 2604.12928 | Kyutai Labs
+- Created: `concepts/moshirag.md` (full deep analysis)
+- Saved: `raw/papers/2026/04/2604.12928.md`
+- Updated: `index.md` (added moshi rag entry under full-duplex section)
+- Key: First full-duplex + RAG system, keyword delay exploitation, async retrieval, plug-and-play backends
 ## [2026-05-01] create | Audio-Agent 概念页面
 - 创建 concepts/audio-agent.md
 - 内容：Audio-Agent 训练管线（四阶段：Adaptor 预训练 → Agent SFT → OPD 对齐 → RL 优化）

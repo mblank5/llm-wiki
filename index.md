@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-05-05 | Total pages: 252 | Raw papers: 214
+> Last updated: 2026-06-07 | Total pages: 251 | Raw papers: 212
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -25,6 +25,7 @@
 - [[minicpm-o-4-5]] — OpenBMB 9B 全双工 omni-modal LLM，Omni-Flow 时间对齐流式框架，可同时看、听、说并表现主动行为，<12GB RAM 边缘部署。
 - [[minmo]] — 阿里团队于 2025 年 1 月发布的无缝语音交互多模态大模型。
 - [[moshi]] — Kyutai 实验室于 2024 年 9 月发布的**首个实时全双工语音对话模型**。开创了多流自回归架构范式。
+- [[moshirag]] — Kyutai Labs 首个全双工语音 + RAG 系统，利用 keyword delay 异步检索提升事实性，TriviaQA +46.8pp，即插即用后端 (Gemma/GPT-4.1/Tavily)。
 - [[qwen3-5-omni]] — Qwen Team 发布的最新 Omni 模型（arxiv 2604.15804，2026-04-17/21），Qwen-Omni 家族的重大演进。相比 ...
 - [[qwen3-asr]] — 阿里 Qwen 团队 2026-01 发布的多语言 ASR 模型家族，基于 [[qwen3-omni]] 的音频理解能力构建。
 - [[qwen3-omni]] — 阿里 Qwen 团队 2025-09 发布的统一多模态模型，首次实现 text/image/audio/video 全模态 SOTA 且无单模态退化。
