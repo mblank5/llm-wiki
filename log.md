@@ -6,6 +6,27 @@
 > When this file exceeds 500 entries, rotate: rename to log-YYYY.md, start fresh.
 > Previous log: log-2026.md (551 entries, rotated 2026-05-01)
 
+## [2026-05-09] create | OpenSeeker-v2 概念页面（深度分析）
+- 源文件: /tmp/papers/2605.04036.txt
+- 创建 concepts/openseeker-v2.md — 深度分析 arXiv 2605.04036
+- 保存 raw/papers/2026/05/2605.04036.md
+- 内容覆盖：
+  - 核心问题定义：挑战 CPT+SFT+RL 重型管线，证明纯 SFT+高质量数据足以匹敌工业方案
+  - 方法详解：三大修改（图谱扩展 K>k、工具集扩展、严格低步过滤 T≥T_min）
+  - 完整公式：G_sub^(K) = Expand(G, v_seed, K)、q ~ P_gen(q | G_sub^(K))、D_v2 过滤公式
+  - 完整实验表：BrowseComp 46.0%, BC-ZH 58.1%, HLE 34.6%, xbench 78.0%
+  - 对比基线：vs Tongyi DeepResearch、RedSearcher、WebSailor、WebLeaper 及闭源模型
+  - 训练配置：Qwen3-30B-A3B、256k ctx、10.6k 样本、纯 SFT
+  - 批判性分析：7 项不足/疑问、5 项启发
+- 更新 index.md: +1 条目（tool-use 分类）
+- 包含 wikilinks: [[agenticqwen-dual-flywheel]], [[ragegen-multi-turn-rl-agents]], [[grpo-rl-training]], [[rl-conductor]], [[on-policy-distillation]]
+
+## [2026-05-09] create | Horizon Length Training Study 概念页面
+- arXiv: 2605.02572 | Kim et al.
+- 创建 concepts/horizon-length-training-study.md（深度分析级别）
+- 内容：horizon length 作为 RL 训练独立瓶颈的实证研究，Horizon Reduction 方法（macro actions / subgoal decomposition），完整实验表格（Sudoku + Rush Hour 跨 horizon 评估），训练配置，对 GRPO/PPO/后训练的启发
+- 更新 index.md（添加到 rl 分类下）
+
 ## [2026-06-07] ingest | MoshiRAG: Asynchronous Knowledge Retrieval for Full-Duplex Speech Language Models
 - arXiv: 2604.12928 | Kyutai Labs
 - Created: `concepts/moshirag.md` (full deep analysis)

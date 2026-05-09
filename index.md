@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-06-07 | Total pages: 251 | Raw papers: 212
+Last updated: 2026-05-09 | Total pages: 253 | Raw papers: 213
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -64,6 +64,7 @@
 - [[cascade-rl]] — 1|# Cascade RL
 - [[ppo]] — 1|# Proximal Policy Optimization (PPO)
 - [[self-improving-pretraining]] — Self-Improving Pretraining：用 post-trained 模型做 suffix rewriting 的 RL 预训练框架，事实性 +36.2%
+- [[horizon-length-training-study]] — arXiv 2605.02572 实证研究：horizon length 是 RL 训练独立瓶颈，Horizon Reduction（macro actions / subgoal decomposition）稳定训练并实现 horizon generalization
 
 ### 'speech-model'
 - [[cosyvoice-2]] — CosyVoice 2 流式零样本 TTS，FSQ 量化、预训练 LLM、统一流式/非流式 CFM，人类级质量
@@ -311,6 +312,7 @@
 ### tool-use
 - [[agenticqwen-dual-flywheel]] — AgenticQwen: dual data flywheels (reasoning + agentic) for training small agentic models, behavior tree expansion, closes gap with larger models on search/analysis.
 - [[agentic-coding]] — AI Agent 自主完成软件工程任务的模式。区别于传统的 code completion 或 chat 式编码助手，agentic coding 要求模...
+- [[openseeker-v2]] — 纯 SFT 训练的高难度搜索 Agent，10.6k 样本达到 BrowseComp 46.0% SOTA，超越 Tongyi DeepResearch（CPT+SFT+RL）
 
 ### training
 - [[multi-task-learning]] — Multi-Task Learning (MTL) is a learning paradigm where a single model is trai...
