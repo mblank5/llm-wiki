@@ -14,6 +14,7 @@ import os
 import sys
 import re
 import json
+import html
 import webbrowser
 import argparse
 from pathlib import Path
@@ -30,8 +31,8 @@ import markdown
 
 WIKI_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = WIKI_ROOT / "web" / "output"
-SITE_NAME = "LLM Wiki"
-SITE_SUBTITLE = "AI/ML Research Knowledge Base"
+SITE_NAME = "LLM 研究知识库"
+SITE_SUBTITLE = "论文、概念与模型的长期研究档案"
 
 TAG_COLORS = {
     'model': '#D4A04A',
@@ -63,6 +64,18 @@ TAG_COLORS = {
 }
 
 DEFAULT_TAG_COLOR = '#8B8D94'
+
+TYPE_LABELS = {
+    'entities': '实体',
+    'concepts': '概念',
+    'queries': '问答',
+}
+
+TYPE_DESCRIPTIONS = {
+    'entities': '模型、机构、产品与重要对象',
+    'concepts': '技术路线、方法、范式与研究主题',
+    'queries': '围绕具体问题沉淀下来的研究回答',
+}
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -185,14 +198,90 @@ def render_markdown(text, pages):
     return md.convert(text)
 
 
-def get_preview(content, max_len=160):
+def clean_inline(text):
+    text = re.sub(r'\[\[([^\]|]+)\|([^\]]+)\]\]', r'\2', text)
+    text = re.sub(r'\[\[([^\]]+)\]\]', r'\1', text)
+    text = re.sub(r'\*\*([^*]+)\*\*', r'\1', text)
+    text = re.sub(r'`([^`]+)`', r'\1', text)
+    text = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', text)
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
+
+def get_preview(content, max_len=260):
     for line in content.split('\n'):
         stripped = line.strip()
         if stripped and not stripped.startswith('#') and not stripped.startswith('>') and not stripped.startswith('```'):
+            stripped = clean_inline(stripped.lstrip('-0123456789. '))
+            if not stripped or stripped == '---':
+                continue
+            if re.match(r'^(arXiv|Date|Authors|Affiliation|Code|GitHub|Paper|Source)\s*[:：|]', stripped, re.I):
+                continue
+            if re.match(r'^\|?[-:\s|]+\|?$', stripped):
+                continue
             if len(stripped) > max_len:
                 return stripped[:max_len] + '...'
             return stripped
     return ''
+
+
+def get_headings(content, limit=5):
+    headings = []
+    for line in content.split('\n'):
+        m = re.match(r'^(#{2,3})\s+(.+)$', line.strip())
+        if not m:
+            continue
+        title = clean_inline(m.group(2))
+        title = re.sub(r'^\d+(\.\d+)*\s*[.:、-]?\s*', '', title)
+        if title and title not in headings:
+            headings.append(title)
+        if len(headings) >= limit:
+            break
+    return headings
+
+
+def reading_minutes(content):
+    body = re.sub(r'```.*?```', '', content, flags=re.DOTALL)
+    count = len(re.sub(r'\s+', '', body))
+    return max(1, round(count / 650))
+
+
+def format_date(value):
+    if not value:
+        return '未标注'
+    return str(value)
+
+
+def page_summary_chips(page, max_items=4):
+    headings = get_headings(page['content'], max_items)
+    if not headings:
+        headings = page['tags'][:max_items]
+    return ''.join(f'<span class="summary-chip">{html.escape(h)}</span>' for h in headings)
+
+
+def anchor_id(text):
+    return re.sub(r'[^a-zA-Z0-9_-]+', '-', str(text)).strip('-') or 'section'
+
+
+def paper_metadata(md_file):
+    rel_text = md_file.read_text(encoding='utf-8', errors='ignore')[:1800]
+    title = md_file.stem
+    preview = ''
+    for line in rel_text.split('\n'):
+        stripped = clean_inline(line.strip())
+        if not stripped:
+            continue
+        if line.startswith('# '):
+            title = stripped.lstrip('# ').strip()
+            continue
+        if line.startswith('Title:'):
+            title = stripped[6:].strip()
+            continue
+        if not preview and not stripped.startswith('#') and len(stripped) > 30:
+            preview = stripped
+    if len(preview) > 220:
+        preview = preview[:220] + '...'
+    return title, preview
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -217,11 +306,11 @@ def relative_path_to_root(page_type=None):
 def generate_nav(current_section=None, page_type=None):
     root = relative_path_to_root(page_type)
     sections = [
-        ('home', 'Overview', f'{root}index.html', '⬡'),
-        ('entities', 'Entities', f'{root}entities/index.html', '◆'),
-        ('concepts', 'Concepts', f'{root}concepts/index.html', '◇'),
-        ('queries', 'Queries', f'{root}queries/index.html', '◈'),
-        ('papers', 'Papers', f'{root}papers/index.html', '▤'),
+        ('home', '总览', f'{root}index.html', '⬡'),
+        ('entities', '实体', f'{root}entities/index.html', '◆'),
+        ('concepts', '概念', f'{root}concepts/index.html', '◇'),
+        ('queries', '问答', f'{root}queries/index.html', '◈'),
+        ('papers', '论文', f'{root}papers/index.html', '▤'),
     ]
     items = []
     for key, label, href, icon in sections:
@@ -257,13 +346,13 @@ def html_head(title, current_section=None, page_type=None):
 <div class="sidebar-search">
 <div class="search-wrapper">
 <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-<input type="text" id="search-input" placeholder="Search...  /" autocomplete="off">
+<input type="text" id="search-input" placeholder="搜索概念、模型、标签... /" autocomplete="off">
 </div>
 <div id="search-results" class="search-results"></div>
 </div>
 </div>
 </aside>
-<button id="sidebar-toggle" aria-label="Toggle navigation">
+<button id="sidebar-toggle" aria-label="打开导航">
 <span></span><span></span><span></span>
 </button>
 <main id="main">'''
@@ -283,6 +372,7 @@ def generate_home(pages, backlinks, categories):
     entity_pages = [p for p in pages.values() if p['type'] == 'entities']
     concept_pages = [p for p in pages.values() if p['type'] == 'concepts']
     query_pages = [p for p in pages.values() if p['type'] == 'queries']
+    paper_count = len(list((WIKI_ROOT / 'raw' / 'papers').rglob('*.md')))
 
     all_tags = defaultdict(int)
     for p in pages.values():
@@ -290,18 +380,18 @@ def generate_home(pages, backlinks, categories):
             all_tags[t] += 1
 
     tag_cloud = ' '.join(
-        f'<a href="tags.html" class="tag" style="--tag-color: {TAG_COLORS.get(t, DEFAULT_TAG_COLOR)}; font-size: {min(1.0 + c * 0.05, 1.6)}em">{t} <small>({c})</small></a>'
-        for t, c in sorted(all_tags.items(), key=lambda x: -x[1])
+        f'<a href="tags.html" class="tag" style="--tag-color: {TAG_COLORS.get(t, DEFAULT_TAG_COLOR)}">{t} <small>{c}</small></a>'
+        for t, c in sorted(all_tags.items(), key=lambda x: -x[1])[:32]
     )
 
-    recent = sorted(pages.values(), key=lambda p: p['updated'] or '0', reverse=True)[:12]
+    recent = sorted(pages.values(), key=lambda p: p['updated'] or '0', reverse=True)[:10]
 
     cat_cards = []
-    for cat, count in [('Entities', len(entity_pages)), ('Concepts', len(concept_pages)),
-                        ('Queries', len(query_pages)), ('Categories', len(categories))]:
-        icons = {'Entities': '◆', 'Concepts': '◇', 'Queries': '◈', 'Categories': '⊞'}
-        links = {'Entities': 'entities/index.html', 'Concepts': 'concepts/index.html',
-                 'Queries': 'queries/index.html', 'Categories': 'concepts/index.html'}
+    for cat, count in [('实体', len(entity_pages)), ('概念', len(concept_pages)),
+                        ('问答', len(query_pages)), ('论文', paper_count)]:
+        icons = {'实体': '◆', '概念': '◇', '问答': '◈', '论文': '▤'}
+        links = {'实体': 'entities/index.html', '概念': 'concepts/index.html',
+                 '问答': 'queries/index.html', '论文': 'papers/index.html'}
         cat_cards.append(f'''
         <a href="{links[cat]}" class="stat-card">
             <div class="stat-icon">{icons[cat]}</div>
@@ -311,17 +401,30 @@ def generate_home(pages, backlinks, categories):
 
     recent_items = []
     for p in recent:
+        chips = page_summary_chips(p, 3)
         recent_items.append(f'''
         <a href="{p['type']}/{p['name']}.html" class="recent-item">
-            <span class="recent-type {p['type']}">{p['type'][:-1] if p['type'].endswith('s') else p['type']}</span>
-            <span class="recent-title">{p['title'][:60]}</span>
-            <span class="recent-date">{p['updated']}</span>
+            <span class="recent-type {p['type']}">{TYPE_LABELS.get(p['type'], p['type'])}</span>
+            <span class="recent-main">
+                <span class="recent-title">{html.escape(p['title'])}</span>
+                <span class="recent-preview">{html.escape(get_preview(p['content'], 180))}</span>
+                <span class="summary-chips">{chips}</span>
+            </span>
+            <span class="recent-date">{format_date(p['updated'])}</span>
+        </a>''')
+
+    focus_items = []
+    for cat, names in sorted(categories.items(), key=lambda x: -len(x[1]))[:10]:
+        focus_items.append(f'''
+        <a href="concepts/index.html#cat-{anchor_id(cat)}" class="focus-item">
+            <span>{html.escape(cat)}</span>
+            <strong>{len(names)}</strong>
         </a>''')
 
     body = f'''
     <div class="home-header">
         <h1 class="home-title">{SITE_NAME}</h1>
-        <p class="home-desc">{SITE_SUBTITLE} &mdash; {len(pages)} pages, built from ArXiv papers and research notes.</p>
+        <p class="home-desc">{SITE_SUBTITLE}。当前沉淀 {len(pages)} 个知识页面、{paper_count} 篇论文源材料，覆盖模型架构、后训练、语音多模态、智能体与推理等方向。</p>
     </div>
 
     <div class="stats-grid">
@@ -330,14 +433,18 @@ def generate_home(pages, backlinks, categories):
 
     <div class="home-grid">
         <section class="home-section">
-            <h2 class="section-title">Recent Updates</h2>
+            <h2 class="section-title">最近更新</h2>
             <div class="recent-list">
                 {''.join(recent_items)}
             </div>
         </section>
 
         <section class="home-section">
-            <h2 class="section-title">Tags</h2>
+            <h2 class="section-title">主题索引</h2>
+            <div class="focus-grid">
+                {''.join(focus_items)}
+            </div>
+            <h2 class="section-title secondary">高频标签</h2>
             <div class="tag-cloud">
                 {tag_cloud}
             </div>
@@ -359,15 +466,16 @@ def generate_listing(pages, page_type, title, description, current_section):
     if page_type == 'entities':
         cards = []
         for p in type_pages:
-            preview = get_preview(p['content'])
+            preview = get_preview(p['content'], 320)
             cards.append(f'''
             <a href="{p['name']}.html" class="page-card">
                 <div class="page-card-header">
-                    <h3 class="page-card-title">{p['title']}</h3>
-                    <span class="page-card-date">{p['updated'] or p['created']}</span>
+                    <h3 class="page-card-title">{html.escape(p['title'])}</h3>
+                    <span class="page-card-date">{format_date(p['updated'] or p['created'])}</span>
                 </div>
-                <p class="page-card-preview">{preview}</p>
-                <div class="page-card-tags">{tags_html(p['tags'][:5])}</div>
+                <p class="page-card-preview">{html.escape(preview)}</p>
+                <div class="summary-chips">{page_summary_chips(p, 4)}</div>
+                <div class="page-card-tags">{tags_html(p['tags'][:6])}</div>
             </a>''')
         grid = f'<div class="page-grid">{"".join(cards)}</div>'
     else:
@@ -376,12 +484,14 @@ def generate_listing(pages, page_type, title, description, current_section):
             items.append(f'''
             <a href="{p['name']}.html" class="list-item">
                 <div class="list-item-main">
-                    <h3>{p['title']}</h3>
-                    <p>{get_preview(p['content'], 200)}</p>
+                    <h3>{html.escape(p['title'])}</h3>
+                    <p>{html.escape(get_preview(p['content'], 340))}</p>
+                    <div class="summary-chips">{page_summary_chips(p, 4)}</div>
                 </div>
                 <div class="list-item-meta">
-                    <span class="list-item-date">{p['updated'] or p['created']}</span>
-                    <div class="page-card-tags">{tags_html(p['tags'][:3])}</div>
+                    <span class="list-item-type {p['type']}">{TYPE_LABELS.get(p['type'], p['type'])}</span>
+                    <span class="list-item-date">{format_date(p['updated'] or p['created'])}</span>
+                    <div class="page-card-tags">{tags_html(p['tags'][:4])}</div>
                 </div>
             </a>''')
         grid = f'<div class="list-view">{"".join(items)}</div>'
@@ -389,11 +499,11 @@ def generate_listing(pages, page_type, title, description, current_section):
     body = f'''
     <div class="listing-header">
         <div class="breadcrumb">
-            <a href="../index.html">Home</a> <span class="sep">/</span>
+            <a href="../index.html">总览</a> <span class="sep">/</span>
             <span class="current">{title}</span>
         </div>
         <h1>{title}</h1>
-        <p class="listing-desc">{description} &mdash; {len(type_pages)} pages</p>
+        <p class="listing-desc">{description}，共 {len(type_pages)} 个页面。列表展示摘要、主要小节和标签，方便快速判断是否值得进入详情。</p>
     </div>
     {grid}
     '''
@@ -404,12 +514,16 @@ def generate_listing(pages, page_type, title, description, current_section):
 # ── Concept Listing (grouped by category) ──────────────────
 
 def generate_concept_listing(pages, categories):
-    total = sum(len(v) for v in categories.values())
+    total = len([p for p in pages.values() if p['type'] == 'concepts'])
     uncat = [p for p in pages.values() if p['type'] == 'concepts' and
              not any(p['name'] in v for v in categories.values())]
 
     sections = []
-    for cat, names in sorted(categories.items()):
+    category_items = list(sorted(categories.items(), key=lambda x: (-len(x[1]), x[0].lower())))
+    if uncat:
+        category_items.append(('未归类', [p['name'] for p in uncat]))
+
+    for cat, names in category_items:
         cat_pages = [pages[n] for n in names if n in pages]
         if not cat_pages:
             continue
@@ -417,15 +531,19 @@ def generate_concept_listing(pages, categories):
         for p in sorted(cat_pages, key=lambda x: x['title'].lower()):
             items.append(f'''
             <a href="{p['name']}.html" class="page-card compact">
-                <h3>{p['title']}</h3>
-                <p>{get_preview(p['content'])}</p>
-                <div class="page-card-tags">{tags_html(p['tags'][:4])}</div>
+                <div class="page-card-header compact">
+                    <h3>{html.escape(p['title'])}</h3>
+                    <span>{reading_minutes(p['content'])} 分钟</span>
+                </div>
+                <p>{html.escape(get_preview(p['content'], 280))}</p>
+                <div class="summary-chips">{page_summary_chips(p, 3)}</div>
+                <div class="page-card-tags">{tags_html(p['tags'][:5])}</div>
             </a>''')
         sections.append(f'''
-        <section class="category-section" id="cat-{cat}">
+        <section class="category-section" id="cat-{anchor_id(cat)}">
             <h2 class="category-title">
                 <span class="cat-count">{len(cat_pages)}</span>
-                {cat}
+                {html.escape(cat)}
             </h2>
             <div class="page-grid compact-grid">
                 {''.join(items)}
@@ -433,24 +551,24 @@ def generate_concept_listing(pages, categories):
         </section>''')
 
     cat_nav = ''.join(
-        f'<a href="#cat-{cat}" class="cat-nav-item"><span class="cat-count">{len(names)}</span>{cat}</a>'
-        for cat, names in sorted(categories.items()) if any(n in pages for n in names)
+        f'<a href="#cat-{anchor_id(cat)}" class="cat-nav-item"><span class="cat-count">{len(names)}</span>{html.escape(cat)}</a>'
+        for cat, names in category_items if any(n in pages for n in names)
     )
 
     body = f'''
     <div class="listing-header">
         <div class="breadcrumb">
-            <a href="../index.html">Home</a> <span class="sep">/</span>
-            <span class="current">Concepts</span>
+            <a href="../index.html">总览</a> <span class="sep">/</span>
+            <span class="current">概念</span>
         </div>
-        <h1>Concepts</h1>
-        <p class="listing-desc">Techniques, methods, and research topics &mdash; {total} pages in {len(categories)} categories</p>
+        <h1>概念</h1>
+        <p class="listing-desc">按研究主题组织的技术路线、方法和范式，共 {total} 个页面、{len(category_items)} 个分组。每张卡片保留更长摘要和主要小节。</p>
     </div>
     <div class="cat-nav">{cat_nav}</div>
     {''.join(sections)}
     '''
 
-    return html_head('Concepts', 'concepts', 'concepts') + body + html_foot('concepts')
+    return html_head('概念', 'concepts', 'concepts') + body + html_foot('concepts')
 
 
 # ── Papers Listing ──────────────────────────────────────────
@@ -463,18 +581,10 @@ def generate_papers_listing():
     papers = []
     for md_file in sorted(papers_dir.rglob('*.md'), reverse=True):
         rel = md_file.relative_to(papers_dir)
-        text = md_file.read_text(encoding='utf-8')[:500]
-        title = md_file.stem
-        for line in text.split('\n'):
-            if line.startswith('# '):
-                title = line[2:].strip()
-                break
-            if line.startswith('Title:'):
-                title = line[6:].strip()
-                break
+        title, preview = paper_metadata(md_file)
         date_match = re.match(r'(\d{4})/(\d{2})', str(rel))
         date_str = f"{date_match.group(1)}-{date_match.group(2)}" if date_match else ''
-        papers.append({'id': md_file.stem, 'title': title, 'date': date_str, 'relpath': str(rel)})
+        papers.append({'id': md_file.stem, 'title': title, 'preview': preview, 'date': date_str, 'relpath': str(rel)})
 
     items = []
     for p in papers:
@@ -482,30 +592,31 @@ def generate_papers_listing():
         items.append(f'''
         <div class="list-item paper-item">
             <div class="list-item-main">
-                <h3>{p['title']}</h3>
+                <h3>{html.escape(p['title'])}</h3>
+                <p>{html.escape(p['preview'])}</p>
                 <span class="paper-id">{p['id']}</span>
             </div>
             <div class="list-item-meta">
                 <span class="list-item-date">{p['date']}</span>
-                <a href="{md_href}" class="md-link" title="View source .md">.md</a>
+                <a href="{md_href}" class="md-link" title="查看源 Markdown">源文件</a>
             </div>
         </div>''')
 
     body = f'''
     <div class="listing-header">
         <div class="breadcrumb">
-            <a href="../index.html">Home</a> <span class="sep">/</span>
-            <span class="current">Papers</span>
+            <a href="../index.html">总览</a> <span class="sep">/</span>
+            <span class="current">论文</span>
         </div>
-        <h1>Raw Papers</h1>
-        <p class="listing-desc">Source material from ArXiv &mdash; {len(papers)} papers</p>
+        <h1>论文源材料</h1>
+        <p class="listing-desc">来自 arXiv 等来源的 Markdown 化论文材料，共 {len(papers)} 篇。这里保留标题、时间、摘要片段和源文件入口。</p>
     </div>
     <div class="list-view">
         {''.join(items)}
     </div>
     '''
 
-    return html_head('Papers', 'papers', 'papers') + body + html_foot('papers')
+    return html_head('论文', 'papers', 'papers') + body + html_foot('papers')
 
 
 # ── Detail Page ─────────────────────────────────────────────
@@ -521,48 +632,56 @@ def generate_detail(page, pages, backlinks):
 
     source_md_href = f"../source/{page['md_relpath']}"
 
-    type_labels = {'entities': 'Entity', 'concepts': 'Concept', 'queries': 'Query'}
-
     meta_html = ''
     if page['created']:
-        meta_html += f'<div class="meta-row"><span class="meta-label">Created</span><span class="meta-value">{page["created"]}</span></div>'
+        meta_html += f'<div class="meta-row"><span class="meta-label">创建</span><span class="meta-value">{format_date(page["created"])}</span></div>'
     if page['updated']:
-        meta_html += f'<div class="meta-row"><span class="meta-label">Updated</span><span class="meta-value">{page["updated"]}</span></div>'
+        meta_html += f'<div class="meta-row"><span class="meta-label">更新</span><span class="meta-value">{format_date(page["updated"])}</span></div>'
+    meta_html += f'<div class="meta-row"><span class="meta-label">阅读量级</span><span class="meta-value">{reading_minutes(page["content"])} 分钟</span></div>'
 
     sources_html = ''
     if page['sources']:
         src_items = []
         for s in page['sources']:
             src_items.append(f'<a href="../source/{s}" class="source-link" title="{s}">{Path(str(s)).stem}</a>')
-        sources_html = f'<div class="meta-row"><span class="meta-label">Sources</span><span class="meta-value sources-list">{", ".join(src_items)}</span></div>'
+        sources_html = f'<div class="meta-row"><span class="meta-label">来源</span><span class="meta-value sources-list">{", ".join(src_items)}</span></div>'
+
+    guide_items = ''.join(f'<li>{html.escape(h)}</li>' for h in get_headings(page['content'], 8))
+    guide_html = f'''
+            <section class="reading-guide">
+                <div class="guide-kicker">{TYPE_LABELS.get(page["type"], page["type"])}导读</div>
+                <p>{html.escape(get_preview(page["content"], 360))}</p>
+                {f'<ol>{guide_items}</ol>' if guide_items else ''}
+            </section>'''
 
     body = f'''
     <div class="detail-header">
         <div class="breadcrumb">
-            <a href="../../index.html">Home</a> <span class="sep">/</span>
-            <a href="index.html">{type_labels.get(page["type"], page["type"])}</a> <span class="sep">/</span>
-            <span class="current">{page["title"][:40]}</span>
+            <a href="../index.html">总览</a> <span class="sep">/</span>
+            <a href="index.html">{TYPE_LABELS.get(page["type"], page["type"])}</a> <span class="sep">/</span>
+            <span class="current">{html.escape(page["title"][:40])}</span>
         </div>
         <div class="detail-top-bar">
-            <a href="{source_md_href}" class="view-md-btn" title="View source markdown file">
-                <span class="md-icon">↗</span> Source .md
+            <a href="{source_md_href}" class="view-md-btn" title="查看源 Markdown">
+                <span class="md-icon">↗</span> 源 Markdown
             </a>
         </div>
     </div>
 
     <article class="detail-content">
         <div class="detail-meta">
-            <div class="detail-type-badge {page["type"]}">{type_labels.get(page["type"], page["type"])}</div>
+            <div class="detail-type-badge {page["type"]}">{TYPE_LABELS.get(page["type"], page["type"])}</div>
             <div class="detail-tags">{tags_html(page["tags"])}</div>
             {meta_html}
             {sources_html}
         </div>
         <div class="detail-body">
+            {guide_html}
             {rendered}
         </div>
     </article>
 
-    {f'  <section class="backlinks-section" id="backlinks"><h2>Backlinks ({len(bl_links)})</h2><div class="backlinks-list">{"".join(bl_links)}</div></section>' if bl_links else ''}
+    {f'  <section class="backlinks-section" id="backlinks"><h2>反向链接（{len(bl_links)}）</h2><div class="backlinks-list">{"".join(bl_links)}</div></section>' if bl_links else ''}
     '''
 
     return html_head(page['title'], page['type'], page['type']) + body + html_foot(page['type'])
@@ -594,16 +713,16 @@ def generate_tags_page(pages):
     body = f'''
     <div class="listing-header">
         <div class="breadcrumb">
-            <a href="index.html">Home</a> <span class="sep">/</span>
-            <span class="current">Tags</span>
+            <a href="index.html">总览</a> <span class="sep">/</span>
+            <span class="current">标签</span>
         </div>
-        <h1>Tags</h1>
-        <p class="listing-desc">{len(all_tags)} tags across {len(pages)} pages</p>
+        <h1>标签</h1>
+        <p class="listing-desc">{len(all_tags)} 个标签覆盖 {len(pages)} 个页面，用于按主题快速横向浏览。</p>
     </div>
     {''.join(sections)}
     '''
 
-    return html_head('Tags', 'home') + body + html_foot()
+    return html_head('标签', 'home') + body + html_foot()
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -617,8 +736,9 @@ def generate_search_index(pages):
             'name': p['name'],
             'title': p['title'],
             'type': p['type'],
+            'typeLabel': TYPE_LABELS.get(p['type'], p['type']),
             'tags': p['tags'],
-            'preview': get_preview(p['content'], 200),
+            'preview': get_preview(p['content'], 240),
             'href': f"{p['type']}/{p['name']}.html",
         })
     return json.dumps(entries, ensure_ascii=False)
@@ -1864,6 +1984,425 @@ a:hover { color: var(--gold-bright); }
 }
 
 /* ══════════════════════════════════════════════════════════════
+   Chinese Research Desk Refresh
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+    --bg-deep: #EEF2F4;
+    --bg-primary: #F9FAF8;
+    --bg-secondary: #F3F6F7;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #F7FAFB;
+    --bg-glass: rgba(255, 255, 255, 0.88);
+
+    --ink-primary: #18202B;
+    --ink-secondary: #4B596A;
+    --ink-faded: #7A8794;
+    --ink-ghost: #C9D0D7;
+
+    --gold: #A0632D;
+    --gold-bright: #C17C3A;
+    --gold-dim: rgba(160, 99, 45, 0.10);
+    --gold-glow: rgba(160, 99, 45, 0.06);
+
+    --teal: #1F7A68;
+    --teal-dim: rgba(31, 122, 104, 0.10);
+    --slate-blue: #335C9B;
+    --slate-blue-dim: rgba(51, 92, 155, 0.10);
+    --rose: #B84A5A;
+    --rose-dim: rgba(184, 74, 90, 0.10);
+
+    --border: rgba(26, 36, 49, 0.10);
+    --border-hover: rgba(26, 36, 49, 0.20);
+
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 8px;
+    --radius-xl: 8px;
+
+    --font-display: 'Noto Sans SC', 'Fraunces', system-ui, sans-serif;
+    --font-body: 'Noto Sans SC', 'EB Garamond', system-ui, sans-serif;
+    --content-w: 1120px;
+}
+
+body {
+    background:
+        linear-gradient(90deg, rgba(51, 92, 155, 0.04), transparent 32%),
+        linear-gradient(180deg, #F7F8F5 0%, #EEF2F4 100%);
+    color: var(--ink-primary);
+}
+
+body::before {
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+}
+
+#sidebar {
+    background: rgba(249, 250, 248, 0.94);
+    border-right: 1px solid rgba(26, 36, 49, 0.12);
+    box-shadow: 12px 0 36px rgba(28, 38, 55, 0.06);
+    backdrop-filter: blur(16px);
+}
+
+#sidebar::before { display: none; }
+
+.sidebar-header {
+    padding: 30px 24px 24px;
+    background: linear-gradient(180deg, rgba(51, 92, 155, 0.07), transparent);
+}
+
+.title-text {
+    font-size: 1.14rem;
+    letter-spacing: 0;
+}
+
+.site-subtitle {
+    padding-left: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.5;
+}
+
+.nav-item {
+    border: 1px solid transparent;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: #FFFFFF;
+    border-color: var(--border);
+    box-shadow: 0 8px 22px rgba(28, 38, 55, 0.07);
+}
+
+#search-input {
+    background: #FFFFFF;
+    border-color: rgba(26, 36, 49, 0.14);
+}
+
+.search-results {
+    background: #FFFFFF;
+    box-shadow: 0 -18px 42px rgba(28, 38, 55, 0.16);
+}
+
+#main {
+    max-width: calc(var(--sidebar-w) + var(--content-w) + 96px);
+    padding: 44px 48px 96px;
+}
+
+.home-header,
+.listing-header {
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 14px 34px rgba(28, 38, 55, 0.06);
+}
+
+.home-title,
+.listing-header h1 {
+    font-size: 2.45rem;
+    letter-spacing: 0;
+}
+
+.home-desc,
+.listing-desc {
+    max-width: 820px;
+    color: var(--ink-secondary);
+}
+
+.stats-grid {
+    margin-bottom: 34px;
+}
+
+.stat-card,
+.page-card,
+.list-item,
+.cat-nav,
+.detail-meta,
+.reading-guide,
+.tag-page-link {
+    background: var(--bg-surface);
+    border-color: var(--border);
+    box-shadow: 0 8px 24px rgba(28, 38, 55, 0.055);
+}
+
+.stat-card:hover,
+.page-card:hover,
+.list-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 38px rgba(28, 38, 55, 0.12);
+}
+
+.home-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.85fr);
+    gap: 28px;
+}
+
+.section-title.secondary {
+    margin-top: 26px;
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.focus-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--ink-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+}
+
+.focus-item strong {
+    color: var(--slate-blue);
+    font-family: var(--font-mono);
+}
+
+.recent-item {
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+}
+
+.recent-item:hover {
+    background: transparent;
+}
+
+.recent-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.recent-title {
+    white-space: normal;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.recent-preview {
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.summary-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 2px;
+}
+
+.summary-chip {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    padding: 3px 8px;
+    border-radius: var(--radius-xs);
+    background: var(--slate-blue-dim);
+    color: var(--slate-blue);
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    line-height: 1.35;
+}
+
+.page-card {
+    padding: 20px;
+}
+
+.page-card-header.compact {
+    margin-bottom: 8px;
+}
+
+.page-card-header.compact h3 {
+    color: var(--ink-primary);
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.page-card-header.compact span {
+    color: var(--ink-faded);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    white-space: nowrap;
+}
+
+.page-card-preview,
+.list-item p,
+.page-card.compact p {
+    color: var(--ink-secondary);
+    -webkit-line-clamp: 4;
+}
+
+.list-item {
+    align-items: flex-start;
+}
+
+.list-item-main {
+    min-width: 0;
+}
+
+.list-item-type {
+    display: inline-flex;
+    margin-bottom: 8px;
+    padding: 3px 8px;
+    border-radius: var(--radius-xs);
+    font-family: var(--font-sans);
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.list-item-type.entities { background: var(--gold-dim); color: var(--gold); }
+.list-item-type.concepts { background: var(--teal-dim); color: var(--teal); }
+.list-item-type.queries { background: var(--slate-blue-dim); color: var(--slate-blue); }
+
+.cat-nav {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    backdrop-filter: blur(16px);
+}
+
+.cat-nav-item {
+    border-radius: var(--radius-xs);
+    background: #FFFFFF;
+}
+
+.category-section {
+    scroll-margin-top: 90px;
+}
+
+.detail-header {
+    margin-bottom: 22px;
+}
+
+.detail-content {
+    grid-template-columns: 240px minmax(0, 1fr);
+}
+
+.detail-meta {
+    top: 24px;
+}
+
+.detail-body {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 34px 42px;
+    box-shadow: 0 16px 40px rgba(28, 38, 55, 0.07);
+}
+
+.reading-guide {
+    padding: 18px 20px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--slate-blue);
+}
+
+.guide-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--slate-blue);
+    margin-bottom: 8px;
+}
+
+.reading-guide p {
+    color: var(--ink-secondary);
+    margin-bottom: 12px;
+}
+
+.reading-guide ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 18px;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.reading-guide li {
+    color: var(--ink-secondary);
+    font-size: 0.86rem;
+    margin-bottom: 0;
+}
+
+.detail-body h1 {
+    font-size: 2rem;
+    letter-spacing: 0;
+}
+
+.detail-body h2 {
+    letter-spacing: 0;
+    border-bottom-color: rgba(51, 92, 155, 0.16);
+}
+
+.detail-body pre {
+    background: #172033;
+}
+
+.detail-body pre code {
+    color: #EEF2F4;
+}
+
+.detail-body table {
+    background: #FFFFFF;
+}
+
+.backlinks-section {
+    margin-left: 276px;
+}
+
+@media (max-width: 900px) {
+    .home-grid,
+    .detail-content {
+        grid-template-columns: 1fr;
+    }
+    .detail-body {
+        padding: 26px 22px;
+    }
+    .backlinks-section {
+        margin-left: 0;
+    }
+    .cat-nav {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    #main {
+        padding: 72px 16px 72px;
+    }
+    .home-header,
+    .listing-header {
+        padding: 22px 18px;
+    }
+    .home-title,
+    .listing-header h1 {
+        font-size: 1.9rem;
+    }
+    .focus-grid,
+    .reading-guide ol {
+        grid-template-columns: 1fr;
+    }
+    .recent-date {
+        display: none;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
    Scrollbar
    ══════════════════════════════════════════════════════════════ */
 
@@ -1963,15 +2502,15 @@ JS = r'''
                 if (entry.name.toLowerCase().indexOf(lower) >= 0) s += 8;
                 entry.tags.forEach(function(t) { if (t.toLowerCase().indexOf(lower) >= 0) s += 5; });
                 if (entry.preview.toLowerCase().indexOf(lower) >= 0) s += 2;
-                return { name: entry.name, title: entry.title, type: entry.type, href: entry.href, preview: entry.preview, score: s };
+                return { name: entry.name, title: entry.title, type: entry.type, typeLabel: entry.typeLabel || entry.type, href: entry.href, preview: entry.preview, score: s };
             }).filter(function(e) { return e.score > 0; }).sort(function(a,b) { return b.score - a.score; }).slice(0, 12);
 
             if (!scored.length) {
-                results.innerHTML = '<div class="search-result-item"><span class="sr-preview">No results found</span></div>';
+                results.innerHTML = '<div class="search-result-item"><span class="sr-preview">没有找到匹配内容</span></div>';
             } else {
                 var root = getRoot();
                 results.innerHTML = scored.map(function(e) {
-                    return '<a href="' + root + e.href + '" class="search-result-item"><div><span class="sr-title">' + hl(e.title, query) + '</span><span class="sr-type">' + e.type + '</span></div><div class="sr-preview">' + hl(e.preview.substring(0, 120), query) + '</div></a>';
+                    return '<a href="' + root + e.href + '" class="search-result-item"><div><span class="sr-title">' + hl(e.title, query) + '</span><span class="sr-type">' + e.typeLabel + '</span></div><div class="sr-preview">' + hl(e.preview.substring(0, 120), query) + '</div></a>';
                 }).join('');
             }
             results.classList.add('visible');
@@ -2083,7 +2622,7 @@ def generate_all():
     ent_dir = OUTPUT_DIR / 'entities'
     ent_dir.mkdir(exist_ok=True)
     (ent_dir / 'index.html').write_text(
-        generate_listing(pages, 'entities', 'Entities', 'Models, teams, and products', 'entities'),
+        generate_listing(pages, 'entities', '实体', TYPE_DESCRIPTIONS['entities'], 'entities'),
         encoding='utf-8')
 
     # Entity details
@@ -2109,7 +2648,7 @@ def generate_all():
     q_dir = OUTPUT_DIR / 'queries'
     q_dir.mkdir(exist_ok=True)
     (q_dir / 'index.html').write_text(
-        generate_listing(pages, 'queries', 'Queries', 'Research questions and answers', 'queries'),
+        generate_listing(pages, 'queries', '问答', TYPE_DESCRIPTIONS['queries'], 'queries'),
         encoding='utf-8')
 
     # Query details
@@ -2274,7 +2813,7 @@ def generate_incremental():
             ent_dir = OUTPUT_DIR / 'entities'
             ent_dir.mkdir(exist_ok=True)
             (ent_dir / 'index.html').write_text(
-                generate_listing(pages, 'entities', 'Entities', 'Models, teams, and products', 'entities'),
+                generate_listing(pages, 'entities', '实体', TYPE_DESCRIPTIONS['entities'], 'entities'),
                 encoding='utf-8')
             print("  ~ entities/index.html")
         if 'concepts' in changed_types:
@@ -2287,7 +2826,7 @@ def generate_incremental():
             q_dir = OUTPUT_DIR / 'queries'
             q_dir.mkdir(exist_ok=True)
             (q_dir / 'index.html').write_text(
-                generate_listing(pages, 'queries', 'Queries', 'Research questions and answers', 'queries'),
+                generate_listing(pages, 'queries', '问答', TYPE_DESCRIPTIONS['queries'], 'queries'),
                 encoding='utf-8')
             print("  ~ queries/index.html")
 

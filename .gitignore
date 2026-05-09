@@ -4,3 +4,6 @@
 .DS_Store
 __pycache__/
 .gstack/
+.env
+clean-papers.log
+papers/.processed.json
