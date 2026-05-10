@@ -1,5 +1,5 @@
 ---
-title: DuplexCascade
+title: "DuplexCascade"
 created: 2026-04-10
 updated: 2026-04-10
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: Token Level Entropy Analysis
+title: "Token Level Entropy Analysis"
 created: 2026-04-06
 updated: 2026-04-10
 type: concept

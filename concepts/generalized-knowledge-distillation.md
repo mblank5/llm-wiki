@@ -1,5 +1,5 @@
 ---
-title: Generalized Knowledge Distillation (GKD)
+title: "Generalized Knowledge Distillation (GKD)"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

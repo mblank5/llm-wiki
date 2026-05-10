@@ -1,5 +1,5 @@
 ---
-title: RL Post-Training Scaling Laws for LLMs
+title: "RL Post-Training Scaling Laws for LLMs"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

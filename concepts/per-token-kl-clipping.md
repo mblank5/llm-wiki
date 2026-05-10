@@ -1,5 +1,5 @@
 ---
-title: Per Token Kl Clipping
+title: "Per Token Kl Clipping"
 created: 2026-04-06
 updated: 2026-04-10
 type: concept

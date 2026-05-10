@@ -1,5 +1,5 @@
 ---
-title: VerificAgent
+title: "VerificAgent"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: MemGPT: LLM 即操作系统
+title: "MemGPT: LLM 即操作系统"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

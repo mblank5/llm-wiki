@@ -1,5 +1,5 @@
 ---
-title: Paraformer — Non-Autoregressive Parallel Transformer for ASR
+title: "Paraformer — Non-Autoregressive Parallel Transformer for ASR"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

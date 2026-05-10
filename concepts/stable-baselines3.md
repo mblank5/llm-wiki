@@ -1,5 +1,5 @@
 ---
-title: Stable Baselines3
+title: "Stable Baselines3"
 created: 2026-04-06
 updated: 2026-04-10
 type: concept

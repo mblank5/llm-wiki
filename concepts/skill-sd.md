@@ -1,5 +1,5 @@
 ---
-title: Skill-SD: Skill-Conditioned Self-Distillation
+title: "Skill-SD: Skill-Conditioned Self-Distillation"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: Optimsyn: Influence-Guided Rubrics for Synthetic Data
+title: "Optimsyn: Influence-Guided Rubrics for Synthetic Data"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

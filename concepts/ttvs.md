@@ -1,5 +1,5 @@
 ---
-title: TTVS: Test-Time Variational Synthesis
+title: "TTVS: Test-Time Variational Synthesis"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

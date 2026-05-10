@@ -1,5 +1,5 @@
 ---
-title: Qwen3-ASR
+title: "Qwen3-ASR"
 created: 2026-04-15
 updated: 2026-04-15
 type: entity

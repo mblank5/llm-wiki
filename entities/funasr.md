@@ -1,5 +1,5 @@
 ---
-title: FunASR — Fundamental End-to-End Speech Recognition Toolkit
+title: "FunASR — Fundamental End-to-End Speech Recognition Toolkit"
 created: 2026-05-01
 updated: 2026-05-01
 type: entity

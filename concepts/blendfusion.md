@@ -1,5 +1,5 @@
 ---
-title: BlendFusion: 扩散模型合成数据生成
+title: "BlendFusion: 扩散模型合成数据生成"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: Omni-Modal LLM
+title: "Omni-Modal LLM"
 created: 2026-04-15
 updated: 2026-04-16
 type: concept

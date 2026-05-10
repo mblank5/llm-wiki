@@ -1,5 +1,5 @@
 ---
-title: Recursive Multi-Agent Systems (RecursiveMAS)
+title: "Recursive Multi-Agent Systems (RecursiveMAS)"
 created: 2026-05-05
 updated: 2026-05-05
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: Reinforcement-Aware Knowledge Distillation
+title: "Reinforcement-Aware Knowledge Distillation"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

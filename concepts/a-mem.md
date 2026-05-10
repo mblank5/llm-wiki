@@ -1,5 +1,5 @@
 ---
-title: A-Mem: Zettelkasten 式自组织 Agent 记忆
+title: "A-Mem: Zettelkasten 式自组织 Agent 记忆"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

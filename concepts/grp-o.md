@@ -1,6 +1,7 @@
 ---
-title: GRPO
+title: "GRPO"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [grpo, rl, optimization]
 aliases: [GRPO, Group Relative Policy Optimization]

@@ -1,5 +1,5 @@
 ---
-title: Seed Realtime Voice
+title: "Seed Realtime Voice"
 created: 2026-04-09
 updated: 2026-04-09
 type: entity

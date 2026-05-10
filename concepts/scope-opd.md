@@ -1,5 +1,5 @@
 ---
-title: SCOPE: Signal-Calibrated On-Policy Distillation Enhancement
+title: "SCOPE: Signal-Calibrated On-Policy Distillation Enhancement"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

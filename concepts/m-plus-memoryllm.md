@@ -1,5 +1,5 @@
 ---
-title: M+: MemoryLLM 的可扩展长期记忆扩展
+title: "M+: MemoryLLM 的可扩展长期记忆扩展"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

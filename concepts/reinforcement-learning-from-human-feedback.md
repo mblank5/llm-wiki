@@ -1,6 +1,7 @@
 ---
-title: Reinforcement Learning from Human Feedback
+title: "Reinforcement Learning from Human Feedback"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [rlhf, rl, alignment]
 aliases: [RLHF]

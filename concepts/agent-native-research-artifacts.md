@@ -1,5 +1,5 @@
 ---
-title: Agent-Native Research Artifact (Ara)
+title: "Agent-Native Research Artifact (Ara)"
 created: 2026-05-05
 updated: 2026-05-05
 type: concept

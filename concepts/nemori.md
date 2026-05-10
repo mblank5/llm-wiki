@@ -1,5 +1,5 @@
 ---
-title: Nemori: 认知启发的自适应记忆蒸馏框架
+title: "Nemori: 认知启发的自适应记忆蒸馏框架"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

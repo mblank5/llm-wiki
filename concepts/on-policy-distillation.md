@@ -1,5 +1,5 @@
 ---
-title: On Policy Distillation
+title: "On Policy Distillation"
 created: 2026-04-06
 updated: 2026-04-15
 type: concept

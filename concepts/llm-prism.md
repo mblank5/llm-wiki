@@ -1,5 +1,5 @@
 ---
-title: LLM-PRISM: GPU Faults & Silent Data Corruption
+title: "LLM-PRISM: GPU Faults & Silent Data Corruption"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: Visual Enhanced Depth Scaling for Multimodal Latent Reasoning
+title: "Visual Enhanced Depth Scaling for Multimodal Latent Reasoning"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

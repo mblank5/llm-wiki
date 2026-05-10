@@ -1,5 +1,5 @@
 ---
-title: Policy Split: Dual-Mode Exploration
+title: "Policy Split: Dual-Mode Exploration"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

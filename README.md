@@ -6,41 +6,78 @@ A pattern for building personal knowledge bases using LLMs, specifically tailore
 
 See Karpathy's original idea: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 
-## Quick Start
+## Current Workflow
 
 ```bash
-git clone git@github.com:mblank5/llm-wiki.git
-cd llm-wiki
-bash setup-arxiv-wiki.sh ~/my-wiki <base_url> <model> <api_key>
+# Clean raw paper markdown into papers/YYYY/MM/*.md
+python3 scripts/clean-papers.py . --limit 3
+
+# Validate wiki structure and metadata
+python3 scripts/lint-wiki.py .
+# Limit CI-style warning output while keeping full counts
+python3 scripts/lint-wiki.py . --max-findings 80
+
+# Generate the static web site into web/output/
+python3 scripts/generate-web.py
+
+# Check whether web/output is stale
+python3 scripts/generate-web.py --status
 ```
 
-Then convert your first paper:
+The repository itself is the active wiki root. GitHub Pages rebuilds the static
+site on pushes to `main`.
+
+## Legacy Setup Helper
+
+`setup-arxiv-wiki.sh` remains as a one-shot helper for creating another
+`llm-wiki` workspace and applying the local upstream patches:
 
 ```bash
-cd ~/my-wiki
-bash <llm-wiki-repo>/scripts/convert.sh 2501.11120v1 .
-wiki ingest "2025/01/2501.11120v1.md" -y
-wiki query "What are the key findings?"
+bash setup-arxiv-wiki.sh ~/my-wiki <base_url> <model> <api_key>
 ```
 
 ## Repo Structure
 
 ```
-├── setup-arxiv-wiki.sh      # One-shot setup: install llm-wiki, patch, init wiki
-├── SKILL.md                  # AI Agent skill definition
-├── README.md                 # This file
-├── patches/                  # 4 source patches for llm-wiki
-│   ├── 01-chatjson.patch     # Add chatJSON() method to LLMClient
-│   ├── 02-use-chatjson.patch # Use chatJSON in ingest flow
-│   ├── 03-no-latex-agent     # No LaTeX rule in agent.md
-│   └── 04-path-lookup.patch  # Fix recursive path lookup for nested files
-├── scripts/                  # Helper utilities
-│   ├── convert.sh            # arxiv2md + auto-place in raw/untracked
-│   ├── bulk-ingest.py        # Ingest all pending papers sequentially
-│   └── rebuild-index.py      # Rebuild wiki/index.md from actual content
-└── references/               # Detailed reference docs
-    └── llm-wiki-patches.md   # Full patch documentation for manual apply
+├── concepts/                 # Concept/topic pages
+├── entities/                 # Entity pages: models, orgs, products
+├── queries/                  # Saved research query answers
+├── raw/                      # Immutable source material
+│   ├── articles/
+│   └── papers/
+├── papers/                   # Cleaned paper markdown, organized by YYYY/MM
+├── scripts/
+│   ├── clean-papers.py       # LLM paper cleaning pipeline
+│   ├── lint-wiki.py          # Wiki metadata/link/source lint
+│   ├── generate-web.py       # Static site generator
+│   ├── convert.sh            # Legacy arxiv2md helper
+│   ├── bulk-ingest.py        # Legacy llm-wiki ingest helper
+│   └── rebuild-index.py      # Legacy llm-wiki index helper
+├── web/
+│   ├── app/main.py           # Experimental multi-wiki FastAPI app
+│   └── output/               # Generated static site, ignored by git
+├── patches/                  # Source patches for upstream llm-wiki
+├── references/               # Patch documentation
+├── SCHEMA.md                 # Wiki content schema and tag taxonomy
+├── index.md                  # Human-maintained knowledge index
+└── log.md / log-2026.md      # Append-only work logs
 ```
+
+## Quality Gates
+
+`scripts/lint-wiki.py` blocks structural errors:
+
+- missing or invalid YAML frontmatter
+- missing required frontmatter fields
+- invalid `tags` / `sources` field shapes
+
+It reports current migration debt as warnings:
+
+- tags outside `SCHEMA.md`
+- missing source paths
+- broken wikilinks
+- pages over the split threshold
+- pages with too few outbound wikilinks
 
 ## Patches Applied
 
@@ -55,9 +92,9 @@ The upstream `llm-wiki` (npm) has bugs with large ArXiv papers. We apply 4 patch
 
 ## Known Limitations
 
-- Papers >150KB with dense LaTeX formulas may still fail ingest despite patches. Manual fallback is documented in SKILL.md.
-- The LLM often truncates operations after the first page. Run `scripts/rebuild-index.py` after batch ingest.
-- Interactive prompts (`wiki ingest`, `wiki query --save`) crash in non-PTY mode. Use `-y` flags and `--no-save`.
+- Long papers are currently cleaned through a fixed input window in `clean-papers.py`; chunked section-level cleaning is a future improvement.
+- `scripts/lint-wiki.py` still reports historical warnings for tag taxonomy drift, missing sources, broken wikilinks, and long pages.
+- The legacy `wiki ingest` path can still hit upstream `llm-wiki` JSON/PTY issues; use `-y` and `--no-save` when running it non-interactively.
 
 ## Prerequisites
 

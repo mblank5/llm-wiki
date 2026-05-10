@@ -1,5 +1,5 @@
 ---
-title: MGM-Omni
+title: "MGM-Omni"
 created: 2026-04-15
 updated: 2026-04-15
 type: entity

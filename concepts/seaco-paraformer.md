@@ -1,5 +1,5 @@
 ---
-title: SeACo-Paraformer — Non-Autoregressive ASR with Hotword Customization
+title: "SeACo-Paraformer — Non-Autoregressive ASR with Hotword Customization"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

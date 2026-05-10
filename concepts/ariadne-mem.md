@@ -1,5 +1,5 @@
 ---
-title: AriadneMem: 线团式终身记忆导航
+title: "AriadneMem: 线团式终身记忆导航"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

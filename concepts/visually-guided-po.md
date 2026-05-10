@@ -1,5 +1,5 @@
 ---
-title: Visually-Guided Policy Optimization for Multimodal Reasoning
+title: "Visually-Guided Policy Optimization for Multimodal Reasoning"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

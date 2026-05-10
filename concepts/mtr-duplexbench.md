@@ -1,5 +1,5 @@
 ---
-title: MTR-DuplexBench
+title: "MTR-DuplexBench"
 created: 2026-04-10
 updated: 2026-04-10
 type: concept

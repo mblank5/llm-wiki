@@ -1,5 +1,5 @@
 ---
-title: Behavioral Self-Awareness
+title: "Behavioral Self-Awareness"
 created: 2025-01-01
 updated: 2026-04-10
 type: concept

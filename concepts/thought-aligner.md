@@ -1,5 +1,5 @@
 ---
-title: Thought-Aligner
+title: "Thought-Aligner"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

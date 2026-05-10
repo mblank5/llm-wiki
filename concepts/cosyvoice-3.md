@@ -1,5 +1,5 @@
 ---
-title: CosyVoice 3
+title: "CosyVoice 3"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

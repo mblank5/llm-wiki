@@ -1,5 +1,5 @@
 ---
-title: AI Self-Awareness via Game Theory
+title: "AI Self-Awareness via Game Theory"
 created: 2026-04-10
 updated: 2026-04-10
 type: concept

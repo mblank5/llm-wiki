@@ -1,5 +1,5 @@
 ---
-title: On-Policy Distillation for Autonomous Vehicle Motion Planning
+title: "On-Policy Distillation for Autonomous Vehicle Motion Planning"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

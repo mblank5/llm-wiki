@@ -1,6 +1,7 @@
 ---
-title: GRPO RL Training
+title: "GRPO RL Training"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [grpo, training, rl]
 sources: []

@@ -1,5 +1,5 @@
 ---
-title: SUPERNOVA: 自然指令 RL 激发通用推理
+title: "SUPERNOVA: 自然指令 RL 激发通用推理"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

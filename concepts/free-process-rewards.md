@@ -1,6 +1,7 @@
 ---
-title: Free Process Rewards
+title: "Free Process Rewards"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [rlhf, grpo, training]
 sources: []

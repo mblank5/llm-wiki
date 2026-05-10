@@ -1,6 +1,7 @@
 ---
-title: Deep Q-Network
+title: "Deep Q-Network"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [rl, optimization]
 sources: []

@@ -1,6 +1,7 @@
 ---
-title: Knowledge Distillation
+title: "Knowledge Distillation"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [distillation, training]
 sources: []

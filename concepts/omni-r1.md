@@ -1,5 +1,5 @@
 ---
-title: Omni-R1: 统一生成式多模态推理
+title: "Omni-R1: 统一生成式多模态推理"
 created: 2026-04-16
 updated: 2026-04-16
 type: concept

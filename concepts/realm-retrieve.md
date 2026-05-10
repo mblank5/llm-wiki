@@ -1,5 +1,5 @@
 ---
-title: ReaLM-Retrieve — Adaptive Retrieval for Large Reasoning Models
+title: "ReaLM-Retrieve — Adaptive Retrieval for Large Reasoning Models"
 created: 2026-05-05
 updated: 2026-05-05
 type: concept

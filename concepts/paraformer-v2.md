@@ -1,5 +1,5 @@
 ---
-title: Paraformer-v2 — Noise-Robust Multilingual NAR ASR
+title: "Paraformer-v2 — Noise-Robust Multilingual NAR ASR"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: Silent Thought / FLAIR（潜在推理全双工对话）
+title: "Silent Thought / FLAIR（潜在推理全双工对话）"
 created: 2026-04-10
 updated: 2026-04-10
 type: concept

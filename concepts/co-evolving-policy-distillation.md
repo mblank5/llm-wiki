@@ -1,5 +1,5 @@
 ---
-title: Co-Evolving Policy Distillation (CoPD)
+title: "Co-Evolving Policy Distillation (CoPD)"
 created: 2026-05-02
 updated: 2026-05-02
 type: concept

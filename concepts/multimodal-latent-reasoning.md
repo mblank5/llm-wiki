@@ -1,5 +1,5 @@
 ---
-title: Multimodal Latent Reasoning via Predictive Embeddings
+title: "Multimodal Latent Reasoning via Predictive Embeddings"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

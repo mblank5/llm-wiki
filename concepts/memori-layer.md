@@ -1,5 +1,5 @@
 ---
-title: Memori: LLM 无关的持久记忆层
+title: "Memori: LLM 无关的持久记忆层"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

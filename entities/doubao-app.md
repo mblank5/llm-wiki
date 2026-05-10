@@ -1,6 +1,7 @@
 ---
-title: Doubao App
+title: "Doubao App"
 created: 2026-04-15
+updated: 2026-04-15
 type: entity
 tags: [voice-assistant, chatbot, company]
 aliases: [豆包, Doubao]

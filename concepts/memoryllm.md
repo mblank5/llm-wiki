@@ -1,5 +1,5 @@
 ---
-title: MemoryLLM: 自更新大语言模型的潜在空间记忆
+title: "MemoryLLM: 自更新大语言模型的潜在空间记忆"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

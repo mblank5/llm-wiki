@@ -1,5 +1,5 @@
 ---
-title: Text2Mem: 统一记忆操作语言
+title: "Text2Mem: 统一记忆操作语言"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

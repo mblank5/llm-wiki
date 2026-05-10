@@ -1,6 +1,7 @@
 ---
-title: Mixture of Experts
+title: "Mixture of Experts"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [architecture, model]
 aliases: [MoE]

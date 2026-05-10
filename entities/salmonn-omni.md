@@ -1,5 +1,5 @@
 ---
-title: SALMONN-omni
+title: "SALMONN-omni"
 created: 2026-04-15
 updated: 2026-04-15
 type: entity

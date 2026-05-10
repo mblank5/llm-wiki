@@ -1,6 +1,7 @@
 ---
-title: Reasoning Distillation
+title: "Reasoning Distillation"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [distillation, reasoning]
 sources: []

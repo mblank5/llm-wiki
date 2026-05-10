@@ -1,5 +1,5 @@
 ---
-title: Privacy-Preserving Full-Duplex Speech Dialogue
+title: "Privacy-Preserving Full-Duplex Speech Dialogue"
 created: 2026-04-10
 updated: 2026-04-10
 type: concept

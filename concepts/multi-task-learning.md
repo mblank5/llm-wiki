@@ -1,6 +1,7 @@
 ---
-title: Multi-Task Learning
+title: "Multi-Task Learning"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [training]
 sources: []

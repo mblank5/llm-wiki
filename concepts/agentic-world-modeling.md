@@ -1,5 +1,5 @@
 ---
-title: Agentic World Modeling — Foundations, Capabilities, Laws
+title: "Agentic World Modeling — Foundations, Capabilities, Laws"
 created: 2026-05-02
 updated: 2026-05-02
 type: concept

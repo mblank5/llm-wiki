@@ -1,5 +1,5 @@
 ---
-title: SWE-HERO: 从无执行到有执行的 SWE Agent 训练
+title: "SWE-HERO: 从无执行到有执行的 SWE Agent 训练"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

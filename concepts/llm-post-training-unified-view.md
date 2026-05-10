@@ -1,5 +1,5 @@
 ---
-title: LLM Post-Training: A Unified View of Off-Policy and On-Policy Learning
+title: "LLM Post-Training: A Unified View of Off-Policy and On-Policy Learning"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

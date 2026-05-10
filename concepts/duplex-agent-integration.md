@@ -1,5 +1,5 @@
 ---
-title: 全双工 Agent 融合架构（Duplex-Agent Integration）
+title: "全双工 Agent 融合架构（Duplex-Agent Integration）"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

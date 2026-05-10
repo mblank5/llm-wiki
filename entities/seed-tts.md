@@ -1,5 +1,5 @@
 ---
-title: Seed-TTS
+title: "Seed-TTS"
 created: 2026-04-09
 updated: 2026-04-09
 type: entity

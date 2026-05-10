@@ -1,5 +1,5 @@
 ---
-title: SAVeR: Self-Audited Verified Reasoning
+title: "SAVeR: Self-Audited Verified Reasoning"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

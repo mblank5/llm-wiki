@@ -1,5 +1,5 @@
 ---
-title: Latent Agents — Internalized Multi-Agent Debate (IMAD)
+title: "Latent Agents — Internalized Multi-Agent Debate (IMAD)"
 created: 2026-05-02
 updated: 2026-05-02
 type: concept

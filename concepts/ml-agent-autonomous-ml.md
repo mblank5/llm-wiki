@@ -1,5 +1,5 @@
 ---
-title: ML-Agent: Autonomous ML via Reinforcement Learning
+title: "ML-Agent: Autonomous ML via Reinforcement Learning"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

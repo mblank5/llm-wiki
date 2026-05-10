@@ -1,5 +1,5 @@
 ---
-title: Perception-Grounded Policy Optimization for VLMs
+title: "Perception-Grounded Policy Optimization for VLMs"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

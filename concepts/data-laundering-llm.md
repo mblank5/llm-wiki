@@ -1,5 +1,5 @@
 ---
-title: Combating Data Laundering in LLM Training
+title: "Combating Data Laundering in LLM Training"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

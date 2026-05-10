@@ -1,5 +1,5 @@
 ---
-title: Agent-R1: End-to-End RL for LLM Agents
+title: "Agent-R1: End-to-End RL for LLM Agents"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

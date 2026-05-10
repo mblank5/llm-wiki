@@ -1,5 +1,5 @@
 ---
-title: COS-PLAY — Co-Evolving LLM Decision and Skill Bank Agents
+title: "COS-PLAY — Co-Evolving LLM Decision and Skill Bank Agents"
 created: 2026-05-02
 updated: 2026-05-02
 type: concept

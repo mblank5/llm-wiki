@@ -1,5 +1,5 @@
 ---
-title: Rethinking Software Engineering for Agentic AI
+title: "Rethinking Software Engineering for Agentic AI"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

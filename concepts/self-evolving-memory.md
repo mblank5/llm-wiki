@@ -1,5 +1,5 @@
 ---
-title: Self-Evolving LLM Memory Extraction
+title: "Self-Evolving LLM Memory Extraction"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

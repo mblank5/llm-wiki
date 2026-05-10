@@ -1,5 +1,5 @@
 ---
-title: SWE-Shepherd: PRMs for Code Agents
+title: "SWE-Shepherd: PRMs for Code Agents"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

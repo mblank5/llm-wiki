@@ -4,35 +4,35 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-A personal AI/ML research wiki built on [Karpathy's llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) pattern. Papers are converted from ArXiv via `arxiv2md`, ingested by the `wiki` CLI (LLM-powered), and the wiki grows as an interlinked knowledge base covering LLMs, post-training, speech models, multimodal AI, and reasoning.
+A personal AI/ML research wiki built on [Karpathy's llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) pattern. Raw papers are converted with `arxiv2md`, cleaned into `papers/YYYY/MM/*.md`, and connected to top-level `concepts/`, `entities/`, and `queries/` pages. The static site generator publishes the wiki as a browsable research desk covering LLMs, post-training, speech models, multimodal AI, and reasoning.
 
 ## Commands
 
 ```bash
-# Convert a paper from ArXiv to markdown and place it
-bash scripts/convert.sh 2603.25562 .
-# → creates raw/papers/2026/03/2603.25562.md
+# Clean raw paper markdown into papers/YYYY/MM/*.md
+python3 scripts/clean-papers.py .
 
-# Ingest a converted paper (LLM reads it and proposes wiki updates)
-wiki ingest "2026/03/2603.25562.md" -y
+# Validate metadata, required fields, links, sources, and page-size warnings
+python3 scripts/lint-wiki.py .
+python3 scripts/lint-wiki.py . --max-findings 80
 
-# Bulk ingest all papers in raw/untracked/
-python3 scripts/bulk-ingest.py .
-
-# Rebuild index.md from actual wiki content
-python3 scripts/rebuild-index.py .
-
-# Query the wiki
-wiki query "your question"
+# Generate or inspect the static site
+python3 scripts/generate-web.py
+python3 scripts/generate-web.py --status
+python3 scripts/generate-web.py --incremental
 ```
 
-## Setup (One-shot)
+Legacy `llm-wiki` helper scripts are still present:
 
 ```bash
+bash scripts/convert.sh 2603.25562 .
+python3 scripts/bulk-ingest.py .
+python3 scripts/rebuild-index.py .
 bash setup-arxiv-wiki.sh [wiki_dir] [base_url] [model] [api_key]
 ```
 
-This installs `llm-wiki` globally, applies 4 patches to fix ArXiv paper handling, and initializes the wiki with `.wikirc.yaml`.
+`setup-arxiv-wiki.sh` installs `llm-wiki` globally, applies 4 patches to fix
+ArXiv paper handling, and initializes another wiki workspace with `.wikirc.yaml`.
 
 ## Schema and Conventions
 
@@ -49,16 +49,32 @@ All rules are in **SCHEMA.md** — read it before editing wiki content. Key poin
 ## Directory Structure
 
 ```
-raw/papers/       # Immutable source material (organized by YYYY/MM/)
-entities/         # Entity pages (models, orgs, people, products)
-concepts/         # Concept/topic pages (techniques, paradigms, methods)
-comparisons/      # Side-by-side analyses
+concepts/         # Concept/topic pages
+entities/         # Entity pages: models, orgs, products
 queries/          # Filed query results worth keeping
-references/       # Reference docs (patch documentation)
-patches/          # 4 source patches for the upstream llm-wiki npm package
-scripts/          # convert.sh, bulk-ingest.py, rebuild-index.py
-_archive/         # Superseded pages (removed from index)
+raw/              # Immutable source material
+papers/           # Cleaned paper markdown organized by YYYY/MM
+scripts/          # cleaning, lint, static generation, legacy helpers
+web/output/       # Generated static site, ignored by git
+web/app/          # Experimental multi-wiki FastAPI app
+references/       # Reference docs and patch documentation
+patches/          # Source patches for upstream llm-wiki
 ```
+
+## Quality Gate
+
+Run `python3 scripts/lint-wiki.py .` before publishing or large content edits.
+The lint blocks structural errors that break downstream tools: invalid YAML
+frontmatter, missing required fields, and malformed `tags`/`sources` fields.
+It currently reports tag taxonomy drift, missing source files, broken wikilinks,
+long pages, and sparse links as warnings so historical debt can be fixed in
+batches.
+
+GitHub Pages runs:
+
+1. `python3 scripts/lint-wiki.py .`
+2. `python3 scripts/generate-web.py`
+3. `python3 -m json.tool web/output/search-index.json`
 
 ## Patches for Upstream llm-wiki
 
@@ -73,6 +89,6 @@ Applied by `setup-arxiv-wiki.sh`. Manual fallback documented in `references/llm-
 
 ## Known Limitations
 
-- Papers >150KB with dense LaTeX may still fail ingest
-- LLM truncates operations after first page — run `scripts/rebuild-index.py` after batch ingest
-- Interactive prompts (`wiki ingest`, `wiki query --save`) crash in non-PTY mode — use `-y` and `--no-save` flags
+- Long papers are currently cleaned through a fixed input window in `clean-papers.py`; chunked section-level cleaning is a future improvement.
+- `scripts/lint-wiki.py` currently reports historical warnings for tag taxonomy drift, missing sources, broken wikilinks, long pages, and sparse links.
+- The legacy `wiki ingest` path can still hit upstream `llm-wiki` JSON/PTY issues; use `-y` and `--no-save` when running it non-interactively.

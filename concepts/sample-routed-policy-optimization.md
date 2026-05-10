@@ -1,5 +1,5 @@
 ---
-title: Sample Routed Policy Optimization
+title: "Sample Routed Policy Optimization"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

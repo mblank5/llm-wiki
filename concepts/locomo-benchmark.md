@@ -1,5 +1,5 @@
 ---
-title: LoCoMo: 长期对话记忆评测基准
+title: "LoCoMo: 长期对话记忆评测基准"
 created: 2026-04-17
 updated: 2026-04-17
 type: concept

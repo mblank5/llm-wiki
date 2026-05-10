@@ -1,5 +1,5 @@
 ---
-title: SA-Paraformer — Speaker-Attributed Non-Autoregressive ASR
+title: "SA-Paraformer — Speaker-Attributed Non-Autoregressive ASR"
 created: 2026-05-01
 updated: 2026-05-01
 type: concept

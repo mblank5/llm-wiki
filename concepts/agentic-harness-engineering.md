@@ -1,5 +1,5 @@
 ---
-title: Agentic Harness Engineering (AHE)
+title: "Agentic Harness Engineering (AHE)"
 created: 2026-05-05
 updated: 2026-05-05
 type: concept

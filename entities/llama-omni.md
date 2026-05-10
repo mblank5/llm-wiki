@@ -1,5 +1,5 @@
 ---
-title: LLaMA-Omni
+title: "LLaMA-Omni"
 created: 2026-04-09
 updated: 2026-04-09
 type: entity

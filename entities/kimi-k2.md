@@ -1,6 +1,7 @@
 ---
-title: Kimi K2
+title: "Kimi K2"
 created: 2026-04-15
+updated: 2026-04-15
 type: entity
 tags: [model, open-source]
 sources: []

@@ -1,5 +1,5 @@
 ---
-title: 全双工语音模型（Full-Duplex Speech Model）
+title: "全双工语音模型（Full-Duplex Speech Model）"
 created: 2026-04-09
 updated: 2026-04-10
 type: concept

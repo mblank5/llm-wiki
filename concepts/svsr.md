@@ -1,5 +1,5 @@
 ---
-title: SVSR: 多模态推理的自验证自修正
+title: "SVSR: 多模态推理的自验证自修正"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

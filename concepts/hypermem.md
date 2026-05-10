@@ -1,5 +1,5 @@
 ---
-title: HyperMem: 超图记忆架构
+title: "HyperMem: 超图记忆架构"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: RL-Guided Synthetic Data Generation
+title: "RL-Guided Synthetic Data Generation"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

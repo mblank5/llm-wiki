@@ -1,5 +1,5 @@
 ---
-title: On Policy Prefix Distillation
+title: "On Policy Prefix Distillation"
 created: 2026-04-06
 updated: 2026-04-10
 type: concept

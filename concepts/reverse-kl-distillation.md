@@ -1,6 +1,7 @@
 ---
-title: Reverse KL Distillation
+title: "Reverse KL Distillation"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [distillation, optimization]
 sources: []

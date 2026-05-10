@@ -1,5 +1,5 @@
 ---
-title: Whisper-AuT: Domain-Adapted Audio Encoder
+title: "Whisper-AuT: Domain-Adapted Audio Encoder"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

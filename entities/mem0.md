@@ -1,5 +1,5 @@
 ---
-title: Mem0: AI Agent 的可扩展长期记忆层
+title: "Mem0: AI Agent 的可扩展长期记忆层"
 created: 2026-04-17
 updated: 2026-04-17
 type: entity

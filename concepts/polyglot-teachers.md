@@ -1,5 +1,5 @@
 ---
-title: Polyglot Teachers: Multilingual Synthetic Data
+title: "Polyglot Teachers: Multilingual Synthetic Data"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

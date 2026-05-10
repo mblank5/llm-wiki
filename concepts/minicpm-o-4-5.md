@@ -1,5 +1,5 @@
 ---
-title: MiniCPM-o 4.5
+title: "MiniCPM-o 4.5"
 created: 2026-05-05
 updated: 2026-05-05
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: SWE-AGILE: Dynamic Reasoning Context
+title: "SWE-AGILE: Dynamic Reasoning Context"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

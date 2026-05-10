@@ -28,8 +28,14 @@ jobs:
       - name: Install deps
         run: pip install markdown pyyaml
 
+      - name: Lint wiki content
+        run: python3 scripts/lint-wiki.py . --max-findings 80
+
       - name: Generate static site
         run: python3 scripts/generate-web.py
+
+      - name: Validate generated search index
+        run: python3 -m json.tool web/output/search-index.json > /dev/null
 
       - name: Create symlinks as copies for Pages
         run: |

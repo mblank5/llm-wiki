@@ -1,5 +1,5 @@
 ---
-title: FunAudioLLM — Voice Understanding & Generation Foundation Models
+title: "FunAudioLLM — Voice Understanding & Generation Foundation Models"
 created: 2026-05-01
 updated: 2026-05-01
 type: entity

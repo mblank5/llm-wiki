@@ -1,5 +1,5 @@
 ---
-title: Pseudo-Unification: 熵探测揭示多模态模型信息分歧
+title: "Pseudo-Unification: 熵探测揭示多模态模型信息分歧"
 created: 2026-04-15
 updated: 2026-04-16
 type: concept

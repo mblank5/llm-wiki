@@ -1,6 +1,7 @@
 ---
-title: STaR
+title: "STaR"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [reasoning, chain-of-thought]
 aliases: [Self-Taught Reasoner, STaR]

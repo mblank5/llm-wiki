@@ -1,5 +1,5 @@
 ---
-title: AgenticRecTune — Multi-Agent Recommendation System Optimization
+title: "AgenticRecTune — Multi-Agent Recommendation System Optimization"
 created: 2026-05-05
 updated: 2026-05-05
 type: concept

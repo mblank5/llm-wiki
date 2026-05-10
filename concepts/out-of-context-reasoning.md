@@ -1,6 +1,7 @@
 ---
-title: Out of Context Reasoning
+title: "Out of Context Reasoning"
 created: 2026-04-15
+updated: 2026-04-15
 type: concept
 tags: [reasoning, behavioral-awareness]
 aliases: [OOCR, out-of-context reasoning]

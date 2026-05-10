@@ -1,5 +1,5 @@
 ---
-title: LightMem: 轻量级 Agent 记忆系统
+title: "LightMem: 轻量级 Agent 记忆系统"
 created: 2026-04-15
 updated: 2026-04-15
 type: concept

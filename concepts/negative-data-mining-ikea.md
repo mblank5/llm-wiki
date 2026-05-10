@@ -1,5 +1,5 @@
 ---
-title: Negative Data Mining for Dense Retrieval at IKEA
+title: "Negative Data Mining for Dense Retrieval at IKEA"
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
