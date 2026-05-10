@@ -22,6 +22,12 @@ python3 scripts/generate-web.py --status
 python3 scripts/generate-web.py --incremental
 ```
 
+`scripts/generate-web.py` renders `concepts/`, `entities/`, and `queries/` as
+wiki detail pages, and renders each `raw/papers/YYYY/MM/*.md` paper as
+`web/output/papers/<arxiv-id>.html`. The paper listing links to both the HTML
+reader and source Markdown. The search index includes both wiki pages and paper
+HTML pages.
+
 Legacy `llm-wiki` helper scripts are still present:
 
 ```bash

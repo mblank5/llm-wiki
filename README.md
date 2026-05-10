@@ -27,6 +27,13 @@ python3 scripts/generate-web.py --status
 The repository itself is the active wiki root. GitHub Pages rebuilds the static
 site on pushes to `main`.
 
+The static site renders both wiki pages and raw paper pages. `concepts/`,
+`entities/`, and `queries/` become interlinked detail pages; every
+`raw/papers/YYYY/MM/*.md` file also gets a readable HTML page under
+`web/output/papers/<arxiv-id>.html`. The papers listing links to both the HTML
+reader and the original Markdown source, and source chips on wiki pages point to
+the rendered paper page when one exists.
+
 ## Legacy Setup Helper
 
 `setup-arxiv-wiki.sh` remains as a one-shot helper for creating another
@@ -81,6 +88,10 @@ It reports current migration debt as warnings:
 
 Wikilinks that point to valid tags, such as `[[grpo]]`, are rendered as links
 to the generated tags page instead of broken page links.
+
+The generated search index includes wiki pages plus rendered paper pages, so
+search can jump directly to a paper HTML reader instead of only exposing the raw
+Markdown file.
 
 ## Patches Applied
 

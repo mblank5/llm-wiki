@@ -70,6 +70,7 @@ TYPE_LABELS = {
     'entities': '实体',
     'concepts': '概念',
     'queries': '问答',
+    'papers': '论文',
 }
 
 TYPE_DESCRIPTIONS = {
@@ -135,6 +136,54 @@ def load_page(filepath, page_type):
         'content': content,
         'md_relpath': f"{page_type}/{filepath.stem}.md",
     }
+
+
+def split_frontmatter(text):
+    if not text.startswith('---'):
+        return {}, text
+    parts = text.split('---', 2)
+    if len(parts) < 3:
+        return {}, text
+    try:
+        meta = yaml.safe_load(parts[1]) or {}
+    except yaml.YAMLError:
+        meta = {}
+    if not isinstance(meta, dict):
+        meta = {}
+    return meta, parts[2].strip()
+
+
+def load_paper_page(md_file):
+    text = md_file.read_text(encoding='utf-8', errors='ignore')
+    meta, content = split_frontmatter(text)
+    title, preview = paper_metadata(md_file)
+    rel = md_file.relative_to(WIKI_ROOT / 'raw' / 'papers')
+    date_match = re.match(r'(\d{4})/(\d{2})', str(rel))
+    date_str = f"{date_match.group(1)}-{date_match.group(2)}" if date_match else ''
+    arxiv_match = re.search(r'(\d{4}\.\d{4,5})(?:v\d+)?', text)
+    return {
+        'name': md_file.stem,
+        'type': 'papers',
+        'title': title,
+        'created': date_str,
+        'updated': '',
+        'tags': ['paper', str(meta.get('source') or 'source')],
+        'sources': [],
+        'content': content,
+        'preview': preview,
+        'md_relpath': f"raw/papers/{rel.as_posix()}",
+        'relpath': rel.as_posix(),
+        'url': meta.get('url', ''),
+        'source': meta.get('source', ''),
+        'arxiv_id': arxiv_match.group(1) if arxiv_match else md_file.stem,
+    }
+
+
+def load_all_papers():
+    papers_dir = WIKI_ROOT / 'raw' / 'papers'
+    if not papers_dir.exists():
+        return []
+    return [load_paper_page(md_file) for md_file in sorted(papers_dir.rglob('*.md'), reverse=True)]
 
 
 def build_backlinks(pages):
@@ -283,9 +332,13 @@ def anchor_id(text):
 
 
 def paper_metadata(md_file):
-    rel_text = md_file.read_text(encoding='utf-8', errors='ignore')[:1800]
+    rel_text = md_file.read_text(encoding='utf-8', errors='ignore')
+    meta, body = split_frontmatter(rel_text)
+    rel_text = body[:2200]
     title = md_file.stem
     preview = ''
+    if meta.get('title'):
+        title = str(meta['title']).strip()
     for line in rel_text.split('\n'):
         stripped = clean_inline(line.strip())
         if not stripped:
@@ -295,6 +348,8 @@ def paper_metadata(md_file):
             continue
         if line.startswith('Title:'):
             title = stripped[6:].strip()
+            continue
+        if re.match(r'^(arXiv|Date|Authors|Affiliation|Code|GitHub|Paper|Source|Estimated tokens|Sections)\s*[:：|]', stripped, re.I):
             continue
         if not preview and not stripped.startswith('#') and len(stripped) > 30:
             preview = stripped
@@ -380,6 +435,7 @@ def html_head(title, current_section=None, page_type=None):
 def html_foot(page_type=None):
     root = relative_path_to_root(page_type)
     return f'''</main>
+<script>window.WIKI_ROOT = {json.dumps(root)};</script>
 <script src="{root}static/wiki.js"></script>
 </body>
 </html>'''
@@ -592,31 +648,21 @@ def generate_concept_listing(pages, categories):
 
 # ── Papers Listing ──────────────────────────────────────────
 
-def generate_papers_listing():
-    papers_dir = WIKI_ROOT / 'raw' / 'papers'
-    if not papers_dir.exists():
-        return ''
-
-    papers = []
-    for md_file in sorted(papers_dir.rglob('*.md'), reverse=True):
-        rel = md_file.relative_to(papers_dir)
-        title, preview = paper_metadata(md_file)
-        date_match = re.match(r'(\d{4})/(\d{2})', str(rel))
-        date_str = f"{date_match.group(1)}-{date_match.group(2)}" if date_match else ''
-        papers.append({'id': md_file.stem, 'title': title, 'preview': preview, 'date': date_str, 'relpath': str(rel)})
-
+def generate_papers_listing(papers):
     items = []
     for p in papers:
         md_href = f"../source/raw/papers/{p['relpath']}"
+        page_href = f"{p['name']}.html"
         items.append(f'''
         <div class="list-item paper-item">
             <div class="list-item-main">
-                <h3>{html.escape(p['title'])}</h3>
+                <h3><a href="{page_href}" class="paper-title-link">{html.escape(p['title'])}</a></h3>
                 <p>{html.escape(p['preview'])}</p>
-                <span class="paper-id">{p['id']}</span>
+                <span class="paper-id">{p['arxiv_id']}</span>
             </div>
             <div class="list-item-meta">
-                <span class="list-item-date">{p['date']}</span>
+                <span class="list-item-date">{p['created']}</span>
+                <a href="{page_href}" class="md-link" title="阅读 HTML 页面">阅读</a>
                 <a href="{md_href}" class="md-link" title="查看源 Markdown">源文件</a>
             </div>
         </div>''')
@@ -638,7 +684,67 @@ def generate_papers_listing():
     return html_head('论文', 'papers', 'papers') + body + html_foot('papers')
 
 
+def generate_paper_detail(paper, pages):
+    rendered = render_markdown(paper['content'], pages)
+    source_md_href = f"../source/{paper['md_relpath']}"
+    source_label = paper['source'] or 'Markdown'
+
+    external_link = ''
+    if paper['url']:
+        external_link = f'''
+            <a href="{html.escape(paper['url'])}" class="view-md-btn" title="打开原始论文链接">
+                <span class="md-icon">↗</span> 原始论文
+            </a>'''
+
+    guide_items = ''.join(f'<li>{html.escape(h)}</li>' for h in get_headings(paper['content'], 8))
+    guide_html = f'''
+            <section class="reading-guide">
+                <div class="guide-kicker">论文导读</div>
+                <p>{html.escape(paper['preview'] or get_preview(paper["content"], 360))}</p>
+                {f'<ol>{guide_items}</ol>' if guide_items else ''}
+            </section>'''
+
+    body = f'''
+    <div class="detail-header">
+        <div class="breadcrumb">
+            <a href="../index.html">总览</a> <span class="sep">/</span>
+            <a href="index.html">论文</a> <span class="sep">/</span>
+            <span class="current">{html.escape(paper["title"][:40])}</span>
+        </div>
+        <div class="detail-top-bar">
+            {external_link}
+            <a href="{source_md_href}" class="view-md-btn" title="查看源 Markdown">
+                <span class="md-icon">↗</span> 源 Markdown
+            </a>
+        </div>
+    </div>
+
+    <article class="detail-content">
+        <div class="detail-meta">
+            <div class="detail-type-badge papers">论文</div>
+            <div class="meta-row"><span class="meta-label">arXiv</span><span class="meta-value">{html.escape(paper["arxiv_id"])}</span></div>
+            <div class="meta-row"><span class="meta-label">时间</span><span class="meta-value">{html.escape(paper["created"] or "未标注")}</span></div>
+            <div class="meta-row"><span class="meta-label">来源</span><span class="meta-value">{html.escape(str(source_label))}</span></div>
+            <div class="meta-row"><span class="meta-label">阅读量级</span><span class="meta-value">{reading_minutes(paper["content"])} 分钟</span></div>
+        </div>
+        <div class="detail-body paper-detail-body">
+            {guide_html}
+            {rendered}
+        </div>
+    </article>
+    '''
+
+    return html_head(paper['title'], 'papers', 'papers') + body + html_foot('papers')
+
+
 # ── Detail Page ─────────────────────────────────────────────
+
+def source_href(source):
+    source_path = str(source)
+    if source_path.startswith('raw/papers/') and source_path.endswith('.md'):
+        return f"../papers/{Path(source_path).stem}.html"
+    return f"../source/{source_path}"
+
 
 def generate_detail(page, pages, backlinks):
     rendered = render_markdown(page['content'], pages)
@@ -662,7 +768,7 @@ def generate_detail(page, pages, backlinks):
     if page['sources']:
         src_items = []
         for s in page['sources']:
-            src_items.append(f'<a href="../source/{s}" class="source-link" title="{s}">{Path(str(s)).stem}</a>')
+            src_items.append(f'<a href="{source_href(s)}" class="source-link" title="{s}">{Path(str(s)).stem}</a>')
         sources_html = f'<div class="meta-row"><span class="meta-label">来源</span><span class="meta-value sources-list">{", ".join(src_items)}</span></div>'
 
     guide_items = ''.join(f'<li>{html.escape(h)}</li>' for h in get_headings(page['content'], 8))
@@ -748,7 +854,7 @@ def generate_tags_page(pages):
 # Search Index
 # ═══════════════════════════════════════════════════════════════
 
-def generate_search_index(pages):
+def generate_search_index(pages, papers=None):
     entries = []
     for p in pages.values():
         entries.append({
@@ -759,6 +865,16 @@ def generate_search_index(pages):
             'tags': p['tags'],
             'preview': get_preview(p['content'], 240),
             'href': f"{p['type']}/{p['name']}.html",
+        })
+    for p in papers or []:
+        entries.append({
+            'name': p['name'],
+            'title': p['title'],
+            'type': 'papers',
+            'typeLabel': TYPE_LABELS['papers'],
+            'tags': p['tags'],
+            'preview': p['preview'] or get_preview(p['content'], 240),
+            'href': f"papers/{p['name']}.html",
         })
     return json.dumps(entries, ensure_ascii=False)
 
@@ -1493,6 +1609,10 @@ a:hover { color: var(--gold-bright); }
 }
 
 .list-item-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
     text-align: right;
     flex-shrink: 0;
     margin-left: 24px;
@@ -1508,9 +1628,19 @@ a:hover { color: var(--gold-bright); }
     color: var(--ink-faded);
 }
 
+.paper-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.paper-title-link:hover {
+    color: var(--gold-bright);
+}
+
 .md-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding: 4px 10px;
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -1603,6 +1733,8 @@ a:hover { color: var(--gold-bright); }
 .detail-top-bar {
     display: flex;
     justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
     margin-top: 10px;
 }
 
@@ -1660,6 +1792,7 @@ a:hover { color: var(--gold-bright); }
 .detail-type-badge.entities { background: var(--gold-dim); color: var(--gold); }
 .detail-type-badge.concepts { background: var(--teal-dim); color: var(--teal); }
 .detail-type-badge.queries { background: var(--slate-blue-dim); color: var(--slate-blue); }
+.detail-type-badge.papers { background: var(--gold-dim); color: var(--gold-bright); }
 
 .detail-tags {
     display: flex;
@@ -2491,6 +2624,7 @@ JS = r'''
     var debounceTimer = null;
 
     function getRoot() {
+        if (typeof window.WIKI_ROOT === 'string') return window.WIKI_ROOT;
         var path = window.location.pathname;
         var depth = (path.match(/\//g) || []).length - 1;
         if (depth <= 2) return './';
@@ -2592,6 +2726,10 @@ def generate_all():
     pages = load_all_pages()
     print(f"  Found {len(pages)} pages")
 
+    print("Loading paper sources...")
+    papers = load_all_papers()
+    print(f"  Found {len(papers)} papers")
+
     print("Building backlink index...")
     backlinks = build_backlinks(pages)
 
@@ -2614,9 +2752,9 @@ def generate_all():
     # Create source symlinks for MD file access
     source_dir = OUTPUT_DIR / 'source'
     source_dir.mkdir(exist_ok=True)
-    for target in ['entities', 'concepts', 'queries', 'raw']:
+    for target in ['entities', 'concepts', 'queries', 'raw', 'references']:
         link = source_dir / target
-        if not link.exists():
+        if (WIKI_ROOT / target).exists() and not link.exists():
             link.symlink_to(WIKI_ROOT / target)
 
     # Create static dir
@@ -2627,7 +2765,7 @@ def generate_all():
     print("  Wrote static assets")
 
     # Generate search index
-    (OUTPUT_DIR / 'search-index.json').write_text(generate_search_index(pages), encoding='utf-8')
+    (OUTPUT_DIR / 'search-index.json').write_text(generate_search_index(pages, papers), encoding='utf-8')
     print("  Wrote search index")
 
     # Home page
@@ -2682,8 +2820,10 @@ def generate_all():
     if papers_dir.exists():
         p_dir = OUTPUT_DIR / 'papers'
         p_dir.mkdir(exist_ok=True)
-        (p_dir / 'index.html').write_text(generate_papers_listing(), encoding='utf-8')
-        print("  Generated papers listing")
+        (p_dir / 'index.html').write_text(generate_papers_listing(papers), encoding='utf-8')
+        for paper in papers:
+            (p_dir / f'{paper["name"]}.html').write_text(generate_paper_detail(paper, pages), encoding='utf-8')
+        print(f"  Generated papers listing and {len(papers)} paper pages")
 
     total = len(list(OUTPUT_DIR.rglob('*.html')))
     print(f"\nDone! Generated {total} HTML pages in {OUTPUT_DIR}")
@@ -2716,6 +2856,25 @@ def detect_changes():
                 md_file = type_dir / f'{name}.md'
                 if not md_file.exists():
                     deleted_html.append((page_type, name, html_file))
+
+    papers_dir = WIKI_ROOT / 'raw' / 'papers'
+    papers_html_dir = OUTPUT_DIR / 'papers'
+    if papers_dir.exists():
+        paper_stems = set()
+        for md_file in papers_dir.rglob('*.md'):
+            paper_stems.add(md_file.stem)
+            html_file = papers_html_dir / f'{md_file.stem}.html'
+            if not html_file.exists():
+                new_pages.append(('papers', md_file.stem, md_file))
+            elif md_file.stat().st_mtime > html_file.stat().st_mtime:
+                modified_pages.append(('papers', md_file.stem, md_file))
+
+        if papers_html_dir.exists():
+            for html_file in papers_html_dir.glob('*.html'):
+                if html_file.name == 'index.html':
+                    continue
+                if html_file.stem not in paper_stems:
+                    deleted_html.append(('papers', html_file.stem, html_file))
 
     # Check structural changes
     structural = []
@@ -2768,8 +2927,10 @@ def generate_incremental():
     new_pages, modified_pages, deleted_html, structural = detect_changes()
 
     needs_full = len(structural) > 0
+    if any(pt == 'papers' for pt, _, _ in new_pages + modified_pages + deleted_html):
+        needs_full = True
     if needs_full:
-        print("Structural changes detected, running full rebuild...")
+        print("Structural or paper changes detected, running full rebuild...")
         generate_all()
         return
 
@@ -2784,7 +2945,7 @@ def generate_incremental():
     source_dir.mkdir(exist_ok=True)
     for target in ['entities', 'concepts', 'queries', 'raw', 'references']:
         link = source_dir / target
-        if not link.exists():
+        if (WIKI_ROOT / target).exists() and not link.exists():
             link.symlink_to(WIKI_ROOT / target)
 
     static_dir = OUTPUT_DIR / 'static'
@@ -2795,6 +2956,7 @@ def generate_incremental():
 
     # Load all pages (needed for wikilink resolution and backlinks)
     pages = load_all_pages()
+    papers = load_all_papers()
     backlinks = build_backlinks(pages)
     categories = build_concept_categories(pages)
 
@@ -2851,7 +3013,7 @@ def generate_incremental():
 
     # Always update search index and home (they aggregate everything)
     (OUTPUT_DIR / 'search-index.json').write_text(
-        generate_search_index(pages), encoding='utf-8')
+        generate_search_index(pages, papers), encoding='utf-8')
     (OUTPUT_DIR / 'index.html').write_text(
         generate_home(pages, backlinks, categories), encoding='utf-8')
     (OUTPUT_DIR / 'tags.html').write_text(
