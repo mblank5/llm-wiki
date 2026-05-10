@@ -1,10 +1,15 @@
 ---
-title: "V2A-DPO: Video-to-Audio Preference Optimization"
+title: 'V2A-DPO: Video-to-Audio Preference Optimization'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [training, alignment, multimodal, rl]
-sources: ["2603.11089"]
+tags:
+- training
+- alignment
+- multimodal
+- rl
+sources:
+- raw/papers/2026/03/2603.11089.md
 ---
 
 # V2A-DPO: Omni-Preference Optimization for Video-to-Audio Generation

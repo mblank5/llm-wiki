@@ -402,7 +402,7 @@ policy.save("agent_r1_trained")
 
 - [[ppo]] — Core RL algorithm
 - [[ragegen-multi-turn-rl-agents]] — Trajectory-level RL (complementary)
-- [[ml-agent]] — Step-wise RL (different approach)
+- [[ml-agent-autonomous-ml|ml-agent]] — Step-wise RL (different approach)
 - [[on-policy-distillation]] — Post-training refinement
 - [[agent-safety]] — Safety considerations
 

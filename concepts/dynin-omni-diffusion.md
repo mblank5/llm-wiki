@@ -1,10 +1,15 @@
 ---
-title: "Dynin-Omni: Diffusion-Based Omnimodal Foundation Model"
+title: 'Dynin-Omni: Diffusion-Based Omnimodal Foundation Model'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [model, architecture, multimodal, training]
-sources: ["2604.00007"]
+tags:
+- model
+- architecture
+- multimodal
+- training
+sources:
+- raw/papers/2026/03/2604.00007.md
 ---
 
 # Dynin-Omni: Diffusion-Based Omnimodal Foundation Model

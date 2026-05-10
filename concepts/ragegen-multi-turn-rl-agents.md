@@ -349,8 +349,8 @@ class StarPOTrainer:
 
 - [[grp-o]] — GRPO for step-level optimization
 - [[ppo]] — Standard PPO foundation
-- [[agent-r1]] — End-to-end RL for agents
-- [[ml-agent]] — Step-wise RL for ML
+- [[agent-r1-end-to-end-rl|agent-r1]] — End-to-end RL for agents
+- [[ml-agent-autonomous-ml|ml-agent]] — Step-wise RL for ML
 - [[on-policy-distillation]] — Complementary post-training technique
 
 ## References

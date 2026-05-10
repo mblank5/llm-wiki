@@ -1,10 +1,16 @@
 ---
-title: "U-Mind: Real-Time Multimodal Interaction"
+title: 'U-Mind: Real-Time Multimodal Interaction'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [model, architecture, multimodal, training, inference]
-sources: ["2602.23739"]
+tags:
+- model
+- architecture
+- multimodal
+- training
+- inference
+sources:
+- raw/papers/2026/02/2602.23739.md
 ---
 
 # U-Mind: Unified Framework for Real-Time Multimodal Interaction

@@ -1,10 +1,15 @@
 ---
-title: "Modality Preference of Omni-Modal LLMs"
+title: Modality Preference of Omni-Modal LLMs
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [multimodal, alignment, benchmark, architecture]
-sources: ["2604.16902"]
+tags:
+- multimodal
+- alignment
+- benchmark
+- architecture
+sources:
+- raw/papers/2026/04/2604.16902.md
 ---
 
 # Modality Preference of Omni-Modal LLMs: Beyond Text-Dominance

@@ -1,10 +1,15 @@
 ---
-title: "AudioKV: KV Cache Eviction for Large Audio-Language Models"
+title: 'AudioKV: KV Cache Eviction for Large Audio-Language Models'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [inference, speech-model, architecture, alignment]
-sources: ["2604.06694"]
+tags:
+- inference
+- speech-model
+- architecture
+- alignment
+sources:
+- raw/papers/2026/04/2604.06694.md
 ---
 
 # AudioKV: KV Cache Eviction in Efficient Large Audio-Language Models

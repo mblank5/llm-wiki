@@ -1,10 +1,16 @@
 ---
-title: "EmoOmni: Emotional Understanding in Omni-LLMs"
+title: 'EmoOmni: Emotional Understanding in Omni-LLMs'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [model, multimodal, alignment, training, architecture]
-sources: ["2602.21900"]
+tags:
+- model
+- multimodal
+- alignment
+- training
+- architecture
+sources:
+- raw/papers/2026/02/2602.21900.md
 ---
 
 # EmoOmni: Bridging Emotional Understanding and Expression in Omni-Modal LLMs

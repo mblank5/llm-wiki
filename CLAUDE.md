@@ -70,6 +70,9 @@ It currently reports tag taxonomy drift, missing source files, broken wikilinks,
 long pages, and sparse links as warnings so historical debt can be fixed in
 batches.
 
+`[[tag-name]]` links are valid when `tag-name` appears in `SCHEMA.md`; the static
+site renders them as links to the generated tags page.
+
 GitHub Pages runs:
 
 1. `python3 scripts/lint-wiki.py .`

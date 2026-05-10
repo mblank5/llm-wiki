@@ -413,9 +413,9 @@ How to handle memory obsolescence?
 ## Related Work
 
 - [[AgentPoison]] — Backdoor attack on agent memory
-- [[VerificAgent]] — Verification-based memory oversight
-- [[AgentAlign]] — Training-time safety alignment
-- [[agent-r1]] — Agent training with memory
+- [[verificagent|VerificAgent]] — Verification-based memory oversight
+- [[agent-align|AgentAlign]] — Training-time safety alignment
+- [[agent-r1-end-to-end-rl|agent-r1]] — Agent training with memory
 - [[on-policy-distillation]] — Could memory contamination affect OPD?
 
 ## References

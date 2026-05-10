@@ -1,10 +1,14 @@
 ---
-title: "AVID: Audio-Visual Inconsistency Benchmark"
+title: 'AVID: Audio-Visual Inconsistency Benchmark'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [benchmark, multimodal, architecture]
-sources: ["2604.13593"]
+tags:
+- benchmark
+- multimodal
+- architecture
+sources:
+- raw/papers/2026/04/2604.13593.md
 ---
 
 # AVID: Audio-Visual Inconsistency Understanding Benchmark

@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
@@ -133,7 +134,7 @@ def lint(root: Path) -> list[Finding]:
                     )
 
         links = {link for link in wiki_links(body) if likely_page_link(link)}
-        broken = sorted(link for link in links if link != page.stem and link not in pages)
+        broken = sorted(link for link in links if link != page.stem and link not in pages and link not in allowed_tags)
         if broken:
             findings.append(
                 Finding("warning", "broken-wikilinks", rel, f"broken: {', '.join(broken[:8])}")
@@ -167,6 +168,10 @@ def print_findings(findings: list[Finding], max_findings: int = 0) -> None:
             print(f"  {finding.path}: [{finding.code}] {finding.message}")
         if len(shown) < len(scoped):
             print(f"  ... {len(scoped) - len(shown)} more {severity}s omitted")
+
+        by_code = Counter(f.code for f in scoped)
+        summary = ", ".join(f"{code}={count}" for code, count in sorted(by_code.items()))
+        print(f"  by code: {summary}")
 
     print(f"\nSummary: {counts.get('error', 0)} errors, {counts.get('warning', 0)} warnings")
 

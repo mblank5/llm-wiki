@@ -1,10 +1,15 @@
 ---
-title: "OmniTrace: Generation-Time Attribution in Omni-Modal LLMs"
+title: 'OmniTrace: Generation-Time Attribution in Omni-Modal LLMs'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [multimodal, alignment, inference, benchmark]
-sources: ["2604.13073"]
+tags:
+- multimodal
+- alignment
+- inference
+- benchmark
+sources:
+- raw/papers/2026/04/2604.13073.md
 ---
 
 # OmniTrace: Generation-Time Attribution in Omni-Modal LLMs

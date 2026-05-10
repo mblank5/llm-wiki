@@ -1,10 +1,15 @@
 ---
-title: "Relax: Async RL Engine for Omni-Modal Post-Training"
+title: 'Relax: Async RL Engine for Omni-Modal Post-Training'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [rl, training, architecture, multimodal]
-sources: ["2604.11554"]
+tags:
+- rl
+- training
+- architecture
+- multimodal
+sources:
+- raw/papers/2026/04/2604.11554.md
 ---
 
 # Relax: Async RL Engine for Omni-Modal Post-Training

@@ -79,6 +79,9 @@ It reports current migration debt as warnings:
 - pages over the split threshold
 - pages with too few outbound wikilinks
 
+Wikilinks that point to valid tags, such as `[[grpo]]`, are rendered as links
+to the generated tags page instead of broken page links.
+
 ## Patches Applied
 
 The upstream `llm-wiki` (npm) has bugs with large ArXiv papers. We apply 4 patches:

@@ -1,10 +1,15 @@
 ---
-title: "Chain of Modality: Dynamic Orchestration in Omni-MLLMs"
+title: 'Chain of Modality: Dynamic Orchestration in Omni-MLLMs'
 created: 2026-04-27
 updated: 2026-04-27
 type: concept
-tags: [architecture, multimodal, inference, alignment]
-sources: ["2604.14520"]
+tags:
+- architecture
+- multimodal
+- inference
+- alignment
+sources:
+- raw/papers/2026/04/2604.14520.md
 ---
 
 # Chain of Modality: Dynamic Orchestration in Omni-MLLMs

@@ -20,6 +20,7 @@ import argparse
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
+from functools import lru_cache
 
 import yaml
 import markdown
@@ -93,6 +94,20 @@ def load_all_pages():
             if page:
                 pages[page['name']] = page
     return pages
+
+
+@lru_cache(maxsize=1)
+def load_allowed_tags():
+    tags = set()
+    schema_path = WIKI_ROOT / 'SCHEMA.md'
+    if not schema_path.exists():
+        return tags
+    for line in schema_path.read_text(encoding='utf-8').splitlines():
+        if not line.startswith('- **') or ':' not in line:
+            continue
+        _, values = line.split(':', 1)
+        tags.update(tag.strip() for tag in values.split(',') if tag.strip())
+    return tags
 
 
 def load_page(filepath, page_type):
@@ -176,6 +191,8 @@ def _first(pages, name):
 # ═══════════════════════════════════════════════════════════════
 
 def render_markdown(text, pages):
+    allowed_tags = load_allowed_tags()
+
     def resolve_wikilink(match):
         raw = match.group(1)
         pipe_idx = raw.find('|')
@@ -189,6 +206,8 @@ def render_markdown(text, pages):
         if link in pages:
             p = pages[link]
             return f'<a class="wikilink" href="../{p["type"]}/{link}.html">{display}</a>'
+        if link in allowed_tags:
+            return f'<a class="wikilink tag-link" href="../tags.html#tag-{anchor_id(link)}">{display}</a>'
         return f'<span class="wikilink broken" title="Page not found">{display}</span>'
 
     text = re.sub(r'\[\[([^\]]+)\]\]', resolve_wikilink, text)
@@ -702,7 +721,7 @@ def generate_tags_page(pages):
         for p in sorted(tag_pages, key=lambda x: x['title'].lower()):
             items.append(f'<a href="{p["type"]}/{p["name"]}.html" class="tag-page-link">{p["title"]}</a>')
         sections.append(f'''
-        <section class="tag-section">
+        <section class="tag-section" id="tag-{anchor_id(tag)}">
             <h2 style="--tag-color: {color}">
                 <span class="tag" style="--tag-color: {color}">{tag}</span>
                 <span class="tag-count">{len(tag_pages)}</span>
