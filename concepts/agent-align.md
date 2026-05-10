@@ -1,10 +1,14 @@
 ---
-title: "AgentAlign"
+title: AgentAlign
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
-tags: [safety, alignment, agent]
-sources: [raw/papers/2025/05/23020.md]
+tags:
+- safety
+- alignment
+- agent
+sources:
+- raw/papers/2025/05/2505.23020.md
 ---
 
 # AgentAlign: 抽象行为链合成安全对齐数据

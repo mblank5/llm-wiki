@@ -1,10 +1,15 @@
 ---
-title: "Agent Safety via RL"
+title: Agent Safety via RL
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
-tags: [safety, rl, agent, alignment]
-sources: [raw/papers/2025/07/08270.md]
+tags:
+- safety
+- rl
+- agent
+- alignment
+sources:
+- raw/papers/2025/07/2507.08270.md
 ---
 
 # Agent Safety via RL: 统一安全对齐框架

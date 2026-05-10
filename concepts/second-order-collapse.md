@@ -1,10 +1,15 @@
 ---
-title: "Why Mean Pooling Works: Quantifying Second-Order Collapse in Text Embeddings"
+title: 'Why Mean Pooling Works: Quantifying Second-Order Collapse in Text Embeddings'
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [embedding, architecture, retrieval, training]
-sources: ["arxiv:2604.27398"]
+tags:
+- embedding
+- architecture
+- retrieval
+- training
+sources:
+- raw/papers/2026/04/2604.27398.md
 ---
 
 # Why Mean Pooling Works: Second-Order Collapse

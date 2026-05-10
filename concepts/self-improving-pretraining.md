@@ -1,10 +1,17 @@
 ---
-title: "Self-Improving Pretraining: Using Post-Trained Models to Pretrain Better Models"
+title: 'Self-Improving Pretraining: Using Post-Trained Models to Pretrain Better Models'
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [pretraining, rl, alignment, safety, on-policy, training]
-sources: ["arxiv:2601.21343"]
+tags:
+- pretraining
+- rl
+- alignment
+- safety
+- on-policy
+- training
+sources:
+- raw/papers/2026/01/2601.21343.md
 ---
 
 # Self-Improving Pretraining

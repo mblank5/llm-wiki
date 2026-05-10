@@ -14,5 +14,7 @@ Teacher top-k local support matching is a technique used in knowledge distillati
 ## Related
 
 - [[on-policy-distillation]] — Teacher top-k matching is applied within on-policy distillation frameworks
+- [[knowledge-distillation]] — General teacher-student training family
+- [[policy-distillation]] — Policy-level variant where support matching can appear
 
 ## References

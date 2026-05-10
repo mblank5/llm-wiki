@@ -1,10 +1,15 @@
 ---
-title: "Stochastic KV Routing: Random Cross-Layer Attention for Depth-Wise Cache Sharing"
+title: 'Stochastic KV Routing: Random Cross-Layer Attention for Depth-Wise Cache Sharing'
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [inference, memory, architecture, training]
-sources: ["arxiv:2604.22782"]
+tags:
+- inference
+- memory
+- architecture
+- training
+sources:
+- raw/papers/2026/04/2604.22782.md
 ---
 
 # Stochastic KV Routing (R-CLA)

@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-Last updated: 2026-05-09 | Total pages: 253 | Raw papers: 213
+Last updated: 2026-05-10 | Total pages: 272 | Raw papers: 256
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -41,6 +41,27 @@ Last updated: 2026-05-09 | Total pages: 253 | Raw papers: 213
 - [[funasr]] — 阿里达摩院开源端到端语音识别工具包，旗舰 Paraformer 在 60k 小时工业数据上训练，10x+ 推理加速。
 
 ## Concepts
+
+### stub
+- [[agent-safety]] — Agent safety umbrella page for training-time safety, runtime defense, memory safety, and prompt-injection risks.
+- [[agentic-research-ideas]] — Routing page for agentic research directions across ML, coding, and executable research artifacts.
+- [[agentic-workflows]] — Workflow-level orchestration patterns for agent steps, tools, roles, and verification loops.
+- [[agentpoison]] — Memory poisoning and backdoor attacks against persistent agent state.
+- [[asr-benchmarks]] — ASR evaluation benchmarks for speech-model and omni-modal systems.
+- [[complementary-learning-systems]] — Memory theory separating fast episodic acquisition from slower consolidation.
+- [[diffusion-lm]] — Diffusion language-model family used as a contrast for autoregressive decoding.
+- [[eagle-3]] — Autoregressive drafter baseline referenced by speculative-decoding pages.
+- [[generative-agents]] — LLM-driven simulated agents with memory streams, reflection, and planning.
+- [[llm-inference-optimization]] — Inference optimization umbrella covering latency, memory, decoding, routing, and cache methods.
+- [[mixture-of-agents]] — Multi-agent ensemble pattern for proposal, critique, refinement, and aggregation.
+- [[multi-agent-coordination]] — Coordination concepts for role assignment, communication, aggregation, and shared state.
+- [[omni-model-evolution-overview]] — Navigation page for omni-modal model evolution.
+- [[prompt-injection]] — Security attack class against LLM and tool-using agent instruction hierarchy.
+- [[qdrant-vector-search]] — Vector search page for Qdrant-backed retrieval and RAG pipelines.
+- [[reflexion]] — Agent self-critique pattern that stores verbal feedback for later attempts.
+- [[rome-memit]] — Model-editing methods used as a contrast to external memory systems.
+- [[skill-orchestration]] — Skill selection, sequencing, and verification in agent workflows.
+- [[test-time-scaling]] — Inference-time compute scaling through search, reasoning, verification, or agent deliberation.
 
 ### 'distillation'
 - [[dual-policy-distillation]] — 1|# Dual Policy Distillation (DPD)

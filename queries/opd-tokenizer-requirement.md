@@ -26,3 +26,9 @@ sources: [raw/papers/2026/04/2604.00626.md, raw/papers/2026/03/2603.24596.md, ra
 - **On-Policy Prefix Distillation (OPPD)**：通过prefix共享来缓解tokenizer差异，但通常仍建议tokenizer兼容。[src: raw/papers/2602.15260.md]
 
 **结论**：是否共用tokenizer取决于具体OPD变体。**跨模态OPD（如X-OPD）明确支持不同tokenizer**，而单模态OPD通常要求一致。
+
+## Related
+
+- [[on-policy-distillation]] — OPD 总体范式。
+- [[x-opd]] — 跨模态 OPD 中 tokenizer 不一致的主要例子。
+- [[on-policy-prefix-distillation]] — Prefix 共享缓解 tokenizer 差异。

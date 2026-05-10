@@ -1,10 +1,16 @@
 ---
-title: "AgenticRecTune — Multi-Agent Recommendation System Optimization"
+title: AgenticRecTune — Multi-Agent Recommendation System Optimization
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [agent, multi-agent, recommendation, rl, memory]
-sources: [raw/papers/2604.26969.md]
+tags:
+- agent
+- multi-agent
+- recommendation
+- rl
+- memory
+sources:
+- raw/papers/2026/04/2604.26969.md
 ---
 
 # AgenticRecTune: Multi-Agent with Self-Evolving Skillhub for Recommendation System Optimization

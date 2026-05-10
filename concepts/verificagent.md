@@ -1,10 +1,15 @@
 ---
-title: "VerificAgent"
+title: VerificAgent
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
-tags: [safety, memory, agent, verification]
-sources: [raw/papers/2025/06/02539.md]
+tags:
+- safety
+- memory
+- agent
+- verification
+sources:
+- raw/papers/2025/06/2506.02539.md
 ---
 
 # VerificAgent: 计算机使用 Agent 的记忆验证框架

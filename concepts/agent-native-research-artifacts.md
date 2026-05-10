@@ -1,10 +1,15 @@
 ---
-title: "Agent-Native Research Artifact (Ara)"
+title: Agent-Native Research Artifact (Ara)
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [agent, agentic-coding, training, benchmark]
-sources: [raw/papers/2604.24658.md]
+tags:
+- agent
+- agentic-coding
+- training
+- benchmark
+sources:
+- raw/papers/2026/04/2604.24658.md
 ---
 
 # Agent-Native Research Artifact (Ara)

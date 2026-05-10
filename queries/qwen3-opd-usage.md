@@ -48,3 +48,9 @@ sources: [raw/papers/2025/05/2505.09388.md]
 ```
 
 > ⚠️ 注意：Qwen3 技术报告未公开 OPD 的具体超参（如 KL 权重、采样温度），也未说明是否用了 PPD（Proximal Policy Distillation）的 per-token KL clipping 等技术。如需细节，可参考 Wiki 中的 [2407.15134 PPD] 和 [2604.00626 OPD Survey]。
+
+## Related
+
+- [[qwen3]] — Qwen3 技术报告实体页。
+- [[on-policy-distillation]] — OPD 总体范式。
+- [[strong-to-weak-distillation]] — Qwen3 小模型训练中的关键蒸馏方式。

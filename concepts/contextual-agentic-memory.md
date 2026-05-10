@@ -1,10 +1,16 @@
 ---
-title: "Contextual Agentic Memory is a Memo, Not True Memory"
+title: Contextual Agentic Memory is a Memo, Not True Memory
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [safety, alignment, evaluation, benchmark, reasoning]
-sources: [raw/papers/2604.27707.md]
+tags:
+- safety
+- alignment
+- evaluation
+- benchmark
+- reasoning
+sources:
+- raw/papers/2026/04/2604.27707.md
 ---
 
 # Contextual Agentic Memory is a Memo, Not True Memory

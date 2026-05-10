@@ -1,10 +1,16 @@
 ---
-title: "ReaLM-Retrieve — Adaptive Retrieval for Large Reasoning Models"
+title: ReaLM-Retrieve — Adaptive Retrieval for Large Reasoning Models
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [retrieval, reasoning, agent, inference, benchmark]
-sources: [raw/papers/2604.26649.md]
+tags:
+- retrieval
+- reasoning
+- agent
+- inference
+- benchmark
+sources:
+- raw/papers/2026/04/2604.26649.md
 ---
 
 # ReaLM-Retrieve: When to Retrieve During Reasoning

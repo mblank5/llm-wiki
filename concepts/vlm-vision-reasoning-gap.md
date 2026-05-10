@@ -1,16 +1,14 @@
 ---
-title: "Do Vision-Language Models Truly Perform Vision Reasoning?"
+title: Do Vision-Language Models Truly Perform Vision Reasoning?
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
 tags:
-  - multimodal
-  - vision
-  - reasoning
+- multimodal
+- vision
+- reasoning
 sources:
-  - arxiv: "2604.16256"
-  - url: "https://arxiv.org/abs/2604.16256"
-  - date: 2026-04-17
+- raw/papers/2026/04/2604.16256.md
 ---
 
 # VLM 是否真正执行了视觉推理? ——模态差距的严格研究

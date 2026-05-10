@@ -15,5 +15,7 @@ TVDF (Temporal Video Distillation Framework) is a distillation framework focused
 ## Related
 
 - [[video-opd]] — Video-OPD applies on-policy distillation to video tasks, related to TVDF
+- [[on-policy-distillation]] — Broader OPD training paradigm
+- [[model-distillation]] — General model compression and transfer setting
 
 ## References

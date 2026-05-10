@@ -1,10 +1,14 @@
 ---
-title: "Thought-Aligner"
+title: Thought-Aligner
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
-tags: [safety, agent, reasoning]
-sources: [raw/papers/2025/05/11063.md]
+tags:
+- safety
+- agent
+- reasoning
+sources:
+- raw/papers/2025/05/2505.11063.md
 ---
 
 # Thought-Aligner: 轻量级插件式思维纠正模块

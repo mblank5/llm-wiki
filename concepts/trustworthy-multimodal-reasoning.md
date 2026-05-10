@@ -1,16 +1,15 @@
 ---
-title: "The Expense of Seeing: Trustworthy Multimodal Reasoning Within Monolithic Paradigm"
+title: 'The Expense of Seeing: Trustworthy Multimodal Reasoning Within Monolithic
+  Paradigm'
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
 tags:
-  - multimodal
-  - reasoning
-  - trustworthiness
+- multimodal
+- reasoning
+- trustworthiness
 sources:
-  - arxiv: "2604.20665"
-  - url: "https://arxiv.org/abs/2604.20665"
-  - date: 2026-04-22
+- raw/papers/2026/04/2604.20665.md
 ---
 
 # "看见"的代价: 在单体范式中实现可信多模态推理

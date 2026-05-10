@@ -1,16 +1,14 @@
 ---
-title: "ReasonXL: Shifting LLM Reasoning Language Without Sacrificing Performance"
+title: 'ReasonXL: Shifting LLM Reasoning Language Without Sacrificing Performance'
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
 tags:
-  - reasoning
-  - multilingual
-  - training
+- reasoning
+- multilingual
+- training
 sources:
-  - arxiv: "2604.12378"
-  - url: "https://arxiv.org/abs/2604.12378"
-  - date: 2026-04-14
+- raw/papers/2026/04/2604.12378.md
 ---
 
 # ReasonXL: 在不牺牲性能的前提下转移 LLM 推理语言

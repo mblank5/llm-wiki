@@ -39,3 +39,9 @@ sources: [raw/papers/2026/01/2601.18734.md]
 
 ### 💡 结论
 > OPSD 在**所有模型尺度**上均显著优于 SFT（+5~7.6 Avg@12），且训练效率远高于 GRPO。SFT 在高质量 reasoning 数据上可能因风格迁移导致性能退化，而 OPSD 通过 self-rationalization 规避了这个问题。
+
+## Related
+
+- [[on-policy-self-distillation]] — OPSD 方法本体。
+- [[per-token-kl-clipping]] — OPSD 中稳定 token 级 KL 的关键技巧。
+- [[exposure-bias]] — SFT 相比 OPD 的核心问题之一。

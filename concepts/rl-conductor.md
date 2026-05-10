@@ -1,10 +1,17 @@
 ---
-title: "Learning to Orchestrate Agents with the RL Conductor"
+title: Learning to Orchestrate Agents with the RL Conductor
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [rl, reasoning, evaluation, benchmark, training, alignment]
-sources: [raw/papers/2512.04388.md]
+tags:
+- rl
+- reasoning
+- evaluation
+- benchmark
+- training
+- alignment
+sources:
+- raw/papers/2025/12/2512.04388.md
 ---
 
 # Learning to Orchestrate Agents with the RL Conductor

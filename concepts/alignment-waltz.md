@@ -1,10 +1,15 @@
 ---
-title: "WaltzRL"
+title: WaltzRL
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
-tags: [safety, alignment, rl, multi-agent]
-sources: [raw/papers/2025/10/08240.md]
+tags:
+- safety
+- alignment
+- rl
+- multi-agent
+sources:
+- raw/papers/2025/10/2510.08240.md
 ---
 
 # WaltzRL: 多 Agent 安全协作框架

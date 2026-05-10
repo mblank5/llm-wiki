@@ -1,10 +1,15 @@
 ---
-title: "Tachiom: Efficient Multivector Retrieval with Token-Aware Clustering"
+title: 'Tachiom: Efficient Multivector Retrieval with Token-Aware Clustering'
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [retrieval, embedding, architecture, inference]
-sources: ["arxiv:2604.28142"]
+tags:
+- retrieval
+- embedding
+- architecture
+- inference
+sources:
+- raw/papers/2026/04/2604.28142.md
 ---
 
 # Tachiom: Efficient Multivector Retrieval

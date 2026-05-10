@@ -1,10 +1,16 @@
 ---
-title: "Negative Data Mining for Dense Retrieval at IKEA"
+title: Negative Data Mining for Dense Retrieval at IKEA
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [retrieval, embedding, training, benchmark, recommendation]
-sources: [raw/papers/2605.00353.md]
+tags:
+- retrieval
+- embedding
+- training
+- benchmark
+- recommendation
+sources:
+- raw/papers/2026/05/2605.00353.md
 ---
 
 # Negative Data Mining for Contrastive Learning in Dense Retrieval at IKEA.com

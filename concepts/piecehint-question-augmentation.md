@@ -1,16 +1,14 @@
 ---
-title: "PieceHint: Question Augmentation Framework for RL"
+title: 'PieceHint: Question Augmentation Framework for RL'
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
 tags:
-  - rl
-  - data-augmentation
-  - reward
+- rl
+- data-augmentation
+- reward
 sources:
-  - arxiv: "2604.15830"
-  - url: "https://arxiv.org/abs/2604.15830"
-  - date: 2026-04-17
+- raw/papers/2026/04/2604.15830.md
 ---
 
 # PieceHint: 面向强化学习的问题增强框架

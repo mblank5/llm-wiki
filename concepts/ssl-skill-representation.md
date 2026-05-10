@@ -1,10 +1,16 @@
 ---
-title: "From Skill Text to Skill Structure: The SSL Representation"
+title: 'From Skill Text to Skill Structure: The SSL Representation'
 created: 2026-05-05
 updated: 2026-05-05
 type: concept
-tags: [safety, evaluation, benchmark, tool-use, alignment]
-sources: [raw/papers/2604.24026.md]
+tags:
+- safety
+- evaluation
+- benchmark
+- tool-use
+- alignment
+sources:
+- raw/papers/2026/04/2604.24026.md
 ---
 
 # From Skill Text to Skill Structure: The SSL Representation

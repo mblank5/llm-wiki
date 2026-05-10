@@ -12,3 +12,9 @@ sources: []
 Stable Baselines3 is a set of reliable implementations of reinforcement learning algorithms in PyTorch. It is the framework upon which the sb3-distill library (implementing [[proximal-policy-distillation]]) is built.
 
 [src: raw/ingested/2024/07/2407.15134.md]
+
+## Related
+
+- [[ppo]] — One of the core algorithms implemented by Stable Baselines3.
+- [[proximal-policy-distillation]] — Uses Stable Baselines3 as its implementation base.
+- [[policy-distillation]] — Broader policy-transfer setting.

@@ -34,3 +34,9 @@ sources: [raw/papers/2025/05/2505.09388.md]
 这与您的OPD（On-Policy Distillation）主题直接相关 → 可进一步交叉参考 [src: 2604.00626]（OPD综述）和 [src: 2407.15134]（PPD）。
 
 如需深入某个技术细节（如GRPO调参、蒸馏策略、思维预算实现），请指定方向，我可帮您精读原文段落。
+
+## Related
+
+- [[qwen3]] — Qwen3 模型系列实体页。
+- [[thinking-budget]] — Qwen3 的思维预算能力。
+- [[strong-to-weak-distillation]] — Qwen3 小模型能力迁移机制。

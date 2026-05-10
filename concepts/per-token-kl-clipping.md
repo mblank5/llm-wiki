@@ -29,3 +29,9 @@ sources: []
     20|- Preserves learning signal on math tokens while suppressing noise from style tokens.
     21|
     22|[src: raw/ingested/2026/01/2601.18734.md]
+
+## Related
+
+- [[on-policy-self-distillation]] — Source setting where per-token clipping is used.
+- [[kl-divergence-in-distillation]] — KL objective stabilized by clipping.
+- [[on-policy-distillation]] — Broader distillation family.

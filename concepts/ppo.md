@@ -18,3 +18,9 @@ sources: []
      9|- Includes an entropy bonus term to encourage exploration.
     10|
     11|[src: raw/ingested/2024/07/2407.15134.md]
+
+## Related
+
+- [[proximal-policy-distillation]] — Distillation method derived from PPO.
+- [[grp-o]] — Related RL optimization method used in LLM post-training.
+- [[reinforcement-learning-from-human-feedback]] — Broader RLHF context.
