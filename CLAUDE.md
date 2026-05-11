@@ -20,13 +20,18 @@ python3 scripts/lint-wiki.py . --max-findings 80
 python3 scripts/generate-web.py
 python3 scripts/generate-web.py --status
 python3 scripts/generate-web.py --incremental
+
+# Generate Chinese paper cards
+python3 scripts/build-paper-briefs.py .
+python3 scripts/build-paper-briefs.py . --fallback-missing
 ```
 
 `scripts/generate-web.py` renders `concepts/`, `entities/`, and `queries/` as
 wiki detail pages, and renders each `raw/papers/YYYY/MM/*.md` paper as
-`web/output/papers/<arxiv-id>.html`. The paper listing links to both the HTML
-reader and source Markdown. The search index includes both wiki pages and paper
-HTML pages.
+`web/output/papers/<arxiv-id>.html`. Paper pages prefer Chinese cards in
+`paper-briefs/YYYY/MM/*.md`, then link to cleaned Markdown and raw source. The
+paper listing links to both the HTML reader and source Markdown. The search
+index includes both wiki pages and paper HTML pages.
 
 Legacy `llm-wiki` helper scripts are still present:
 
@@ -60,6 +65,7 @@ entities/         # Entity pages: models, orgs, products
 queries/          # Filed query results worth keeping
 raw/              # Immutable source material
 papers/           # Cleaned paper markdown organized by YYYY/MM
+paper-briefs/     # Chinese research cards used by paper HTML pages
 scripts/          # cleaning, lint, static generation, legacy helpers
 web/output/       # Generated static site, ignored by git
 web/app/          # Experimental multi-wiki FastAPI app
@@ -78,6 +84,11 @@ batches.
 
 `[[tag-name]]` links are valid when `tag-name` appears in `SCHEMA.md`; the static
 site renders them as links to the generated tags page.
+
+For paper pages, avoid exposing raw English Markdown as the primary reading
+experience. Generate or refresh `paper-briefs/` with `scripts/build-paper-briefs.py`.
+When the model quota is exhausted, use `--fallback-missing` only as a temporary
+Chinese pending-card layer and regenerate full briefs later with `--force`.
 
 GitHub Pages runs:
 

@@ -20,6 +20,9 @@ python3 scripts/lint-wiki.py . --max-findings 80
 # Generate the static web site into web/output/
 python3 scripts/generate-web.py
 
+# Build Chinese paper reading cards into paper-briefs/YYYY/MM/*.md
+python3 scripts/build-paper-briefs.py .
+
 # Check whether web/output is stale
 python3 scripts/generate-web.py --status
 ```
@@ -30,9 +33,11 @@ site on pushes to `main`.
 The static site renders both wiki pages and raw paper pages. `concepts/`,
 `entities/`, and `queries/` become interlinked detail pages; every
 `raw/papers/YYYY/MM/*.md` file also gets a readable HTML page under
-`web/output/papers/<arxiv-id>.html`. The papers listing links to both the HTML
-reader and the original Markdown source, and source chips on wiki pages point to
-the rendered paper page when one exists.
+`web/output/papers/<arxiv-id>.html`. Paper pages prefer the Chinese research
+cards in `paper-briefs/YYYY/MM/*.md`, then link back to the cleaned Markdown and
+raw source. The papers listing links to both the HTML reader and the original
+Markdown source, and source chips on wiki pages point to the rendered paper page
+when one exists.
 
 ## Legacy Setup Helper
 
@@ -53,8 +58,10 @@ bash setup-arxiv-wiki.sh ~/my-wiki <base_url> <model> <api_key>
 │   ├── articles/
 │   └── papers/
 ├── papers/                   # Cleaned paper markdown, organized by YYYY/MM
+├── paper-briefs/             # Chinese research cards for paper HTML pages
 ├── scripts/
 │   ├── clean-papers.py       # LLM paper cleaning pipeline
+│   ├── build-paper-briefs.py # Chinese paper brief generation pipeline
 │   ├── lint-wiki.py          # Wiki metadata/link/source lint
 │   ├── generate-web.py       # Static site generator
 │   ├── convert.sh            # Legacy arxiv2md helper
@@ -92,6 +99,11 @@ to the generated tags page instead of broken page links.
 The generated search index includes wiki pages plus rendered paper pages, so
 search can jump directly to a paper HTML reader instead of only exposing the raw
 Markdown file.
+
+If model quota is unavailable, `scripts/build-paper-briefs.py --fallback-missing`
+creates Chinese "pending brief" cards so the site does not fall back to raw
+English paper dumps. Re-run with `--force --ids <paper-id>` or normal batch mode
+when quota is restored to replace pending cards with full Chinese briefs.
 
 ## Patches Applied
 

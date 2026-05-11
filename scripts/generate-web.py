@@ -161,15 +161,30 @@ def load_paper_page(md_file):
     date_match = re.match(r'(\d{4})/(\d{2})', str(rel))
     date_str = f"{date_match.group(1)}-{date_match.group(2)}" if date_match else ''
     arxiv_match = re.search(r'(\d{4}\.\d{4,5})(?:v\d+)?', text)
+    clean_path = WIKI_ROOT / 'papers' / rel
+    brief_path = WIKI_ROOT / 'paper-briefs' / rel
+    brief_meta = {}
+    brief_content = ''
+    if brief_path.exists():
+        brief_text = brief_path.read_text(encoding='utf-8', errors='ignore')
+        brief_meta, brief_content = split_frontmatter(brief_text)
+        if brief_meta.get('title_zh'):
+            preview = get_preview(brief_content, 220) or preview
     return {
         'name': md_file.stem,
         'type': 'papers',
         'title': title,
+        'title_zh': brief_meta.get('title_zh', ''),
         'created': date_str,
         'updated': '',
         'tags': ['paper', str(meta.get('source') or 'source')],
         'sources': [],
         'content': content,
+        'brief_content': brief_content,
+        'brief_relpath': f"paper-briefs/{rel.as_posix()}" if brief_path.exists() else '',
+        'clean_relpath': f"papers/{rel.as_posix()}" if clean_path.exists() else '',
+        'quality': brief_meta.get('quality', ''),
+        'paper_type': brief_meta.get('paper_type', ''),
         'preview': preview,
         'md_relpath': f"raw/papers/{rel.as_posix()}",
         'relpath': rel.as_posix(),
@@ -653,15 +668,20 @@ def generate_papers_listing(papers):
     for p in papers:
         md_href = f"../source/raw/papers/{p['relpath']}"
         page_href = f"{p['name']}.html"
+        display_title = p.get('title_zh') or p['title']
+        quality = p.get('quality') or 'raw'
+        type_label = p.get('paper_type') or 'paper'
         items.append(f'''
         <div class="list-item paper-item">
             <div class="list-item-main">
-                <h3><a href="{page_href}" class="paper-title-link">{html.escape(p['title'])}</a></h3>
+                <h3><a href="{page_href}" class="paper-title-link">{html.escape(display_title)}</a></h3>
+                {f'<span class="paper-original-title">{html.escape(p["title"])}</span>' if display_title != p["title"] else ''}
                 <p>{html.escape(p['preview'])}</p>
                 <span class="paper-id">{p['arxiv_id']}</span>
             </div>
             <div class="list-item-meta">
                 <span class="list-item-date">{p['created']}</span>
+                <span class="paper-quality {html.escape(quality)}">{html.escape(type_label)}</span>
                 <a href="{page_href}" class="md-link" title="阅读 HTML 页面">阅读</a>
                 <a href="{md_href}" class="md-link" title="查看源 Markdown">源文件</a>
             </div>
@@ -673,8 +693,8 @@ def generate_papers_listing(papers):
             <a href="../index.html">总览</a> <span class="sep">/</span>
             <span class="current">论文</span>
         </div>
-        <h1>论文源材料</h1>
-        <p class="listing-desc">来自 arXiv 等来源的 Markdown 化论文材料，共 {len(papers)} 篇。这里保留标题、时间、摘要片段和源文件入口。</p>
+        <h1>论文研究卡片</h1>
+        <p class="listing-desc">来自 arXiv 等来源的论文材料，共 {len(papers)} 篇。页面优先展示中文研究卡片，并保留原始 Markdown / 清洗稿入口。</p>
     </div>
     <div class="list-view">
         {''.join(items)}
@@ -685,9 +705,22 @@ def generate_papers_listing(papers):
 
 
 def generate_paper_detail(paper, pages):
-    rendered = render_markdown(paper['content'], pages)
+    has_brief = bool(paper.get('brief_content'))
+    rendered = render_markdown(paper['brief_content'] if has_brief else paper['content'], pages)
     source_md_href = f"../source/{paper['md_relpath']}"
     source_label = paper['source'] or 'Markdown'
+    clean_link = ''
+    if paper.get('clean_relpath'):
+        clean_link = f'''
+            <a href="../source/{paper['clean_relpath']}" class="view-md-btn" title="查看清洗后的 Markdown">
+                <span class="md-icon">↗</span> 清洗稿
+            </a>'''
+    brief_link = ''
+    if paper.get('brief_relpath'):
+        brief_link = f'''
+            <a href="../source/{paper['brief_relpath']}" class="view-md-btn" title="查看中文卡片 Markdown">
+                <span class="md-icon">↗</span> 中文卡片
+            </a>'''
 
     external_link = ''
     if paper['url']:
@@ -696,25 +729,37 @@ def generate_paper_detail(paper, pages):
                 <span class="md-icon">↗</span> 原始论文
             </a>'''
 
-    guide_items = ''.join(f'<li>{html.escape(h)}</li>' for h in get_headings(paper['content'], 8))
+    guide_source = paper['brief_content'] if has_brief else paper['content']
+    guide_items = ''.join(f'<li>{html.escape(h)}</li>' for h in get_headings(guide_source, 8))
     guide_html = f'''
             <section class="reading-guide">
                 <div class="guide-kicker">论文导读</div>
-                <p>{html.escape(paper['preview'] or get_preview(paper["content"], 360))}</p>
+                <p>{html.escape(paper['preview'] or get_preview(paper["brief_content"] if has_brief else paper["content"], 360))}</p>
                 {f'<ol>{guide_items}</ol>' if guide_items else ''}
             </section>'''
+
+    title = paper.get('title_zh') or paper['title']
+    quality = paper.get('quality') or ('ok' if has_brief else 'raw')
+    quality_label = {
+        'ok': '中文卡片',
+        'source_limited': '源材料不足',
+        'pending_brief': '待中文精读',
+        'raw': '原文渲染',
+    }.get(str(quality), str(quality))
 
     body = f'''
     <div class="detail-header">
         <div class="breadcrumb">
             <a href="../index.html">总览</a> <span class="sep">/</span>
             <a href="index.html">论文</a> <span class="sep">/</span>
-            <span class="current">{html.escape(paper["title"][:40])}</span>
+            <span class="current">{html.escape(title[:40])}</span>
         </div>
         <div class="detail-top-bar">
             {external_link}
+            {brief_link}
+            {clean_link}
             <a href="{source_md_href}" class="view-md-btn" title="查看源 Markdown">
-                <span class="md-icon">↗</span> 源 Markdown
+                <span class="md-icon">↗</span> 原始源
             </a>
         </div>
     </div>
@@ -725,16 +770,18 @@ def generate_paper_detail(paper, pages):
             <div class="meta-row"><span class="meta-label">arXiv</span><span class="meta-value">{html.escape(paper["arxiv_id"])}</span></div>
             <div class="meta-row"><span class="meta-label">时间</span><span class="meta-value">{html.escape(paper["created"] or "未标注")}</span></div>
             <div class="meta-row"><span class="meta-label">来源</span><span class="meta-value">{html.escape(str(source_label))}</span></div>
+            <div class="meta-row"><span class="meta-label">页面质量</span><span class="meta-value">{html.escape(quality_label)}</span></div>
             <div class="meta-row"><span class="meta-label">阅读量级</span><span class="meta-value">{reading_minutes(paper["content"])} 分钟</span></div>
         </div>
         <div class="detail-body paper-detail-body">
+            {f'<p class="paper-original-title-block">{html.escape(paper["title"])}</p>' if title != paper["title"] else ''}
             {guide_html}
             {rendered}
         </div>
     </article>
     '''
 
-    return html_head(paper['title'], 'papers', 'papers') + body + html_foot('papers')
+    return html_head(title, 'papers', 'papers') + body + html_foot('papers')
 
 
 # ── Detail Page ─────────────────────────────────────────────
@@ -867,13 +914,15 @@ def generate_search_index(pages, papers=None):
             'href': f"{p['type']}/{p['name']}.html",
         })
     for p in papers or []:
+        paper_title = p.get('title_zh') or p['title']
+        paper_preview = p['preview'] or get_preview(p.get('brief_content') or p['content'], 240)
         entries.append({
             'name': p['name'],
-            'title': p['title'],
+            'title': paper_title,
             'type': 'papers',
             'typeLabel': TYPE_LABELS['papers'],
             'tags': p['tags'],
-            'preview': p['preview'] or get_preview(p['content'], 240),
+            'preview': paper_preview,
             'href': f"papers/{p['name']}.html",
         })
     return json.dumps(entries, ensure_ascii=False)
@@ -1635,6 +1684,49 @@ a:hover { color: var(--gold-bright); }
 
 .paper-title-link:hover {
     color: var(--gold-bright);
+}
+
+.paper-original-title,
+.paper-original-title-block {
+    display: block;
+    font-family: var(--font-body);
+    color: var(--ink-faded);
+}
+
+.paper-original-title {
+    font-size: 0.78rem;
+    margin-bottom: 6px;
+}
+
+.paper-original-title-block {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.paper-quality {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 120px;
+    padding: 3px 8px;
+    background: var(--teal-dim);
+    border: 1px solid color-mix(in srgb, var(--teal) 22%, transparent);
+    border-radius: var(--radius-xs);
+    color: var(--teal);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+}
+
+.paper-quality.source_limited {
+    background: var(--gold-dim);
+    border-color: color-mix(in srgb, var(--gold) 22%, transparent);
+    color: var(--gold);
+}
+
+.paper-quality.pending_brief {
+    background: var(--slate-blue-dim);
+    border-color: color-mix(in srgb, var(--slate-blue) 22%, transparent);
+    color: var(--slate-blue);
 }
 
 .md-link {
@@ -2752,7 +2844,7 @@ def generate_all():
     # Create source symlinks for MD file access
     source_dir = OUTPUT_DIR / 'source'
     source_dir.mkdir(exist_ok=True)
-    for target in ['entities', 'concepts', 'queries', 'raw', 'references']:
+    for target in ['entities', 'concepts', 'queries', 'raw', 'papers', 'paper-briefs', 'references']:
         link = source_dir / target
         if (WIKI_ROOT / target).exists() and not link.exists():
             link.symlink_to(WIKI_ROOT / target)
@@ -2943,7 +3035,7 @@ def generate_incremental():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     source_dir = OUTPUT_DIR / 'source'
     source_dir.mkdir(exist_ok=True)
-    for target in ['entities', 'concepts', 'queries', 'raw', 'references']:
+    for target in ['entities', 'concepts', 'queries', 'raw', 'papers', 'paper-briefs', 'references']:
         link = source_dir / target
         if (WIKI_ROOT / target).exists() and not link.exists():
             link.symlink_to(WIKI_ROOT / target)

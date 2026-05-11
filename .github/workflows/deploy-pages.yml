@@ -40,7 +40,7 @@ jobs:
       - name: Create symlinks as copies for Pages
         run: |
           cd web/output/source
-          for link in entities concepts queries raw references; do
+          for link in entities concepts queries raw papers paper-briefs references; do
             if [ -L "$link" ]; then
               target=$(readlink -f "$link")
               rm "$link"
