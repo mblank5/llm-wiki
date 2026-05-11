@@ -6,6 +6,14 @@
 > When this file exceeds 500 entries, rotate: rename to log-YYYY.md, start fresh.
 > Previous log: log-2026.md (551 entries, rotated 2026-05-01)
 
+## [2026-05-11] create | MTP vs EAGLE 知识固化
+|- 创建 concepts/mtp.md — Multi-Token Prediction 概念页（原生内置、预训练、中间层预测头）
+|- 创建 concepts/eagle-speculative-decoding.md — EAGLE 概念页（外挂 Draft Model、后训练、KV Cache 复用）
+|- 创建 entities/qwen3.5.md — Qwen3.5 实体页（Hybrid Linear Attention、MTP-1 支持、Eagle3 不支持原因）
+|- 创建 comparisons/mtp-vs-eagle.md — MTP vs EAGLE 对比页（内生 vs 外挂、接受率 vs 开销）
+|- 更新 index.md — 添加新页面到 Entities, Concepts (inference-optimization), Comparisons 章节
+|- 技术深度：包含 Linear Attention 状态回滚限制、框架支持现状 (vLLM/SGLang)、性能数据
+
 ## [2026-05-09] create | OpenSeeker-v2 概念页面（深度分析）
 - 源文件: /tmp/papers/2605.04036.txt
 - 创建 concepts/openseeker-v2.md — 深度分析 arXiv 2605.04036

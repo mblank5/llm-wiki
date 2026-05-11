@@ -1,7 +1,7 @@
 # Wiki Index
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-Last updated: 2026-05-10 | Total pages: 272 | Raw papers: 256
+Last updated: 2026-05-11 | Total pages: 276 | Raw papers: 256
 
 ## Entities
 - [[byte-seed]] — 字节跳动旗下 AI 研究团队，聚焦大模型基础研究与应用落地。
@@ -31,6 +31,7 @@ Last updated: 2026-05-10 | Total pages: 272 | Raw papers: 256
 - [[qwen3-omni]] — 阿里 Qwen 团队 2025-09 发布的统一多模态模型，首次实现 text/image/audio/video 全模态 SOTA 且无单模态退化。
 - [[qwen3-tts]] — 阿里 Qwen 团队 2026-01 发布的多语言、可控、流式 TTS 模型家族。基于 Qwen3 LLM 系列。
 - [[qwen3]] — Qwen3 is the latest series of open-weight large language models (LLMs) from t...
+- [[qwen3.5]] — 阿里巴巴通义千问团队发布的下一代基础模型系列，首个开源权重为 Qwen3.5-397B-A17B。原生支持 MTP，采用 Hybrid Linear Attention 架构。
 - [[salmonn-omni]] — Tsinghua 提出的 **Codec-free** 全双工语音理解与生成模型。
 - [[seed-realtime-voice]] — Seeduplex 的前代模型，即豆包 App 此前使用的端到端语音模型。采用半双工（half-duplex）范式。
 - [[seed-tts]] — 字节跳动 Seed 团队于 2024 年 6 月发布的大规模自回归 TTS 模型家族。
@@ -208,6 +209,8 @@ Last updated: 2026-05-10 | Total pages: 272 | Raw papers: 256
 - [[stochastic-kv-routing]] — Stochastic KV Routing (R-CLA)：随机跨层注意力路由实现 depth-wise KV cache 共享，显存减少 50-75%
 
 ### inference-optimization
+- [[eagle-speculative-decoding]] — EAGLE 是一种外挂模型 (External Draft Model) 的投机解码技术，训练轻量级 Draft Model 模仿 Target Model 生成风格，加速推理。
+- [[mtp]] — MTP (Multi-Token Prediction) 是一种原生内置 (Native) 的投机解码技术，在 Transformer 中间层挂载预测头，预训练阶段学习预测多个未来 token。
 - [[speculative-decoding]] — Speculative Decoding 是一种 LLM 推理加速技术，通过轻量级 **draft model** 提前生成候选 token，由 **ta...
 
 ### retrieval
@@ -338,6 +341,9 @@ Last updated: 2026-05-10 | Total pages: 272 | Raw papers: 256
 ### training
 - [[multi-task-learning]] — Multi-Task Learning (MTL) is a learning paradigm where a single model is trai...
 - [[v2a-dpo]] — Video-to-Audio generation (V2A) aims to synthesize semantically consistent, t...
+
+## Comparisons
+- [[mtp-vs-eagle]] — MTP 与 EAGLE 的核心对比：原生内置 vs 外挂模型，预训练 vs 后训练，零开销 vs 高接受率。
 
 ## Queries
 - [[opd-tokenizer-requirement]] — **Question:** 所有的on policy distillation技术里面student和teacher都需要是一套tokenizer吗
