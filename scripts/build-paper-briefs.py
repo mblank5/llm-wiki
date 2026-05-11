@@ -107,6 +107,14 @@ def paper_paths(root: Path) -> list[Path]:
     return sorted((root / "raw" / "papers").rglob("*.md"), reverse=True)
 
 
+def existing_brief_quality(path: Path) -> str:
+    if not path.exists():
+        return ""
+    text = path.read_text(encoding="utf-8", errors="ignore")[:800]
+    match = re.search(r'^quality:\s*["\']?([^"\'\n]+)', text, re.MULTILINE)
+    return match.group(1).strip() if match else "unknown"
+
+
 def best_source(raw_path: Path, root: Path) -> tuple[Path, str]:
     rel = raw_path.relative_to(root / "raw" / "papers")
     clean_path = root / "papers" / rel
@@ -290,7 +298,7 @@ def call_model(client: OpenAI, model: str, paper_id: str, title: str, source_kin
 def process_one(raw_path: Path, root: Path, cfg: dict[str, str], force: bool) -> tuple[str, str]:
     rel = raw_path.relative_to(root / "raw" / "papers")
     out_path = root / "paper-briefs" / rel
-    if out_path.exists() and not force:
+    if out_path.exists() and not force and existing_brief_quality(out_path) != "pending_brief":
         return raw_path.stem, "skip"
 
     source_path, source_kind = best_source(raw_path, root)
@@ -362,7 +370,13 @@ def main() -> int:
         wanted = set(args.ids)
         raw_paths = [p for p in raw_paths if p.stem in wanted]
     if not args.force:
-        raw_paths = [p for p in raw_paths if not (root / "paper-briefs" / p.relative_to(root / "raw" / "papers")).exists()]
+        filtered = []
+        for path in raw_paths:
+            brief_path = root / "paper-briefs" / path.relative_to(root / "raw" / "papers")
+            quality = existing_brief_quality(brief_path)
+            if not quality or quality == "pending_brief":
+                filtered.append(path)
+        raw_paths = filtered
     if args.limit:
         raw_paths = raw_paths[: args.limit]
 
