@@ -354,15 +354,18 @@ def paper_metadata(md_file):
     preview = ''
     if meta.get('title'):
         title = str(meta['title']).strip()
+    found_heading_title = bool(meta.get('title'))
     for line in rel_text.split('\n'):
         stripped = clean_inline(line.strip())
         if not stripped:
             continue
-        if line.startswith('# '):
+        if line.startswith('# ') and not found_heading_title:
             title = stripped.lstrip('# ').strip()
+            found_heading_title = True
             continue
-        if line.startswith('Title:'):
+        if line.startswith('Title:') and not found_heading_title:
             title = stripped[6:].strip()
+            found_heading_title = True
             continue
         if re.match(r'^(arXiv|Date|Authors|Affiliation|Code|GitHub|Paper|Source|Estimated tokens|Sections)\s*[:：|]', stripped, re.I):
             continue

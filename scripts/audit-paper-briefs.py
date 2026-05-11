@@ -10,6 +10,8 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
+import yaml
+
 
 @dataclass(frozen=True)
 class Finding:
@@ -22,6 +24,21 @@ class Finding:
 def frontmatter_value(text: str, key: str) -> str:
     match = re.search(rf"^{re.escape(key)}:\s*[\"']?([^\"'\n]+)", text[:1200], re.MULTILINE)
     return match.group(1).strip() if match else ""
+
+
+def parse_frontmatter(text: str) -> tuple[dict, str | None]:
+    if not text.startswith("---"):
+        return {}, "missing YAML frontmatter"
+    parts = text.split("---", 2)
+    if len(parts) < 3:
+        return {}, "unterminated YAML frontmatter"
+    try:
+        loaded = yaml.safe_load(parts[1])
+    except yaml.YAMLError as exc:
+        return {}, str(exc).splitlines()[0]
+    if not isinstance(loaded, dict):
+        return {}, "frontmatter must be a mapping"
+    return loaded, None
 
 
 def audit(root: Path) -> tuple[Counter[str], list[Finding]]:
@@ -42,7 +59,12 @@ def audit(root: Path) -> tuple[Counter[str], list[Finding]]:
             continue
 
         text = brief_path.read_text(encoding="utf-8", errors="ignore")
-        quality = frontmatter_value(text, "quality")
+        meta, yaml_error = parse_frontmatter(text)
+        if yaml_error:
+            findings.append(Finding("error", "yaml-parse", rel_brief, yaml_error))
+            continue
+
+        quality = str(meta.get("quality", "")).strip()
         if not quality:
             findings.append(Finding("error", "missing-quality", rel_brief, "missing quality frontmatter"))
             continue
@@ -55,7 +77,7 @@ def audit(root: Path) -> tuple[Counter[str], list[Finding]]:
         elif quality != "ok":
             findings.append(Finding("warning", "unknown-quality", rel_brief, f"unknown quality value: {quality}"))
 
-        title_zh = frontmatter_value(text, "title_zh")
+        title_zh = str(meta.get("title_zh", "")).strip()
         if not title_zh:
             findings.append(Finding("error", "missing-title-zh", rel_brief, "missing title_zh frontmatter"))
 

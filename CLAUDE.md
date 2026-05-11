@@ -25,6 +25,9 @@ python3 scripts/generate-web.py --incremental
 # Generate Chinese paper cards
 python3 scripts/build-paper-briefs.py .
 python3 scripts/build-paper-briefs.py . --fallback-missing
+
+# Repair weak arxiv2md captures with DeepXiv raw Markdown
+python3 scripts/fetch-deepxiv-raw.py . 2601.04720
 ```
 
 `scripts/generate-web.py` renders `concepts/`, `entities/`, and `queries/` as
@@ -93,6 +96,11 @@ Chinese pending-card layer and regenerate full briefs later with `--force`.
 Run `scripts/audit-paper-briefs.py` before publishing; missing cards and
 `pending_brief` placeholders are blocking errors, while `source_limited` marks
 upstream source material that is too thin for a reliable full card.
+
+`deepxiv` is installed as a CLI at `~/.local/bin/deepxiv`. It supports
+`search`, `trending`, `paper --head`, `paper --brief`, and `paper --raw`. Use
+`scripts/fetch-deepxiv-raw.py` when `arxiv2md` returns empty/short sources, then
+regenerate the affected paper cards with `scripts/build-paper-briefs.py --force --ids ...`.
 
 GitHub Pages runs:
 

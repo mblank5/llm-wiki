@@ -140,6 +140,10 @@ def listify(value: Any) -> list[str]:
     return []
 
 
+def yaml_scalar(value: Any) -> str:
+    return json.dumps(str(value), ensure_ascii=False)
+
+
 def fallback_brief(
     raw_path: Path,
     source_path: Path,
@@ -154,13 +158,13 @@ def fallback_brief(
     today = time.strftime("%Y-%m-%d")
     heading = heading or f"源材料不足：{arxiv_id}"
     return f"""---
-title: "{title}"
-title_zh: "{heading}"
-arxiv_id: "{arxiv_id}"
-source_kind: "{source_kind}"
-raw_path: "raw/papers/{rel}"
-generated: "{today}"
-quality: "{quality}"
+title: {yaml_scalar(title)}
+title_zh: {yaml_scalar(heading)}
+arxiv_id: {yaml_scalar(arxiv_id)}
+source_kind: {yaml_scalar(source_kind)}
+raw_path: {yaml_scalar(f"raw/papers/{rel}")}
+generated: {yaml_scalar(today)}
+quality: {yaml_scalar(quality)}
 ---
 
 # {heading}
@@ -201,15 +205,15 @@ def render_markdown(raw_path: Path, source_path: Path, source_kind: str, data: d
     concept_line = ", ".join(f"`{c}`" for c in concepts) if concepts else "暂无"
 
     return f"""---
-title: "{title}"
-title_zh: "{title_zh}"
-arxiv_id: "{arxiv_id}"
-paper_type: "{paper_type}"
-source_kind: "{source_kind}"
-raw_path: "raw/papers/{rel}"
-generated: "{today}"
-model: "{model}"
-quality: "{quality}"
+title: {yaml_scalar(title)}
+title_zh: {yaml_scalar(title_zh)}
+arxiv_id: {yaml_scalar(arxiv_id)}
+paper_type: {yaml_scalar(paper_type)}
+source_kind: {yaml_scalar(source_kind)}
+raw_path: {yaml_scalar(f"raw/papers/{rel}")}
+generated: {yaml_scalar(today)}
+model: {yaml_scalar(model)}
+quality: {yaml_scalar(quality)}
 ---
 
 # {title_zh}

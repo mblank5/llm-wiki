@@ -26,6 +26,9 @@ python3 scripts/generate-web.py
 # Build Chinese paper reading cards into paper-briefs/YYYY/MM/*.md
 python3 scripts/build-paper-briefs.py .
 
+# Repair weak arXiv conversions using DeepXiv raw Markdown
+python3 scripts/fetch-deepxiv-raw.py . 2601.04720 2604.15774
+
 # Check whether web/output is stale
 python3 scripts/generate-web.py --status
 ```
@@ -66,6 +69,7 @@ bash setup-arxiv-wiki.sh ~/my-wiki <base_url> <model> <api_key>
 │   ├── clean-papers.py       # LLM paper cleaning pipeline
 │   ├── build-paper-briefs.py # Chinese paper brief generation pipeline
 │   ├── audit-paper-briefs.py # Paper brief coverage/quality audit
+│   ├── fetch-deepxiv-raw.py  # DeepXiv fallback for weak arxiv2md sources
 │   ├── lint-wiki.py          # Wiki metadata/link/source lint
 │   ├── generate-web.py       # Static site generator
 │   ├── convert.sh            # Legacy arxiv2md helper
@@ -112,6 +116,11 @@ when quota is restored to replace pending cards with full Chinese briefs.
 `scripts/audit-paper-briefs.py` is the coverage guard for paper pages. It fails
 on missing briefs or `pending_brief` placeholders, and reports `source_limited`
 cards as warnings so incomplete upstream source material remains visible.
+
+`deepxiv` is available as a local CLI and is the preferred fallback when
+`arxiv2md` produces empty arXiv HTML captures. Use `scripts/fetch-deepxiv-raw.py`
+to replace weak raw sources, then rerun `scripts/build-paper-briefs.py --force
+--ids <paper-id>` for the affected papers.
 
 ## Patches Applied
 
