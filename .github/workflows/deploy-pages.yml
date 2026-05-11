@@ -31,6 +31,9 @@ jobs:
       - name: Lint wiki content
         run: python3 scripts/lint-wiki.py . --max-findings 80
 
+      - name: Audit paper briefs
+        run: python3 scripts/audit-paper-briefs.py . --max-findings 80
+
       - name: Generate static site
         run: python3 scripts/generate-web.py
 

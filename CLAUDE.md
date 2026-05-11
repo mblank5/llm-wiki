@@ -15,6 +15,7 @@ python3 scripts/clean-papers.py .
 # Validate metadata, required fields, links, sources, and page-size warnings
 python3 scripts/lint-wiki.py .
 python3 scripts/lint-wiki.py . --max-findings 80
+python3 scripts/audit-paper-briefs.py .
 
 # Generate or inspect the static site
 python3 scripts/generate-web.py
@@ -89,12 +90,16 @@ For paper pages, avoid exposing raw English Markdown as the primary reading
 experience. Generate or refresh `paper-briefs/` with `scripts/build-paper-briefs.py`.
 When the model quota is exhausted, use `--fallback-missing` only as a temporary
 Chinese pending-card layer and regenerate full briefs later with `--force`.
+Run `scripts/audit-paper-briefs.py` before publishing; missing cards and
+`pending_brief` placeholders are blocking errors, while `source_limited` marks
+upstream source material that is too thin for a reliable full card.
 
 GitHub Pages runs:
 
 1. `python3 scripts/lint-wiki.py .`
-2. `python3 scripts/generate-web.py`
-3. `python3 -m json.tool web/output/search-index.json`
+2. `python3 scripts/audit-paper-briefs.py .`
+3. `python3 scripts/generate-web.py`
+4. `python3 -m json.tool web/output/search-index.json`
 
 ## Patches for Upstream llm-wiki
 

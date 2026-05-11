@@ -17,6 +17,9 @@ python3 scripts/lint-wiki.py .
 # Limit CI-style warning output while keeping full counts
 python3 scripts/lint-wiki.py . --max-findings 80
 
+# Audit Chinese paper brief coverage and quality state
+python3 scripts/audit-paper-briefs.py .
+
 # Generate the static web site into web/output/
 python3 scripts/generate-web.py
 
@@ -62,6 +65,7 @@ bash setup-arxiv-wiki.sh ~/my-wiki <base_url> <model> <api_key>
 ├── scripts/
 │   ├── clean-papers.py       # LLM paper cleaning pipeline
 │   ├── build-paper-briefs.py # Chinese paper brief generation pipeline
+│   ├── audit-paper-briefs.py # Paper brief coverage/quality audit
 │   ├── lint-wiki.py          # Wiki metadata/link/source lint
 │   ├── generate-web.py       # Static site generator
 │   ├── convert.sh            # Legacy arxiv2md helper
@@ -104,6 +108,10 @@ If model quota is unavailable, `scripts/build-paper-briefs.py --fallback-missing
 creates Chinese "pending brief" cards so the site does not fall back to raw
 English paper dumps. Re-run with `--force --ids <paper-id>` or normal batch mode
 when quota is restored to replace pending cards with full Chinese briefs.
+
+`scripts/audit-paper-briefs.py` is the coverage guard for paper pages. It fails
+on missing briefs or `pending_brief` placeholders, and reports `source_limited`
+cards as warnings so incomplete upstream source material remains visible.
 
 ## Patches Applied
 
