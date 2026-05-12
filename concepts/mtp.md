@@ -4,6 +4,7 @@ created: 2026-05-12
 updated: 2026-05-12
 type: concept
 tags: [inference, optimization, architecture, speculative-decoding]
+sources: []
 ---
 
 # Multi-Token Prediction (MTP)

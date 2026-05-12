@@ -4,6 +4,7 @@ created: 2026-05-12
 updated: 2026-05-12
 type: entity
 tags: [model, architecture, open-source, inference]
+sources: []
 ---
 
 # Qwen3.5

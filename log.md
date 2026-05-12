@@ -229,3 +229,10 @@
 - 内容覆盖：Omni-Flow 时间对齐流式框架、TAIL 语音交错策略、四阶段训练流程、完整 benchmark 结果（视觉-语言/语音/全双工/文本）、边缘部署效率（llama.cpp-omni）、批判性分析
 - 更新 index.md: +2 条目（entities + concepts/audio 各一个）
 - 来源: /tmp/papers/2604.27393.html（论文 HTML 提取）
+
+## [2026-05-12] automate | DeepXiv 周榜同步与热点论文页
+- 新增 `scripts/sync-deepxiv-trending.py` 与 GitHub Actions 定时任务，每天同步 DeepXiv rolling 7 天周榜。
+- 本次同步写入 30 篇热点记录，新增 26 篇 raw paper 与中文精读卡片；DeepXiv raw 接口暂时无法返回 `2605.03808`，已在 `hot/trending-weekly.json` 记录失败并保留外链。
+- 新增网站“热点”Tab，生成 `web/output/hot/index.html`，列表链接到本地论文 HTML 或 arXiv 外链。
+- 为全部 282 篇论文卡片补齐“## 小学生也能听懂”段落，并把缺失检查加入 `scripts/audit-paper-briefs.py`。
+- 补齐 `concepts/eagle-speculative-decoding.md`、`concepts/mtp.md`、`entities/qwen3.5.md` 的 `sources` frontmatter，恢复部署 lint gate。
