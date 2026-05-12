@@ -45,6 +45,7 @@ JSON 字段：
 - title_zh: 中文标题，不超过 40 字
 - paper_type: 论文类型，如 benchmark / method / model / system / survey / dataset / analysis
 - one_liner: 一句话定位，说明这篇论文解决什么问题、核心做法是什么
+- eli5_explanation: 用小学生能听懂的语言讲这篇论文在做什么，尽量具体，不超过 120 字
 - why_it_matters: 3-5 条，为什么值得记录
 - method: 4-7 条，核心方法/系统设计/训练流程
 - results: 3-6 条，关键实验结果或定量发现；没有数字就说明没有可靠数字
@@ -173,6 +174,10 @@ quality: {yaml_scalar(quality)}
 
 当前页面是中文占位卡片，暂时无法生成可靠的完整精读摘要。
 
+## 小学生也能听懂
+
+这篇论文的可靠材料还不够完整，所以暂时不能用简单比喻解释，避免把没有证据的内容讲错。
+
 ## 质量说明
 
 - 源文件：`raw/papers/{rel}`
@@ -221,6 +226,10 @@ quality: {yaml_scalar(quality)}
 ## 一句话定位
 
 {str(data.get("one_liner") or "暂无可靠定位。").strip()}
+
+## 小学生也能听懂
+
+{str(data.get("eli5_explanation") or data.get("one_liner") or "暂无可靠解释。").strip()}
 
 ## 为什么值得记录
 

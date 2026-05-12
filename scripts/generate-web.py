@@ -71,6 +71,7 @@ TYPE_LABELS = {
     'concepts': '概念',
     'queries': '问答',
     'papers': '论文',
+    'hot': '热点',
 }
 
 TYPE_DESCRIPTIONS = {
@@ -199,6 +200,38 @@ def load_all_papers():
     if not papers_dir.exists():
         return []
     return [load_paper_page(md_file) for md_file in sorted(papers_dir.rglob('*.md'), reverse=True)]
+
+
+def load_hot_trending(papers):
+    hot_path = WIKI_ROOT / 'hot' / 'trending-weekly.json'
+    if not hot_path.exists():
+        return {}
+    try:
+        payload = json.loads(hot_path.read_text(encoding='utf-8'))
+    except json.JSONDecodeError:
+        return {}
+
+    paper_map = {p['name']: p for p in papers}
+    enriched = []
+    for item in payload.get('papers') or []:
+        if not isinstance(item, dict):
+            continue
+        arxiv_id = str(item.get('arxiv_id') or '').strip()
+        local = paper_map.get(arxiv_id)
+        if local:
+            item = {**item}
+            item['in_library'] = True
+            item['href'] = f"../papers/{local['name']}.html"
+            item['title'] = item.get('title') or local.get('title', '')
+            item['title_zh'] = item.get('title_zh') or local.get('title_zh', '')
+            item['paper_type'] = item.get('paper_type') or local.get('paper_type', '')
+            item['quality'] = item.get('quality') or local.get('quality', '')
+            item['preview'] = item.get('preview') or local.get('preview', '')
+        elif item.get('href') and not str(item['href']).startswith(('http://', 'https://', '../')):
+            item = {**item, 'href': f"../{item['href']}"}
+        enriched.append(item)
+    payload['papers'] = enriched
+    return payload
 
 
 def build_backlinks(pages):
@@ -403,6 +436,7 @@ def generate_nav(current_section=None, page_type=None):
         ('concepts', '概念', f'{root}concepts/index.html', '◇'),
         ('queries', '问答', f'{root}queries/index.html', '◈'),
         ('papers', '论文', f'{root}papers/index.html', '▤'),
+        ('hot', '热点', f'{root}hot/index.html', '✦'),
     ]
     items = []
     for key, label, href, icon in sections:
@@ -705,6 +739,59 @@ def generate_papers_listing(papers):
     '''
 
     return html_head('论文', 'papers', 'papers') + body + html_foot('papers')
+
+
+def generate_hot_listing(hot):
+    papers = hot.get('papers') or []
+    items = []
+    for idx, p in enumerate(papers, start=1):
+        rank = p.get('rank') or idx
+        title = p.get('title_zh') or p.get('title') or p.get('arxiv_id') or 'Untitled'
+        preview = p.get('preview') or '已进入 DeepXiv 周榜，等待本地中文精读卡片补齐。'
+        href = p.get('href') or p.get('arxiv_url') or '#'
+        is_external = str(href).startswith(('http://', 'https://'))
+        link_label = '阅读 HTML' if p.get('in_library') else '查看 arXiv'
+        type_label = p.get('paper_type') or 'hot'
+        count = p.get('mentioned_by_count') or 0
+        new_badge = '<span class="hot-new">新增</span>' if p.get('is_new') else ''
+        original = ''
+        if p.get('title') and p.get('title_zh') and p['title'] != p['title_zh']:
+            original = f'<span class="paper-original-title">{html.escape(str(p["title"]))}</span>'
+        target_attr = ' target="_blank" rel="noreferrer"' if is_external else ''
+        items.append(f'''
+        <div class="list-item paper-item hot-item">
+            <div class="hot-rank">#{html.escape(str(rank))}</div>
+            <div class="list-item-main">
+                <h3><a href="{html.escape(str(href))}" class="paper-title-link"{target_attr}>{html.escape(str(title))}</a></h3>
+                {original}
+                <p>{html.escape(str(preview))}</p>
+                <span class="paper-id">{html.escape(str(p.get('arxiv_id') or ''))}</span>
+            </div>
+            <div class="list-item-meta">
+                {new_badge}
+                <span class="paper-quality ok">{html.escape(str(type_label))}</span>
+                <span class="hot-mentions">{html.escape(str(count))} mentions</span>
+                <a href="{html.escape(str(href))}" class="md-link"{target_attr}>{link_label}</a>
+            </div>
+        </div>''')
+
+    updated = hot.get('deepxiv_generated_at') or hot.get('generated_at') or '未生成'
+    body = f'''
+    <div class="listing-header">
+        <div class="breadcrumb">
+            <a href="../index.html">总览</a> <span class="sep">/</span>
+            <span class="current">热点</span>
+        </div>
+        <h1>每周热点论文</h1>
+        <p class="listing-desc">来自 DeepXiv rolling {html.escape(str(hot.get('days') or 7))} 天周榜。定时任务会每天比较榜单和本地论文库，发现新论文后拉取原文、生成中文精读卡片，并在这里给出 HTML 阅读入口。</p>
+        <p class="listing-desc hot-updated">更新时间：{html.escape(str(updated))}</p>
+    </div>
+    <div class="list-view">
+        {''.join(items) if items else '<p class="empty-state">暂无热点榜单数据。</p>'}
+    </div>
+    '''
+
+    return html_head('热点论文', 'hot', 'hot') + body + html_foot('hot')
 
 
 def generate_paper_detail(paper, pages):
@@ -1730,6 +1817,34 @@ a:hover { color: var(--gold-bright); }
     background: var(--slate-blue-dim);
     border-color: color-mix(in srgb, var(--slate-blue) 22%, transparent);
     color: var(--slate-blue);
+}
+
+.hot-item {
+    gap: 18px;
+}
+
+.hot-rank {
+    width: 46px;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--gold-bright);
+}
+
+.hot-new,
+.hot-mentions {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--ink-faded);
+}
+
+.hot-new {
+    color: var(--gold-bright);
+}
+
+.hot-updated {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
 }
 
 .md-link {
@@ -2824,6 +2939,7 @@ def generate_all():
     print("Loading paper sources...")
     papers = load_all_papers()
     print(f"  Found {len(papers)} papers")
+    hot = load_hot_trending(papers)
 
     print("Building backlink index...")
     backlinks = build_backlinks(pages)
@@ -2847,7 +2963,7 @@ def generate_all():
     # Create source symlinks for MD file access
     source_dir = OUTPUT_DIR / 'source'
     source_dir.mkdir(exist_ok=True)
-    for target in ['entities', 'concepts', 'queries', 'raw', 'papers', 'paper-briefs', 'references']:
+    for target in ['entities', 'concepts', 'queries', 'raw', 'papers', 'paper-briefs', 'references', 'hot']:
         link = source_dir / target
         if (WIKI_ROOT / target).exists() and not link.exists():
             link.symlink_to(WIKI_ROOT / target)
@@ -2920,6 +3036,11 @@ def generate_all():
             (p_dir / f'{paper["name"]}.html').write_text(generate_paper_detail(paper, pages), encoding='utf-8')
         print(f"  Generated papers listing and {len(papers)} paper pages")
 
+    hot_dir = OUTPUT_DIR / 'hot'
+    hot_dir.mkdir(exist_ok=True)
+    (hot_dir / 'index.html').write_text(generate_hot_listing(hot), encoding='utf-8')
+    print(f"  Generated hot listing with {len(hot.get('papers') or [])} papers")
+
     total = len(list(OUTPUT_DIR.rglob('*.html')))
     print(f"\nDone! Generated {total} HTML pages in {OUTPUT_DIR}")
 
@@ -2973,7 +3094,7 @@ def detect_changes():
 
     # Check structural changes
     structural = []
-    for f in [WIKI_ROOT / 'index.md', WIKI_ROOT / 'SCHEMA.md']:
+    for f in [WIKI_ROOT / 'index.md', WIKI_ROOT / 'SCHEMA.md', WIKI_ROOT / 'hot' / 'trending-weekly.json']:
         if f.exists():
             html_dir = OUTPUT_DIR / 'static'
             css_file = html_dir / 'wiki.css'
@@ -3038,7 +3159,7 @@ def generate_incremental():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     source_dir = OUTPUT_DIR / 'source'
     source_dir.mkdir(exist_ok=True)
-    for target in ['entities', 'concepts', 'queries', 'raw', 'papers', 'paper-briefs', 'references']:
+    for target in ['entities', 'concepts', 'queries', 'raw', 'papers', 'paper-briefs', 'references', 'hot']:
         link = source_dir / target
         if (WIKI_ROOT / target).exists() and not link.exists():
             link.symlink_to(WIKI_ROOT / target)

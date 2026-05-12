@@ -81,6 +81,9 @@ def audit(root: Path) -> tuple[Counter[str], list[Finding]]:
         if not title_zh:
             findings.append(Finding("error", "missing-title-zh", rel_brief, "missing title_zh frontmatter"))
 
+        if "## 小学生也能听懂" not in text:
+            findings.append(Finding("error", "missing-eli5", rel_brief, "missing child-friendly explanation section"))
+
     for brief_path in sorted(brief_dir.rglob("*.md")) if brief_dir.exists() else []:
         rel = brief_path.relative_to(brief_dir)
         raw_path = raw_dir / rel

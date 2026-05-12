@@ -1,0 +1,1014 @@
+{
+  "source": "deepxiv",
+  "window": "weekly",
+  "days": 7,
+  "limit": 30,
+  "generated_at": "2026-05-12T14:42:20.082453+00:00",
+  "deepxiv_generated_at": "2026-05-12T22:42:18.057443",
+  "new_ids": [],
+  "failed_ids": [
+    "2605.03808"
+  ],
+  "papers": [
+    {
+      "rank": 1,
+      "arxiv_id": "2605.02396",
+      "arxiv_url": "https://arxiv.org/abs/2605.02396",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 303364,
+          "name": "elvis",
+          "username": "omarsar0"
+        }
+      ],
+      "stats": {
+        "total_likes": "211",
+        "total_mentions": 1,
+        "total_retweets": "24",
+        "total_views": "13341",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-05T14:59:12",
+        "latest_mention": "2026-05-05T14:59:12"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.02396.html",
+      "raw_path": "raw/papers/2026/05/2605.02396.md",
+      "title": "",
+      "title_zh": "HeavySkill：将深度思考作为智能体框架的内在技能",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文教大模型像人类团队一样思考：先让多个‘小脑子’同时独立解题，再把它们的答案交给一个‘总结员’分析，找出最合理的答案。这种方法比只选多数答案更好，还能通过训练让模型越来越聪明。"
+    },
+    {
+      "rank": 2,
+      "arxiv_id": "2605.02572",
+      "arxiv_url": "https://arxiv.org/abs/2605.02572",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 303364,
+          "name": "elvis",
+          "username": "omarsar0"
+        }
+      ],
+      "stats": {
+        "total_likes": "157",
+        "total_mentions": 1,
+        "total_retweets": "32",
+        "total_views": "20758",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-06T01:31:40",
+        "latest_mention": "2026-05-06T01:31:40"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.02572.html",
+      "raw_path": "raw/papers/2026/05/2605.02572.md",
+      "title": "On Training Large Language Models for Long-Horizon Tasks: An Empirical Study of Horizon Length",
+      "title_zh": "长时程任务中LLM训练的实证研究与时域长度影响分析",
+      "paper_type": "analysis",
+      "quality": "ok",
+      "preview": "这篇论文像教机器人玩拼图和推箱子游戏，发现任务越长越难学，于是把长任务拆成小块或用“快捷键”简化步骤，结果发现先练短任务再挑战长的效果更好，还能举一反三。"
+    },
+    {
+      "rank": 3,
+      "arxiv_id": "2605.06647",
+      "arxiv_url": "https://arxiv.org/abs/2605.06647",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "121",
+        "total_mentions": 1,
+        "total_retweets": "16",
+        "total_views": "6912",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:28:55",
+        "latest_mention": "2026-05-08T03:28:55"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.06647.html",
+      "raw_path": "raw/papers/2026/05/2605.06647.md",
+      "title": "",
+      "title_zh": "超级智能检索代理 SIRA：信息检索的新前沿",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文发明了一个叫 SIRA 的智能搜索助手。它不像普通搜索那样反复试错，而是像专家一样，先用大模型预测要找的内容可能包含哪些关键词，再检查这些词在数据库里是否真的有用（比如是不是太常见或根本不存在），最后用 BM25 算法一次性精准找出最相关的文档。"
+    },
+    {
+      "rank": 4,
+      "arxiv_id": "2605.08060",
+      "arxiv_url": "https://arxiv.org/abs/2605.08060",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 303364,
+          "name": "elvis",
+          "username": "omarsar0"
+        }
+      ],
+      "stats": {
+        "total_likes": "99",
+        "total_mentions": 1,
+        "total_retweets": "13",
+        "total_views": "6594",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-11T15:45:09",
+        "latest_mention": "2026-05-11T15:45:09"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.08060.html",
+      "raw_path": "raw/papers/2026/05/2605.08060.md",
+      "title": "",
+      "title_zh": "记忆诅咒：扩展记忆如何削弱 LLM 代理的合作意图",
+      "paper_type": "analysis",
+      "quality": "ok",
+      "preview": "就像人记住太多不愉快的事会变得记仇一样，AI 代理如果能看到太多过去的互动记录，也会变得更容易报复、更难原谅对方，从而破坏长期合作。研究发现，不是所有 AI 都这样——有些聪明的模型能抵抗这种‘记忆诅咒’，而通过训练让 AI 更关注未来好处，可以缓解这个问题。"
+    },
+    {
+      "rank": 5,
+      "arxiv_id": "2605.06548",
+      "arxiv_url": "https://arxiv.org/abs/2605.06548",
+      "mentioned_by_count": 2,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        },
+        {
+          "followers": 42187,
+          "name": "alphaXiv",
+          "username": "askalphaxiv"
+        }
+      ],
+      "stats": {
+        "total_likes": "82",
+        "total_mentions": 2,
+        "total_retweets": "18",
+        "total_views": "15777",
+        "unique_users": 2
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T15:17:32",
+        "latest_mention": "2026-05-09T19:45:49"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.06548.html",
+      "raw_path": "raw/papers/2026/05/2605.06548.md",
+      "title": "Continuous Latent Diffusion Language Model",
+      "title_zh": "连续隐变量扩散语言模型 Cola DLM",
+      "paper_type": "model",
+      "quality": "ok",
+      "preview": "这个模型先把文字压缩成一个连续的‘想法向量’，然后用扩散模型学习这些想法的分布规律，最后根据这个想法生成文字。就像先想清楚要说什么，再组织语言表达出来，而不是一个字一个字地猜。"
+    },
+    {
+      "rank": 6,
+      "arxiv_id": "2605.05253",
+      "arxiv_url": "https://arxiv.org/abs/2605.05253",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "77",
+        "total_mentions": 1,
+        "total_retweets": "8",
+        "total_views": "4217",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:39:05",
+        "latest_mention": "2026-05-08T03:39:05"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.05253.html",
+      "raw_path": "raw/papers/2026/05/2605.05253.md",
+      "title": "",
+      "title_zh": "EnterpriseRAG-Bench：面向企业私有知识的RAG基准测试",
+      "paper_type": "benchmark",
+      "quality": "ok",
+      "preview": "这篇论文创建了一个模拟公司内部信息的大型数据集，包括Slack消息、邮件、项目记录等，并设计了10类问题来测试AI系统能否从杂乱、重复甚至矛盾的信息中找到正确答案。"
+    },
+    {
+      "rank": 7,
+      "arxiv_id": "2605.02162",
+      "arxiv_url": "https://arxiv.org/abs/2605.02162",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 303364,
+          "name": "elvis",
+          "username": "omarsar0"
+        }
+      ],
+      "stats": {
+        "total_likes": "69",
+        "total_mentions": 1,
+        "total_retweets": "9",
+        "total_views": "4603",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-10T16:39:05",
+        "latest_mention": "2026-05-10T16:39:05"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.02162.html",
+      "raw_path": "raw/papers/2026/05/2605.02162.md",
+      "title": "",
+      "title_zh": "AAFLOW：面向智能体 AI 工作流的可扩展模式",
+      "paper_type": "system",
+      "quality": "ok",
+      "preview": "AAFLOW 像一个高效的工厂流水线，把 AI 智能体的任务（比如理解问题、查找资料、生成答案）拆分成多个标准化的步骤（算子），并用高速通道（零拷贝）传递数据，避免重复搬运和等待，从而让整个系统跑得更快、更稳定。"
+    },
+    {
+      "rank": 8,
+      "arxiv_id": "2605.05242",
+      "arxiv_url": "https://arxiv.org/abs/2605.05242",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "68",
+        "total_mentions": 1,
+        "total_retweets": "12",
+        "total_views": "2698",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:38:10",
+        "latest_mention": "2026-05-08T03:38:10"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.05242.html",
+      "raw_path": "raw/papers/2026/05/2605.05242.md",
+      "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
+      "title_zh": "超越语义相似性：通过直接语料交互重新思考代理搜索中的检索",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文提出了一种新方法，让AI代理像人一样直接用命令行工具（如grep、find）在文件中搜索信息，而不是依赖预先建立的搜索引擎。这种方法更灵活，能发现更多隐藏线索，在复杂问答和文档排序任务中表现更好。"
+    },
+    {
+      "rank": 9,
+      "arxiv_id": "2605.07937",
+      "arxiv_url": "https://arxiv.org/abs/2605.07937",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 303364,
+          "name": "elvis",
+          "username": "omarsar0"
+        }
+      ],
+      "stats": {
+        "total_likes": "59",
+        "total_mentions": 1,
+        "total_retweets": "10",
+        "total_views": "4665",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-11T19:13:47",
+        "latest_mention": "2026-05-11T19:13:47"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.07937.html",
+      "raw_path": "raw/papers/2026/05/2605.07937.md",
+      "title": "",
+      "title_zh": "澄清时机的价值：长程智能体何时需要提问？",
+      "paper_type": "analysis",
+      "quality": "ok",
+      "preview": "这篇论文研究AI助手在执行复杂任务时，什么时候问问题最有效。比如，如果任务是做报表但没说清楚格式，早点问可以少走弯路；但如果等到快做完才问，可能已经白做了很多工作。实验发现，关于“目标”的问题必须很早问才管用，而关于“数据在哪”的问题可以稍晚问。但现在的AI助手要么问得太晚，要么根本不问。"
+    },
+    {
+      "rank": 10,
+      "arxiv_id": "2605.06132",
+      "arxiv_url": "https://arxiv.org/abs/2605.06132",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "42",
+        "total_mentions": 1,
+        "total_retweets": "10",
+        "total_views": "2753",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:35:45",
+        "latest_mention": "2026-05-08T03:35:45"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.06132.html",
+      "raw_path": "raw/papers/2026/05/2605.06132.md",
+      "title": "",
+      "title_zh": "MemReranker：面向智能体记忆检索的推理感知重排序模型",
+      "paper_type": "model",
+      "quality": "ok",
+      "preview": "就像老师教学生做题一样，MemReranker先用大模型（如GPT）判断哪些记忆片段最相关，然后教小模型学会同样的判断方式。这样的小模型虽然体积小，但能像大模型一样理解复杂问题，比如分辨‘苹果’是指水果还是手机，并且打分更准确，方便系统自动筛选有用记忆。"
+    },
+    {
+      "rank": 11,
+      "arxiv_id": "2605.03808",
+      "arxiv_url": "https://arxiv.org/abs/2605.03808",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 303364,
+          "name": "elvis",
+          "username": "omarsar0"
+        }
+      ],
+      "stats": {
+        "total_likes": "36",
+        "total_mentions": 1,
+        "total_retweets": "9",
+        "total_views": "2273",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-06T20:52:30",
+        "latest_mention": "2026-05-06T20:52:30"
+      },
+      "in_library": false,
+      "is_new": false,
+      "href": "",
+      "raw_path": "",
+      "title": "",
+      "title_zh": "",
+      "paper_type": "",
+      "quality": "",
+      "preview": ""
+    },
+    {
+      "rank": 12,
+      "arxiv_id": "2605.05806",
+      "arxiv_url": "https://arxiv.org/abs/2605.05806",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "34",
+        "total_mentions": 1,
+        "total_retweets": "1",
+        "total_views": "15997",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:37:08",
+        "latest_mention": "2026-05-08T03:37:08"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.05806.html",
+      "raw_path": "raw/papers/2026/05/2605.05806.md",
+      "title": "",
+      "title_zh": "内在检索：注意力模型的固有检索能力",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文说，大语言模型其实自己就能‘找资料’和‘回答问题’，不需要额外加一个检索系统。它通过让模型的注意力机制直接对编码后的文本块打分，选出最相关的信息来生成答案，效果比传统检索增强生成更好，尤其在需要多步推理的问题上。"
+    },
+    {
+      "rank": 13,
+      "arxiv_id": "2604.27233",
+      "arxiv_url": "https://arxiv.org/abs/2604.27233",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 303364,
+          "name": "elvis",
+          "username": "omarsar0"
+        }
+      ],
+      "stats": {
+        "total_likes": "34",
+        "total_mentions": 1,
+        "total_retweets": "7",
+        "total_views": "2223",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-10T19:36:04",
+        "latest_mention": "2026-05-10T19:36:04"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2604.27233.html",
+      "raw_path": "raw/papers/2026/04/2604.27233.md",
+      "title": "",
+      "title_zh": "推理时反馈增强工具调用代理",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "就像一个学生做题前先让老师检查草稿，这个系统让主AI在调用工具前先请另一个AI‘老师’检查一下是否正确。如果错了就改，对了就直接执行。这样能减少错误，尤其是避免执行后无法挽回的操作。"
+    },
+    {
+      "rank": 14,
+      "arxiv_id": "2605.06614",
+      "arxiv_url": "https://arxiv.org/abs/2605.06614",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "29",
+        "total_mentions": 1,
+        "total_retweets": "9",
+        "total_views": "4536",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T15:46:17",
+        "latest_mention": "2026-05-08T15:46:17"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.06614.html",
+      "raw_path": "raw/papers/2026/05/2605.06614.md",
+      "title": "",
+      "title_zh": "SkillOS：面向自进化代理的技能策展学习框架",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "就像一个学生不断整理错题本，SkillOS 让 AI 代理每完成一个任务后，自动总结出有用的‘解题技巧’（技能），存到‘技能库’里。后续遇到类似任务时，它能快速找到并应用这些技巧，越做越聪明。"
+    },
+    {
+      "rank": 15,
+      "arxiv_id": "2605.03269",
+      "arxiv_url": "https://arxiv.org/abs/2605.03269",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "29",
+        "total_mentions": 1,
+        "total_retweets": "4",
+        "total_views": "7592",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-07T14:41:47",
+        "latest_mention": "2026-05-07T14:41:47"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.03269.html",
+      "raw_path": "raw/papers/2026/05/2605.03269.md",
+      "title": "",
+      "title_zh": "RLDX-1：面向灵巧操作的多功能通用机器人策略",
+      "paper_type": "model",
+      "quality": "ok",
+      "preview": "RLDX-1 是一个让机器人更聪明的“大脑”。它不仅像其他模型一样能看懂图像和听懂指令，还特别擅长处理动态场景（比如移动的传送带）、记住过去发生的事情（比如玩猜杯子游戏），以及感知触觉和力矩等物理信号。它通过一种叫 MSAT 的新架构把这些能力融合在一起，并在仿真和真实机器人上都取得了更好的表现。"
+    },
+    {
+      "rank": 16,
+      "arxiv_id": "2605.05163",
+      "arxiv_url": "https://arxiv.org/abs/2605.05163",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "28",
+        "total_mentions": 1,
+        "total_retweets": "9",
+        "total_views": "5396",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-07T14:44:53",
+        "latest_mention": "2026-05-07T14:44:53"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.05163.html",
+      "raw_path": "raw/papers/2026/05/2605.05163.md",
+      "title": "",
+      "title_zh": "PhysForge：生成物理可交互的3D资产",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文教AI像搭积木一样造出能动的3D物体。第一步让AI看懂图片，规划出每个零件的位置和功能；第二步用扩散模型把零件和它们的运动方式（比如门怎么开）一起做出来，最后得到一个既好看又能真实互动的3D模型。"
+    },
+    {
+      "rank": 17,
+      "arxiv_id": "2605.07042",
+      "arxiv_url": "https://arxiv.org/abs/2605.07042",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "28",
+        "total_mentions": 1,
+        "total_retweets": "3",
+        "total_views": "1773",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-11T03:10:21",
+        "latest_mention": "2026-05-11T03:10:21"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.07042.html",
+      "raw_path": "raw/papers/2026/05/2605.07042.md",
+      "title": "",
+      "title_zh": "上下文收集决策过程：面向智能体搜索的POMDP框架",
+      "paper_type": "framework",
+      "quality": "ok",
+      "preview": "想象一个机器人在巨大的图书馆里找答案，但它每次只能看几本书。如果它不记笔记，就会重复翻同一本书或忘记目标。这篇论文教机器人用‘小本子’记下已找到的信息和待解决的问题，并在发现重复查书时自动停止，从而更高效地完成任务。"
+    },
+    {
+      "rank": 18,
+      "arxiv_id": "2605.03344",
+      "arxiv_url": "https://arxiv.org/abs/2605.03344",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "28",
+        "total_mentions": 1,
+        "total_retweets": "5",
+        "total_views": "1044",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-06T04:52:25",
+        "latest_mention": "2026-05-06T04:52:25"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.03344.html",
+      "raw_path": "raw/papers/2026/05/2605.03344.md",
+      "title": "",
+      "title_zh": "基于思维轨迹的检索增强生成提升推理任务性能",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文说：以前我们用网页或教科书给AI查资料，但对解数学题这类需要推理的任务帮助不大。现在我们让AI去‘看别人是怎么一步步思考解题的’，哪怕只是中间思路，也能帮它自己更好地推理。我们还把这些思考过程整理得更清楚、更简短，让AI更容易用上。"
+    },
+    {
+      "rank": 19,
+      "arxiv_id": "2604.27393",
+      "arxiv_url": "https://arxiv.org/abs/2604.27393",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "23",
+        "total_mentions": 1,
+        "total_retweets": "8",
+        "total_views": "3515",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-09T18:19:11",
+        "latest_mention": "2026-05-09T18:19:11"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2604.27393.html",
+      "raw_path": "raw/papers/2026/04/2604.27393.md",
+      "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
+      "title_zh": "MiniCPM-o 4.5：迈向实时全双工全模态交互",
+      "paper_type": "model",
+      "quality": "ok",
+      "preview": "这篇论文造了一个叫MiniCPM-o 4.5的小模型，它像个小助手，能一边听你说话、一边看画面，还能马上开口回应，就像真人聊天一样快，而且能在手机或平板上运行。"
+    },
+    {
+      "rank": 20,
+      "arxiv_id": "2605.06460",
+      "arxiv_url": "https://arxiv.org/abs/2605.06460",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "23",
+        "total_mentions": 1,
+        "total_retweets": 0,
+        "total_views": "1020",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:30:18",
+        "latest_mention": "2026-05-08T03:30:18"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.06460.html",
+      "raw_path": "raw/papers/2026/05/2605.06460.md",
+      "title": "",
+      "title_zh": "MINER：挖掘多模态内部表征实现高效检索",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文发现，视觉文档检索中，模型中间层的隐藏状态其实包含很多对检索有用的信息，但传统方法只用最后一层生成一个向量，导致信息丢失。于是作者设计了一个叫 MINER 的小插件，它能从多个中间层挑选出最有用的神经元，并按重要性融合成一个更好的向量，让检索更准，而且不增加太多计算开销。"
+    },
+    {
+      "rank": 21,
+      "arxiv_id": "2605.04036",
+      "arxiv_url": "https://arxiv.org/abs/2605.04036",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "22",
+        "total_mentions": 1,
+        "total_retweets": "2",
+        "total_views": "1602",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-06T04:55:10",
+        "latest_mention": "2026-05-06T04:55:10"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.04036.html",
+      "raw_path": "raw/papers/2026/05/2605.04036.md",
+      "title": "OpenSeeker-v2: Pushing the Limits of Search Agents with Informative and High-Difficulty Trajectories",
+      "title_zh": "OpenSeeker-v2：基于高难度轨迹的搜索代理性能突破",
+      "paper_type": "model",
+      "quality": "ok",
+      "preview": "这篇论文像教机器人用“思考+行动”的方式上网找答案，他们不用复杂训练方法，只靠1万多条特别难的练习题目，就让一个300亿参数的大模型学会了更聪明地搜索，成绩超过了工业界的大模型。"
+    },
+    {
+      "rank": 22,
+      "arxiv_id": "2605.00814",
+      "arxiv_url": "https://arxiv.org/abs/2605.00814",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "22",
+        "total_mentions": 1,
+        "total_retweets": "3",
+        "total_views": "3829",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-05T17:06:12",
+        "latest_mention": "2026-05-05T17:06:12"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.00814.html",
+      "raw_path": "raw/papers/2026/05/2605.00814.md",
+      "title": "",
+      "title_zh": "Persistent Visual Memory：LVLM 深度生成中的持续视觉感知",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "就像画画时一直看着原图才能画得准，大模型生成文字时也需要不断‘回头看图’。但普通模型看图注意力会随着说话变长而变弱。PVM 给模型加了个专门‘看图’的小助手，让它随时能准确获取图像信息，不影响正常说话逻辑。"
+    },
+    {
+      "rank": 23,
+      "arxiv_id": "2411.18966",
+      "arxiv_url": "https://arxiv.org/abs/2411.18966",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "22",
+        "total_mentions": 1,
+        "total_retweets": "7",
+        "total_views": "5496",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-06T16:27:34",
+        "latest_mention": "2026-05-06T16:27:34"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2411.18966.html",
+      "raw_path": "raw/papers/2024/11/2411.18966.md",
+      "title": "2411.18966",
+      "title_zh": "SuperGaussians：基于空间变化颜色的高斯溅射增强方法",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "就像给每个小气球涂上会变色的颜料，SuperGaussians 让一个高斯形状在不同位置显示不同颜色，而不是整颗都一样。这样就能用更少的气球画出更细腻的画面，比如画出带花纹的杯子或树叶的脉络。"
+    },
+    {
+      "rank": 24,
+      "arxiv_id": "2605.05701",
+      "arxiv_url": "https://arxiv.org/abs/2605.05701",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "21",
+        "total_mentions": 1,
+        "total_retweets": "1",
+        "total_views": "720",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:39:35",
+        "latest_mention": "2026-05-08T03:39:35"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.05701.html",
+      "raw_path": "raw/papers/2026/05/2605.05701.md",
+      "title": "",
+      "title_zh": "LLM搜索代理的推理时预算控制",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文教AI系统在回答复杂问题时聪明地花钱：它用‘每单位预算能带来多少进步’来打分，决定下一步是查资料、拆解问题还是直接回答；最后只在不破坏原有逻辑的前提下，修正像‘是/否’这种小错误。"
+    },
+    {
+      "rank": 25,
+      "arxiv_id": "2605.02881",
+      "arxiv_url": "https://arxiv.org/abs/2605.02881",
+      "mentioned_by_count": 2,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        },
+        {
+          "followers": 42187,
+          "name": "alphaXiv",
+          "username": "askalphaxiv"
+        }
+      ],
+      "stats": {
+        "total_likes": "20",
+        "total_mentions": 2,
+        "total_retweets": "8",
+        "total_views": "9056",
+        "unique_users": 2
+      },
+      "timeline": {
+        "first_mention": "2026-05-05T17:01:21",
+        "latest_mention": "2026-05-07T06:01:35"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.02881.html",
+      "raw_path": "raw/papers/2026/05/2605.02881.md",
+      "title": "MolmoAct2 Action Reasoning Models for Real-World Deployment",
+      "title_zh": "MolmoAct2：面向真实世界部署的动作推理模型",
+      "paper_type": "model",
+      "quality": "ok",
+      "preview": "这篇论文造了一个能看懂图像、听懂指令并控制机器人手臂做家务的 AI 模型。它用了新的视觉理解模块、三个新收集的机器人数据集，还设计了一种更聪明的方式让模型只对变化的部分进行思考，从而更快地做出动作。最重要的是，所有代码、模型和数据都公开了，别人也能用。"
+    },
+    {
+      "rank": 26,
+      "arxiv_id": "2405.13729",
+      "arxiv_url": "https://arxiv.org/abs/2405.13729",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "18",
+        "total_mentions": 1,
+        "total_retweets": "7",
+        "total_views": "3860",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-05T19:41:00",
+        "latest_mention": "2026-05-05T19:41:00"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2405.13729.html",
+      "raw_path": "raw/papers/2024/05/2405.13729.md",
+      "title": "ComboStoc: Combinatorial Stochasticity for Diffusion Generative Models",
+      "title_zh": "ComboStoc：扩散生成模型的组合随机性",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "想象你要画一幅拼图，但每次只能同时移动所有碎片。ComboStoc 让你可以单独移动每个碎片，这样模型能更好地学习它们之间的关系，最终画出更完整、更准确的图像，还能让你指定哪些部分保留原样、哪些部分重新生成。"
+    },
+    {
+      "rank": 27,
+      "arxiv_id": "2604.27660",
+      "arxiv_url": "https://arxiv.org/abs/2604.27660",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "17",
+        "total_mentions": 1,
+        "total_retweets": "5",
+        "total_views": "3049",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-05T17:04:36",
+        "latest_mention": "2026-05-05T17:04:36"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2604.27660.html",
+      "raw_path": "raw/papers/2026/04/2604.27660.md",
+      "title": "",
+      "title_zh": "从上下文到技能：语言模型能否熟练地从上下文中学习？",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文就像教一个学生如何自学一本厚厚的技术说明书。它不直接告诉学生答案，而是让两个AI互相出题和答题：一个AI（挑战者）根据说明书出难题，另一个AI（推理者）尝试解答。答错了，推理者就总结新规则；答对了，挑战者就改进出题策略。它们不断迭代，直到推理者掌握说明书里的所有关键知识。最后，系统会从所有学到的规则中选出最通用的一套，用来帮助其他AI更好地理解这本说明书。"
+    },
+    {
+      "rank": 28,
+      "arxiv_id": "2605.05191",
+      "arxiv_url": "https://arxiv.org/abs/2605.05191",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "16",
+        "total_mentions": 1,
+        "total_retweets": "2",
+        "total_views": "634",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-07T05:08:54",
+        "latest_mention": "2026-05-07T05:08:54"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.05191.html",
+      "raw_path": "raw/papers/2026/05/2605.05191.md",
+      "title": "",
+      "title_zh": "LongSeeker：面向长时程搜索代理的弹性上下文编排",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "就像一个聪明的助手在查资料时，不会把每一步都记下来，而是会主动整理笔记：把已经解决的问题压缩成一句话，删掉没用的尝试，保留关键数字或名字，甚至回退到之前某一步重新开始。这样它就能一直高效工作，不会因为记太多而混乱。"
+    },
+    {
+      "rank": 29,
+      "arxiv_id": "2605.06130",
+      "arxiv_url": "https://arxiv.org/abs/2605.06130",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 488868,
+          "name": "AK",
+          "username": "_akhaliq"
+        }
+      ],
+      "stats": {
+        "total_likes": "16",
+        "total_mentions": 1,
+        "total_retweets": "7",
+        "total_views": "3787",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T15:13:08",
+        "latest_mention": "2026-05-08T15:13:08"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.06130.html",
+      "raw_path": "raw/papers/2026/05/2605.06130.md",
+      "title": "",
+      "title_zh": "Skill1：基于强化学习的技能增强代理统一演化框架",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "就像一个机器人学习做家务：它先从‘技能书’里找方法（选择），照着做（利用），做完后总结新技巧加进书里（蒸馏）。Skill1 让这三个步骤一起进步，只用‘任务是否成功’这一个标准来指导学习。"
+    },
+    {
+      "rank": 30,
+      "arxiv_id": "2605.06285",
+      "arxiv_url": "https://arxiv.org/abs/2605.06285",
+      "mentioned_by_count": 1,
+      "mentioned_by": [
+        {
+          "followers": 4033,
+          "name": "Sumit",
+          "username": "_reachsumit"
+        }
+      ],
+      "stats": {
+        "total_likes": "16",
+        "total_mentions": 1,
+        "total_retweets": "1",
+        "total_views": "708",
+        "unique_users": 1
+      },
+      "timeline": {
+        "first_mention": "2026-05-08T03:32:26",
+        "latest_mention": "2026-05-08T03:32:26"
+      },
+      "in_library": true,
+      "is_new": false,
+      "href": "papers/2605.06285.html",
+      "raw_path": "raw/papers/2026/05/2605.06285.md",
+      "title": "",
+      "title_zh": "LatentRAG：面向高效智能体RAG的隐空间推理与检索",
+      "paper_type": "method",
+      "quality": "ok",
+      "preview": "这篇论文就像给AI大脑装了一个‘快速思考模式’。传统方法需要AI一步步写出思考过程再查资料，很慢；新方法让AI在内部‘心里想’而不说出来，直接根据内心想法去查资料，速度快了很多，但答案质量差不多。"
+    }
+  ]
+}
